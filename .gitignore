@@ -8,6 +8,9 @@ tmp/*
 *.pyc
 __pycache__/*
 
+# py.test stuff
+.cache/*
+
 # Jupyter notebook checkpounts 
 .ipynb_checkpoints/*
 
