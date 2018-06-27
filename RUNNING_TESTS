@@ -1,0 +1,13 @@
+This project uses py.test for its tests.
+
+Install it with apt install python3-pytest
+
+To run the tests in the git repository:
+
+$ cd en16931
+
+$ python3 -m pytest
+
+or for more verbose output
+
+$ python3 -m pytest -v
