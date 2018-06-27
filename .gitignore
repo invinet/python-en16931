@@ -1,0 +1,18 @@
+# secret stuff that we don't want commited to git
+.secrets
+
+# tmp directory
+tmp/*
+
+# Python stuff
+*.pyc
+__pycache__/*
+
+# Jupyter notebook checkpounts 
+.ipynb_checkpoints/*
+
+# Vim swap files
+*.sw[op]
+
+# reports in txt format
+*.txt
