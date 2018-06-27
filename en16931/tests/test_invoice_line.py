@@ -6,7 +6,8 @@ from invoice_line import InvoiceLine
 class TestInvoiceLine:
 
     def test_initialization(self):
-        il = InvoiceLine(quantity=11, unit_code="EA", price=2, item_name='test', currency="EUR")
+        il = InvoiceLine(quantity=11, unit_code="EA", price=2,
+                         item_name='test', currency="EUR")
         assert il.is_valid()
 
     def test_creation(self):
@@ -17,7 +18,8 @@ class TestInvoiceLine:
         assert il.is_valid()
 
     def test_line_extension_amount(self):
-        il = InvoiceLine(quantity=11, unit_code="EA", price=2, item_name='test', currency="EUR")
+        il = InvoiceLine(quantity=11, unit_code="EA", price=2,
+                         item_name='test', currency="EUR")
         assert il.line_extension_amount == 22.0
 
     def test_invalid_unit_code(self):

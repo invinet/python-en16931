@@ -4,9 +4,11 @@ from entity import Entity
 
 class TestEntity:
 
+
     def test_initialization(self):
-        e = Entity(name="Acme Inc.", tax_scheme="VAT", tax_scheme_id="ES34626691F",
-                   country="ES", party_legal_entity_id="ES34626691F",
+        e = Entity(name="Acme Inc.", tax_scheme="VAT",
+                   tax_scheme_id="ES34626691F", country="ES",
+                   party_legal_entity_id="ES34626691F",
                    registration_name="Acme INc.", mail="acme@acme.io")
         assert e.is_valid
 
@@ -14,7 +16,6 @@ class TestEntity:
         e = Entity()
         with pytest.raises(ValueError):
             e.tax_scheme = "ASF"
-
 
     def test_invalid_entity(self):
         e = Entity(name="Asdf Inc.")

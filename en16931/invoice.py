@@ -1,10 +1,10 @@
 from datetime import datetime
 
-from en16931.entity import Entity 
+from en16931.entity import Entity
 from en16931.utils import parse_date
 
-class Invoice:
 
+class Invoice:
 
     def __init__(self, invoice_id=None, currency="EUR"):
         self.invoice_id = invoice_id or 1
@@ -19,11 +19,9 @@ class Invoice:
         self._buyer_party = None
         self.lines = []
 
-
     @property
     def issue_date(self):
         return self._issue_date
-
 
     @issue_date.setter
     def issue_date(self, date):
@@ -34,11 +32,9 @@ class Invoice:
         else:
             raise ValueError("Unrecognized date")
 
-
     @property
     def due_date(self):
         return self._due_date
-
 
     @due_date.setter
     def due_date(self, date):
@@ -49,11 +45,9 @@ class Invoice:
         else:
             raise ValueError("Unrecognized date")
 
-
     @property
     def seller_party(self):
         return self._seller_party
-
 
     @seller_party.setter
     def seller_party(self, party):
@@ -65,11 +59,9 @@ class Invoice:
         else:
             raise TypeError("Expected an Entity object")
 
-
     @property
     def buyer_party(self):
         return self._buyer_party
-
 
     @buyer_party.setter
     def buyer_party(self, party):
@@ -81,6 +73,5 @@ class Invoice:
         else:
             raise TypeError("Expected an Entity object")
 
-    
     def add_line(self, line):
         self.lines.append(line)

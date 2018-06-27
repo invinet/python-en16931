@@ -3,10 +3,10 @@ from en16931.utils import parse_float
 
 UNIT_CODES = {
     'EA': 'units',
-    'HUR':'hours',
-    'KGM':'kilograms',
-    'LTR':'litters',
-    'DAY':'days',    
+    'HUR': 'hours',
+    'KGM': 'kilograms',
+    'LTR': 'litters',
+    'DAY': 'days',
     'CS': 'boxes',
 }
 
@@ -22,21 +22,17 @@ class InvoiceLine:
         self.price = price
         self.currency = currency
 
-
     @property
     def item_name(self):
         return self._item_name
 
-    
     @item_name.setter
     def item_name(self, name):
         self._item_name = name
 
-
     @property
     def quantity(self):
         return self._quantity
-
 
     @quantity.setter
     def quantity(self, quantity):
@@ -45,11 +41,9 @@ class InvoiceLine:
         except ValueError:
             raise ValueError("Unrecognized quantity {}".format(quantity))
 
-
     @property
     def price(self):
         return self._price
-
 
     @price.setter
     def price(self, price):
@@ -58,11 +52,9 @@ class InvoiceLine:
         except ValueError:
             raise ValueError("Unrecognized price {}".format(price))
 
-
     @property
     def unit_code(self):
         return self._unit_code
-
 
     @unit_code.setter
     def unit_code(self, code):
@@ -70,11 +62,9 @@ class InvoiceLine:
             raise ValueError("Unsupported unit code {}".format(code))
         self._unit_code = code
 
-
     @property
     def currency(self):
         return self._currency
-
 
     @currency.setter
     def currency(self, currency):
@@ -82,10 +72,8 @@ class InvoiceLine:
             raise ValueError("Unsupported currency {}".format(currency))
         self._currency = currency
 
-
     def is_valid(self):
         return self._quantity is not None and self._price is not None
-
 
     @property
     def line_extension_amount(self):
