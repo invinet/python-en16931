@@ -1,6 +1,6 @@
 import pytest
 
-from entity import Entity
+from en16931.entity import Entity
 
 
 class TestEntity:

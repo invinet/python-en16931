@@ -1,7 +1,7 @@
 import pytest
 from collections import Hashable
 
-from tax import Tax
+from en16931.tax import Tax
 
 
 class TestTaxes:

@@ -2,9 +2,7 @@ This project uses py.test for its tests.
 
 Install it with apt install python3-pytest
 
-To run the tests in the git repository:
-
-$ cd en16931
+To run the tests from the root of the git repository:
 
 $ python3 -m pytest
 

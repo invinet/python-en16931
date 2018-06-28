@@ -57,7 +57,8 @@ class Invoice:
             else:
                 raise ValueError("Invalid Entity")
         else:
-            raise TypeError("Expected an Entity object")
+            msg = "Expected an Entity object but got a {}"
+            raise TypeError(msg.format(type(party)))
 
     @property
     def buyer_party(self):
@@ -71,7 +72,8 @@ class Invoice:
             else:
                 raise ValueError("Invalid Entity")
         else:
-            raise TypeError("Expected an Entity object")
+            msg = "Expected an Entity object but got a {}"
+            raise TypeError(msg.format(type(party)))
 
     def add_line(self, line):
         self.lines.append(line)

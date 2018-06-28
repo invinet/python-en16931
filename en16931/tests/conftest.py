@@ -1,9 +1,9 @@
 import pytest
 
-from entity import Entity
-from invoice import Invoice
-from invoice_line import InvoiceLine
-from tax import Tax
+from en16931.entity import Entity
+from en16931.invoice import Invoice
+from en16931.invoice_line import InvoiceLine
+from en16931.tax import Tax
 
 
 @pytest.fixture()
@@ -17,8 +17,8 @@ def invoice1():
                    tax_scheme_id="ES34626691F", country="ES",
                    party_legal_entity_id="ES34626691F",
                    registration_name="Acme INc.", mail="acme@acme.io")
-    #invoice.seller_party = seller
-    #invoice.buyer_party = buyer
+    invoice.buyer_party = buyer
+    invoice.seller_party = seller
     invoice.due_date = "2018-09-11"
     invoice.issue_date = "2018-06-11"
     # lines

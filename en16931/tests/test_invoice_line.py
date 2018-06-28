@@ -1,6 +1,6 @@
 import pytest
 
-from invoice_line import InvoiceLine
+from en16931.invoice_line import InvoiceLine
 
 
 class TestInvoiceLine:

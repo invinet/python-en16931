@@ -1,9 +1,9 @@
 import pytest
 
-from entity import Entity
-from invoice import Invoice
-from invoice_line import InvoiceLine
-from tax import Tax
+from en16931.entity import Entity
+from en16931.invoice import Invoice
+from en16931.invoice_line import InvoiceLine
+from en16931.tax import Tax
 
 
 class TestInvoiceAttributes:
