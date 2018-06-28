@@ -1,3 +1,4 @@
+import os
 import pytest
 
 from en16931.entity import Entity
@@ -93,3 +94,15 @@ class TestInvoiceOperations:
 
     def test_payable_amount(self, invoice1):
         assert invoice1.payable_amount == 103.62
+
+
+class TestInvoiceXMLGeneration:
+
+    def test_generates_xml(self, invoice1):
+        out = invoice1.to_xml()
+        assert len(out) > 0
+
+    def test_writes_a_xml_file(self, invoice1):
+        path = '/tmp/invoice.xml'
+        invoice1.save(path)
+        assert os.path.exists(path)

@@ -3,21 +3,34 @@ from datetime import datetime
 from en16931.entity import Entity
 from en16931.utils import parse_date
 
+from jinja2 import Environment, PackageLoader
+
+templates = Environment(loader=PackageLoader('en16931', 'templates'))
 
 class Invoice:
 
     def __init__(self, invoice_id=None, currency="EUR"):
         self.invoice_id = invoice_id or 1
         self.currency = currency
-        self._ubl_version_id = "2.1"
-        self._customization_id = "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
-        self._profile_id = "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0"
-        self._invoice_type_code = 380
+        self.ubl_version_id = "2.1"
+        self.customization_id = "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+        self.profile_id = "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0"
+        self.invoice_type_code = 380
         self._issue_date = None
         self._issue_date = None
         self._seller_party = None
         self._buyer_party = None
         self.lines = []
+        self.template = templates.get_template('invoice.xml')
+
+    def to_xml(self):
+        return self.template.render(invoice=self)
+
+    def save(self, path=None):
+        if path is None:
+            path = 'invoice_{}.xml'.format(self.invoice_id)
+        with open(path, 'w') as f:
+            f.write(self.to_xml())
 
     @property
     def issue_date(self):
