@@ -3,6 +3,7 @@ from collections import Hashable
 
 from tax import Tax
 
+
 class TestTaxes:
 
     def test_initialization(self):

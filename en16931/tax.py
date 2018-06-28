@@ -17,6 +17,13 @@ class Tax:
     def code(self):
         return "{}_{}".format(self.percent, self.category)
 
+    def __eq__(self, other):
+        if other is None:
+            return False
+        return (self.percent == other.percent and
+                self.category == self.category and
+                self.name == self.name)
+
     def __hash__(self):
         return hash(self.code)
 

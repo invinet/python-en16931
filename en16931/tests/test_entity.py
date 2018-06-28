@@ -2,8 +2,8 @@ import pytest
 
 from entity import Entity
 
-class TestEntity:
 
+class TestEntity:
 
     def test_initialization(self):
         e = Entity(name="Acme Inc.", tax_scheme="VAT",

@@ -75,3 +75,68 @@ class Invoice:
 
     def add_line(self, line):
         self.lines.append(line)
+
+    def add_lines_from(self, container):
+        self.lines.extend(container)
+
+    @property
+    def unique_taxes(self):
+        return {line.tax for line in self.lines}
+
+    def lines_with_taxes(self, tax_type=None):
+        for line in self.lines:
+            if line.has_tax(tax_type):
+                yield line
+
+    def tax_amount(self, tax_type=None):
+        if tax_type is None:
+            taxes = self.unique_taxes
+        else:
+            taxes = {tax_type}
+        result = (round(self.taxable_base(tax_type=tax) * tax.percent, 2) for tax in taxes)
+        return round(sum(result), 2)
+
+    def taxable_base(self, tax_type=None):
+        # TODO global discount
+        allowance_total_amount = 0
+        return self.gross_subtotal(tax_type=tax_type) - allowance_total_amount
+
+    def gross_subtotal(self, tax_type=None):
+        """Sum of gross amount of each invoice line."""
+        result = sum(line.line_extension_amount for line in
+                     self.lines_with_taxes(tax_type=tax_type))
+        return round(result, 2)
+
+    def subtotal(self, tax_type=None):
+        """Gross amount before taxes.
+
+            TotalGrossAmount - AllowanceTotalAmount + ChargeTotalAmount
+        """
+        # TODO global charges and discounts
+        gross_subtotal = self.gross_subtotal(tax_type=tax_type)
+        allowance_total_amount = 0
+        charge_total_amount = 0
+        return gross_subtotal - allowance_total_amount + charge_total_amount
+
+    def total(self):
+        return self.subtotal() + self.tax_amount()
+
+    # Properties so we can return what was in the XML instead of computing it
+    # in case we read the invoice.
+    @property
+    def line_extension_amount(self):
+        return self.gross_subtotal()
+
+    @property
+    def tax_exclusive_amount(self):
+        return self.subtotal()
+
+    @property
+    def tax_inclusive_amount(self):
+        return self.total()
+
+    @property
+    def payable_amount(self):
+        # TODO PrepaidAmount
+        prepaid_amount = 0
+        return self.total() - prepaid_amount

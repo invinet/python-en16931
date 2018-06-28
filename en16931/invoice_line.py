@@ -17,7 +17,7 @@ CURRENCIES = {"EUR", "USD"}
 class InvoiceLine:
 
     def __init__(self, quantity=None, unit_code="EA", price=None,
-                 item_name=None,currency="EUR", tax_percent=None,
+                 item_name=None, currency="EUR", tax_percent=None,
                  tax_category=None, tax_name=None):
         self.item_name = item_name
         self.quantity = quantity
@@ -98,3 +98,8 @@ class InvoiceLine:
             return round(self._price * self._quantity, 2)
         else:
             raise ValueError("Price, quantity, or tax not set for this line")
+
+    def has_tax(self, tax):
+        if tax is None:
+            return True
+        return self.tax == tax

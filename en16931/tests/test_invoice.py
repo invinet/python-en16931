@@ -1,11 +1,12 @@
 import pytest
 
-from invoice import Invoice
 from entity import Entity
+from invoice import Invoice
 from invoice_line import InvoiceLine
+from tax import Tax
 
 
-class TestInvoice:
+class TestInvoiceAttributes:
 
     def test_default_id_number(self):
         i = Invoice()
@@ -50,3 +51,45 @@ class TestInvoice:
         with pytest.raises(ValueError):
             i = Invoice()
             i.due_date = "asdef"
+
+
+class TestInvoiceOperations:
+
+    def test_unique_taxes(self, invoice1, tax1, tax2):
+        assert len(invoice1.unique_taxes) == 2
+        assert invoice1.unique_taxes == {tax1, tax2}
+
+    def test_lines_with_taxes(self, invoice1, tax1, tax2):
+        assert len(list(invoice1.lines_with_taxes(tax_type=tax1))) == 2
+        assert len(list(invoice1.lines_with_taxes(tax_type=tax2))) == 1
+
+    def test_tax_amount(self, invoice1, tax1, tax2):
+        assert invoice1.tax_amount() == 16.62
+        assert invoice1.tax_amount(tax_type=tax1) == 15.12
+        assert invoice1.tax_amount(tax_type=tax2) == 1.5
+
+    def test_taxable_base(self, invoice1, tax1, tax2):
+        assert invoice1.taxable_base() == 87.0
+        assert invoice1.taxable_base(tax_type=tax1) == 72.0
+        assert invoice1.taxable_base(tax_type=tax2) == 15.0
+
+    def test_gross_subtotal(self, invoice1):
+        assert invoice1.gross_subtotal() == 87.0
+
+    def test_subtotal(self, invoice1):
+        assert invoice1.gross_subtotal() == 87.0
+
+    def test_total(self, invoice1):
+        assert invoice1.total() == 103.62
+
+    def test_line_extension_amount(self, invoice1):
+        assert invoice1.line_extension_amount == 87.0
+
+    def test_tax_exclusive_amount(self, invoice1):
+        assert invoice1.tax_exclusive_amount == 87.0
+
+    def test_tax_inclusive_amount(self, invoice1):
+        assert invoice1.tax_inclusive_amount == 103.62
+
+    def test_payable_amount(self, invoice1):
+        assert invoice1.payable_amount == 103.62
