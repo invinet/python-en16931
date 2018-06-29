@@ -20,11 +20,11 @@ class Invoice:
         self._issue_date = None
         self._seller_party = None
         self._buyer_party = None
+        self._templates = templates.get_template('invoice.xml')
         self.lines = []
-        self.template = templates.get_template('invoice.xml')
 
     def to_xml(self):
-        return self.template.render(invoice=self)
+        return self._templates.render(invoice=self)
 
     def save(self, path=None):
         if path is None:

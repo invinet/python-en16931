@@ -4,7 +4,9 @@
   <cbc:CustomizationID>{{ invoice.ubl_version_id }}</cbc:CustomizationID>
   <cbc:ProfileID>{{ invoice.profile_id }}</cbc:ProfileID>
   <cbc:IssueDate>{{ invoice.issue_date.strftime("%Y-%m-%d") }}</cbc:IssueDate>
-  <cbc:DueDate>{{ invoice.due_date.strftime("%Y-%m-%d") }}</cbc:DueDate>
+  {% if invoice.due_date is defined -%}
+    <cbc:DueDate>{{ invoice.due_date.strftime("%Y-%m-%d") }}</cbc:DueDate>
+  {% endif -%}
   <cbc:InvoiceTypeCode>{{ invoice.type_code }}</cbc:InvoiceTypeCode>
   <cac:AccountingSupplierParty>
     <cac:Party>
@@ -50,7 +52,7 @@
     <cbc:TaxInclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_inclusive_amount }}</cbc:TaxInclusiveAmount>
     <cbc:PayableAmount currencyID="{{ invoice.currency }}">{{ invoice.payable_amount }}</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
-  {% for line in invoice.lines %}
+  {% for line in invoice.lines -%}
   <cac:InvoiceLine>
     <cbc:ID>{{ loop.index }}</cbc:ID>
     <cbc:InvoicedQuantity unitCode="{{ line.unit_code }}">{{ line.quantity }}</cbc:InvoicedQuantity>
@@ -69,5 +71,5 @@
       <cbc:PriceAmount currencyID="EUR">{{ line.line_extension_amount }}</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
-  {% endfor %}
+  {% endfor -%}
 </Invoice>
