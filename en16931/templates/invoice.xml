@@ -17,6 +17,14 @@
       <cac:PartyName>
         <cbc:Name>{{ invoice.seller_party.name }}</cbc:Name>
       </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>{{ invoice.seller_party.postal_address.address }}</cbc:StreetName>
+        <cbc:CityName>{{ invoice.seller_party.postal_address.city_name }}</cbc:CityName>
+        <cbc:PostalZone>{{ invoice.seller_party.postal_address.postal_zone }}</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode listID="ISO3166-1:Alpha2">{{ invoice.seller_party.postal_address.country }}</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
       <cac:PartyTaxScheme>
         <cbc:CompanyID>{{ invoice.seller_party.party_legal_entity_id }}</cbc:CompanyID>
         <cac:TaxScheme>
@@ -38,6 +46,14 @@
       <cac:PartyName>
         <cbc:Name>{{ invoice.seller_party.name }}</cbc:Name>
       </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>{{ invoice.buyer_party.postal_address.address }}</cbc:StreetName>
+        <cbc:CityName>{{ invoice.buyer_party.postal_address.city_name }}</cbc:CityName>
+        <cbc:PostalZone>{{ invoice.buyer_party.postal_address.postal_zone }}</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode listID="ISO3166-1:Alpha2">{{ invoice.buyer_party.postal_address.country }}</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
       <cac:PartyTaxScheme>
         <cbc:CompanyID>{{ invoice.seller_party.party_legal_entity_id }}</cbc:CompanyID>
         <cac:TaxScheme>

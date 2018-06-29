@@ -12,11 +12,17 @@ def invoice1():
     seller = Entity(name="Acme Inc.", tax_scheme="VAT",
                     tax_scheme_id="ES34626691F", country="ES",
                     party_legal_entity_id="ES34626691F",
-                    registration_name="Acme INc.", mail="acme@acme.io")
+                    registration_name="Acme INc.", mail="acme@acme.io",
+                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
+                    address="easy street", postalzone="08080",
+                    city="Barcelona")
     buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
                    tax_scheme_id="ES76281415Y", country="ES",
                    party_legal_entity_id="ES76281415Y",
-                   registration_name="Corp INc.", mail="corp@corp.io")
+                   registration_name="Corp INc.", mail="corp@corp.io",
+                   endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
+                   address="busy street", postalzone="08080",
+                   city="Barcelona")
     invoice.buyer_party = buyer
     invoice.seller_party = seller
     invoice.due_date = "2018-09-11"
