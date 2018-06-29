@@ -1,10 +1,15 @@
 import pytest
+import os
 
 from en16931.entity import Entity
 from en16931.invoice import Invoice
 from en16931.invoice_line import InvoiceLine
 from en16931.tax import Tax
 
+@pytest.fixture()
+def xml_path():
+    path, name = os.path.split(os.path.abspath(__file__))
+    return os.path.join(path, "files", "invoice.xml")
 
 @pytest.fixture()
 def invoice1():

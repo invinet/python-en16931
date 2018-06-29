@@ -106,3 +106,10 @@ class TestInvoiceXMLGeneration:
         path = '/tmp/invoice.xml'
         invoice1.save(path)
         assert os.path.exists(path)
+
+
+class TestInvoiceXMLImport:
+    
+    def test_imports_xml(self, xml_path):
+        invoice = Invoice.from_xml(xml_path)
+        assert invoice.invoice_id == '1'

@@ -33,8 +33,7 @@ class Invoice:
         invoice_id = get_from_xpath(root, "invoice_id")
         currency = get_from_xpath(root, "currency")
         invoice = cls(invoice_id=invoice_id, currency=currency)
-        invoice.issue_date = get_from_xpath(root, "issue_date")
-        invoice.due_date = get_from_xpath(root, "due_date")
+        invoice.issue_date = get_from_xpath(root, "invoice_issue_date")
         # seller
         seller_party = Entity()
         seller_party
