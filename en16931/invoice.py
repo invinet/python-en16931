@@ -1,7 +1,9 @@
 from datetime import datetime
+import lxml.etree
 
 from en16931.entity import Entity
 from en16931.utils import parse_date
+from en16931.utils import get_from_xpath
 
 from jinja2 import Environment, PackageLoader
 
@@ -22,6 +24,21 @@ class Invoice:
         self._buyer_party = None
         self._templates = templates.get_template('invoice.xml')
         self.lines = []
+
+    @classmethod
+    def from_xml(cls, xml_path):
+        with open(xml_path, "rb") as f:
+            xml = f.read()
+        root = lxml.etree.fromstring(xml)
+        invoice_id = get_from_xpath(root, "invoice_id")
+        currency = get_from_xpath(root, "currency")
+        invoice = cls(invoice_id=invoice_id, currency=currency)
+        invoice.issue_date = get_from_xpath(root, "issue_date")
+        invoice.due_date = get_from_xpath(root, "due_date")
+        # seller
+        seller_party = Entity()
+        seller_party
+        return invoice
 
     def to_xml(self):
         return self._templates.render(invoice=self)
