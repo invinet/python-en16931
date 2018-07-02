@@ -42,7 +42,7 @@ def invoice1():
                       tax_percent=0.21, tax_category="S")
     il3 = InvoiceLine(quantity=5, unit_code="EA", price=3,
                       item_name='test 3', currency="EUR",
-                      tax_percent=0.1, tax_category="AA")
+                      tax_percent=0.1, tax_category="S")
     invoice.add_lines_from([il1, il2, il3])
     return invoice
 
@@ -54,4 +54,4 @@ def tax1():
 
 @pytest.fixture()
 def tax2():
-    return Tax(0.1, "AA", None)
+    return Tax(0.1, "S", None)

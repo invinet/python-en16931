@@ -8,7 +8,7 @@ class TestInvoiceLine:
     def test_initialization(self):
         il = InvoiceLine(quantity=11, unit_code="EA", price=2,
                          item_name='test', currency="EUR",
-                         tax_percent=0.21, tax_category="AA")
+                         tax_percent=0.21, tax_category="S")
         assert il.is_valid()
 
     def test_creation(self):
@@ -17,13 +17,13 @@ class TestInvoiceLine:
         il.price = 2
         il.item_name = 'test'
         il.tax_percent = 0.21
-        il.tax_category = "AA"
+        il.tax_category = "S"
         assert il.is_valid()
 
     def test_line_extension_amount(self):
         il = InvoiceLine(quantity=11, unit_code="EA", price=2,
                          item_name='test', currency="EUR",
-                         tax_percent=0.21, tax_category="AA")
+                         tax_percent=0.21, tax_category="S")
         assert il.line_extension_amount == 22.0
 
     def test_invalid_unit_code(self):

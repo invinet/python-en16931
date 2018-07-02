@@ -73,7 +73,7 @@
         <cbc:TaxableAmount currencyID="EUR">15.00</cbc:TaxableAmount>
         <cbc:TaxAmount currencyID="EUR">1.50</cbc:TaxAmount>
         <cac:TaxCategory>
-          <cbc:ID>AA</cbc:ID>
+          <cbc:ID>S</cbc:ID>
           <cbc:Percent>10.00</cbc:Percent>
           <cac:TaxScheme>
             <cbc:ID>VAT</cbc:ID>
@@ -141,7 +141,7 @@
     <cac:Item>
       <cbc:Name>test 3</cbc:Name>
       <cac:ClassifiedTaxCategory>
-        <cbc:ID>AA</cbc:ID>
+        <cbc:ID>S</cbc:ID>
         <cbc:Percent>10.00</cbc:Percent>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>

@@ -1,6 +1,9 @@
 from en16931.utils import parse_float
 
 
+CATEGORIES = {'AE', 'L', 'M', 'E', 'S', 'Z', 'G', 'O', 'K'}
+
+
 class Tax:
 
     def __init__(self, percent, category, name, comment=""):
@@ -12,6 +15,17 @@ class Tax:
             self.percent = pct / 100
         else:
             self.percent = pct
+
+    @property
+    def category(self):
+        return self._category
+
+    @category.setter
+    def category(self, category):
+        if category not in CATEGORIES:
+            msg = "Category {} not valid. Use one of {}"
+            raise ValueError(msg.format(category, CATEGORIES))
+        self._category = category
 
     @property
     def code(self):
