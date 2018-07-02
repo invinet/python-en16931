@@ -18,11 +18,13 @@ class InvoiceLine:
 
     def __init__(self, quantity=None, unit_code="EA", price=None,
                  item_name=None, currency="EUR", tax_percent=None,
-                 tax_category=None, tax_name=None):
+                 line_extension_amount=None, tax_category=None,
+                 tax_name=None):
         self.item_name = item_name
         self.quantity = quantity
         self.unit_code = unit_code
         self.price = price
+        self.line_extension_amount = line_extension_amount
         self.currency = currency
         self.tax_percent = tax_percent
         self.tax_category = tax_category
@@ -60,10 +62,27 @@ class InvoiceLine:
 
     @price.setter
     def price(self, price):
+        if price is None:
+            return
         try:
             self._price = parse_float(price)
+            self._line_extension_amount = round(self._price * self._quantity, 2)
         except ValueError:
             raise ValueError("Unrecognized price {}".format(price))
+
+    @property
+    def line_extension_amount(self):
+        return self._line_extension_amount
+
+    @line_extension_amount.setter
+    def line_extension_amount(self, price):
+        if price is None:
+            return
+        try:
+            self._line_extension_amount = parse_float(price)
+            self._price = round(self._line_extension_amount / self.quantity, 2)
+        except ValueError:
+            raise ValueError("Unrecognized line_extension_amount {}".format(price))
 
     @property
     def unit_code(self):
@@ -90,14 +109,6 @@ class InvoiceLine:
         has_price = self._price is not None
         has_tax = self.tax is not None
         return has_quantity and has_price and has_tax
-
-    @property
-    def line_extension_amount(self):
-        # TODO deal better with rounding issues
-        if self.is_valid:
-            return round(self._price * self._quantity, 2)
-        else:
-            raise ValueError("Price, quantity, or tax not set for this line")
 
     def has_tax(self, tax):
         if tax is None:

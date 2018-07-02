@@ -6,6 +6,7 @@ from en16931.invoice import Invoice
 from en16931.invoice_line import InvoiceLine
 from en16931.tax import Tax
 
+
 @pytest.fixture()
 def xml_path():
     path, name = os.path.split(os.path.abspath(__file__))
