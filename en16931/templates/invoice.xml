@@ -70,14 +70,14 @@
     </cac:Party>
   </cac:AccountingCustomerParty>
   <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.tax_amount() }}</cbc:TaxAmount>
+    <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_amount() }}</cbc:TaxAmount>
     {% for tax in invoice.unique_taxes -%}
       <cac:TaxSubtotal>
-        <cbc:TaxableAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.taxable_base(tax) }}</cbc:TaxableAmount>
-        <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.tax_amount(tax) }}</cbc:TaxAmount>
+        <cbc:TaxableAmount currencyID="{{ invoice.currency }}">{{ invoice.taxable_base(tax) }}</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_amount(tax) }}</cbc:TaxAmount>
         <cac:TaxCategory>
           <cbc:ID>{{ tax.category }}</cbc:ID>
-          <cbc:Percent>{{ "%.2f" % (tax.percent * 100) }}</cbc:Percent>
+          <cbc:Percent>{{ tax.percent * 100 }}</cbc:Percent>
           <cac:TaxScheme>
             <cbc:ID>VAT</cbc:ID>
           </cac:TaxScheme>
@@ -86,28 +86,28 @@
     {% endfor -%}
   </cac:TaxTotal>
   <cac:LegalMonetaryTotal>
-    <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.line_extension_amount }}</cbc:LineExtensionAmount>
-    <cbc:TaxExclusiveAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.tax_exclusive_amount }}</cbc:TaxExclusiveAmount>
-    <cbc:TaxInclusiveAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.tax_inclusive_amount }}</cbc:TaxInclusiveAmount>
-    <cbc:PayableAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % invoice.payable_amount }}</cbc:PayableAmount>
+    <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ invoice.line_extension_amount }}</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_exclusive_amount }}</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_inclusive_amount }}</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="{{ invoice.currency }}">{{ invoice.payable_amount }}</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
   {% for line in invoice.lines -%}
   <cac:InvoiceLine>
     <cbc:ID>{{ loop.index }}</cbc:ID>
     <cbc:InvoicedQuantity unitCode="{{ line.unit_code }}">{{ line.quantity }}</cbc:InvoicedQuantity>
-    <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ "%.2f" % line.line_extension_amount }}</cbc:LineExtensionAmount>
+    <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ line.line_extension_amount }}</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>{{ line.item_name }}</cbc:Name>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>{{ line.tax.category }}</cbc:ID>
-        <cbc:Percent>{{ "%.2f" % (line.tax.percent * 100) }}</cbc:Percent>
+        <cbc:Percent>{{ line.tax.percent * 100 }}</cbc:Percent>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">{{ "%.2f" % line.line_extension_amount }}</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">{{ line.line_extension_amount }}</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
   {% endfor -%}

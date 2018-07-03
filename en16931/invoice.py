@@ -1,9 +1,12 @@
 from datetime import datetime
 import lxml.etree
 
+from money.currency import Currency
+
 from en16931.entity import Entity
+from en16931.money import MyMoney
 from en16931.utils import parse_date
-from en16931.utils import parse_float
+from en16931.utils import parse_money
 from en16931.xpaths import get_from_xpath
 from en16931.xpaths import get_entity
 from en16931.xpaths import get_invoice_lines
@@ -54,6 +57,17 @@ class Invoice:
         # lines
         invoice.add_lines_from(get_invoice_lines(root))
         return invoice
+
+    @property
+    def currency(self):
+        return self._currency.name
+
+    @currency.setter
+    def currency(self, currency_str):
+        try:
+            self._currency = Currency[currency_str]
+        except KeyError:
+            raise KeyError('Currency {} not suported'.format(currency_str))
 
     def to_xml(self):
         return self._templates.render(invoice=self)
@@ -144,19 +158,19 @@ class Invoice:
             taxes = self.unique_taxes
         else:
             taxes = {tax_type}
-        result = (round(self.taxable_base(tax_type=tax) * tax.percent, 2) for tax in taxes)
-        return round(sum(result), 2)
+        result = (self.taxable_base(tax_type=tax) * tax.percent for tax in taxes)
+        return sum(result, MyMoney('0', self._currency))
 
     def taxable_base(self, tax_type=None):
         # TODO global discount
-        allowance_total_amount = 0
+        allowance_total_amount = MyMoney('0', self._currency)
         return self.gross_subtotal(tax_type=tax_type) - allowance_total_amount
 
     def gross_subtotal(self, tax_type=None):
         """Sum of gross amount of each invoice line."""
-        result = sum(line.line_extension_amount for line in
-                     self.lines_with_taxes(tax_type=tax_type))
-        return round(result, 2)
+        amounts = (line.line_extension_amount for line in
+                   self.lines_with_taxes(tax_type=tax_type))
+        return sum(amounts, MyMoney('0', self._currency))
 
     def subtotal(self, tax_type=None):
         """Gross amount before taxes.
@@ -165,8 +179,8 @@ class Invoice:
         """
         # TODO global charges and discounts
         gross_subtotal = self.gross_subtotal(tax_type=tax_type)
-        allowance_total_amount = 0
-        charge_total_amount = 0
+        allowance_total_amount = MyMoney('0', self._currency)
+        charge_total_amount = MyMoney('0', self._currency)
         return gross_subtotal - allowance_total_amount + charge_total_amount
 
     def total(self):
@@ -182,7 +196,7 @@ class Invoice:
 
     @line_extension_amount.setter
     def line_extension_amount(self, value):
-        self._line_extension_amount = parse_float(value)
+        self._line_extension_amount = parse_money(value, self._currency)
 
     @property
     def tax_exclusive_amount(self):
@@ -192,7 +206,7 @@ class Invoice:
 
     @tax_exclusive_amount.setter
     def tax_exclusive_amount(self, value):
-        self._tax_exclusive_amount = parse_float(value)
+        self._tax_exclusive_amount = parse_money(value, self._currency)
 
     @property
     def tax_inclusive_amount(self):
@@ -202,16 +216,16 @@ class Invoice:
 
     @tax_inclusive_amount.setter
     def tax_inclusive_amount(self, value):
-        self._tax_inclusive_amount = parse_float(value)
+        self._tax_inclusive_amount = parse_money(value, self._currency)
 
     @property
     def payable_amount(self):
         if self._payable_amount is not None:
             return self._payable_amount
         # TODO PrepaidAmount
-        prepaid_amount = 0
-        return self.total() - prepaid_amount
+        prepaid_amount = MyMoney('0', self._currency)
+        return (self.total() - prepaid_amount)
 
     @payable_amount.setter
     def payable_amount(self, value):
-        self._payable_amount = parse_float(value)
+        self._payable_amount = parse_money(value, self._currency)

@@ -1,5 +1,9 @@
+from money.money import Money
+from money.currency import Currency
+
 from en16931.tax import Tax
 from en16931.utils import parse_float
+from en16931.utils import parse_money
 
 
 UNIT_CODES = {
@@ -11,8 +15,6 @@ UNIT_CODES = {
     'CS': 'boxes',
 }
 
-CURRENCIES = {"EUR", "USD"}
-
 
 class InvoiceLine:
 
@@ -20,15 +22,26 @@ class InvoiceLine:
                  item_name=None, currency="EUR", tax_percent=None,
                  line_extension_amount=None, tax_category=None,
                  tax_name=None):
+        self.currency = currency
         self.item_name = item_name
         self.quantity = quantity
         self.unit_code = unit_code
         self.price = price
         self.line_extension_amount = line_extension_amount
-        self.currency = currency
         self.tax_percent = tax_percent
         self.tax_category = tax_category
         self.tax_name = tax_name
+
+    @property
+    def currency(self):
+        return self._currency.name
+
+    @currency.setter
+    def currency(self, currency_str):
+        try:
+            self._currency = Currency[currency_str]
+        except KeyError:
+            raise KeyError('Currency {} not suported'.format(currency_str))
 
     @property
     def tax(self):
@@ -65,8 +78,8 @@ class InvoiceLine:
         if price is None:
             return
         try:
-            self._price = parse_float(price)
-            self._line_extension_amount = round(self._price * self._quantity, 2)
+            self._price = parse_money(price, self._currency)
+            self._line_extension_amount = self._price * self._quantity
         except ValueError:
             raise ValueError("Unrecognized price {}".format(price))
 
@@ -79,8 +92,8 @@ class InvoiceLine:
         if price is None:
             return
         try:
-            self._line_extension_amount = parse_float(price)
-            self._price = round(self._line_extension_amount / self.quantity, 2)
+            self._line_extension_amount = parse_money(price, self._currency)
+            self._price = self._line_extension_amount / self.quantity
         except ValueError:
             raise ValueError("Unrecognized line_extension_amount {}".format(price))
 
@@ -93,16 +106,6 @@ class InvoiceLine:
         if code not in UNIT_CODES:
             raise ValueError("Unsupported unit code {}".format(code))
         self._unit_code = code
-
-    @property
-    def currency(self):
-        return self._currency
-
-    @currency.setter
-    def currency(self, currency):
-        if currency not in CURRENCIES:
-            raise ValueError("Unsupported currency {}".format(currency))
-        self._currency = currency
 
     def is_valid(self):
         has_quantity = self._quantity is not None

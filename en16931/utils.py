@@ -1,8 +1,18 @@
 from datetime import datetime
+from decimal import InvalidOperation
+
+from en16931.money import MyMoney
+
+def parse_money(amount, currency):
+    if amount is None:
+        return None
+    try:
+        return MyMoney(amount, currency)
+    except InvalidOperation:
+        raise ValueError('Could not convert {} to money'.format(amount))
 
 
 def parse_float(flt):
-    # TODO more sophistication (support , and . as decimal point)
     if flt is None:
         return None
     try:

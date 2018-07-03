@@ -24,7 +24,7 @@ class TestInvoiceLine:
         il = InvoiceLine(quantity=11, unit_code="EA", price=2,
                          item_name='test', currency="EUR",
                          tax_percent=0.21, tax_category="S")
-        assert il.line_extension_amount == 22.0
+        assert str(il.line_extension_amount) == '22.00'
 
     def test_invalid_unit_code(self):
         il = InvoiceLine()

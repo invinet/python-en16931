@@ -1,5 +1,6 @@
 import os
 import pytest
+from decimal import Decimal
 
 from en16931.entity import Entity
 from en16931.invoice import Invoice
@@ -65,35 +66,35 @@ class TestInvoiceOperations:
         assert len(list(invoice1.lines_with_taxes(tax_type=tax2))) == 1
 
     def test_tax_amount(self, invoice1, tax1, tax2):
-        assert invoice1.tax_amount() == 16.62
-        assert invoice1.tax_amount(tax_type=tax1) == 15.12
-        assert invoice1.tax_amount(tax_type=tax2) == 1.5
+        assert str(invoice1.tax_amount()) == '16.62'
+        assert str(invoice1.tax_amount(tax_type=tax1)) == '15.12'
+        assert str(invoice1.tax_amount(tax_type=tax2)) == '1.50'
 
     def test_taxable_base(self, invoice1, tax1, tax2):
-        assert invoice1.taxable_base() == 87.0
-        assert invoice1.taxable_base(tax_type=tax1) == 72.0
-        assert invoice1.taxable_base(tax_type=tax2) == 15.0
+        assert str(invoice1.taxable_base()) == '87.00'
+        assert str(invoice1.taxable_base(tax_type=tax1)) == '72.00'
+        assert str(invoice1.taxable_base(tax_type=tax2)) == '15.00'
 
     def test_gross_subtotal(self, invoice1):
-        assert invoice1.gross_subtotal() == 87.0
+        assert str(invoice1.gross_subtotal()) == '87.00'
 
     def test_subtotal(self, invoice1):
-        assert invoice1.gross_subtotal() == 87.0
+        assert str(invoice1.gross_subtotal()) == '87.00'
 
     def test_total(self, invoice1):
-        assert invoice1.total() == 103.62
+        assert str(invoice1.total()) == '103.62'
 
     def test_line_extension_amount(self, invoice1):
-        assert invoice1.line_extension_amount == 87.0
+        assert str(invoice1.line_extension_amount) == '87.00'
 
     def test_tax_exclusive_amount(self, invoice1):
-        assert invoice1.tax_exclusive_amount == 87.0
+        assert str(invoice1.tax_exclusive_amount) == '87.00'
 
     def test_tax_inclusive_amount(self, invoice1):
-        assert invoice1.tax_inclusive_amount == 103.62
+        assert str(invoice1.tax_inclusive_amount) == '103.62'
 
     def test_payable_amount(self, invoice1):
-        assert invoice1.payable_amount == 103.62
+        assert str(invoice1.payable_amount) == '103.62'
 
 
 class TestInvoiceXMLGeneration:
