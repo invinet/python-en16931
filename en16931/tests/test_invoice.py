@@ -96,6 +96,18 @@ class TestInvoiceOperations:
     def test_payable_amount(self, invoice1):
         assert str(invoice1.payable_amount) == '103.62'
 
+    def test_charge_amount(self, invoice1):
+        assert str(invoice1.charge) == '0.00'
+        invoice1.charge = 10
+        assert str(invoice1.charge) == '10.00'
+        assert str(invoice1.subtotal()) == '97.00'
+
+    def test_discount_amount(self, invoice1):
+        assert str(invoice1.discount) == '0.00'
+        invoice1.discount = 10
+        assert str(invoice1.discount) == '10.00'
+        assert str(invoice1.subtotal()) == '77.00'
+
 
 class TestInvoiceXMLGeneration:
 
@@ -107,10 +119,3 @@ class TestInvoiceXMLGeneration:
         path = '/tmp/invoice.xml'
         invoice1.save(path)
         assert os.path.exists(path)
-
-
-class TestInvoiceXMLImport:
-    
-    def test_imports_xml(self, xml_path):
-        invoice = Invoice.from_xml(xml_path)
-        assert invoice.invoice_id == '1'

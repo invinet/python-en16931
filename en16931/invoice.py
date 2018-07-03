@@ -34,6 +34,10 @@ class Invoice:
         self._tax_exclusive_amount = None
         self._tax_inclusive_amount = None
         self._payable_amount = None
+        self._charge_amount = None
+        self._charge_percent = None
+        self._discount_amount = None
+        self._discount_percent = None
         self.lines = []
 
     @classmethod
@@ -138,6 +142,30 @@ class Invoice:
             msg = "Expected an Entity object but got a {}"
             raise TypeError(msg.format(type(party)))
 
+    @property
+    def charge(self):
+        if self._charge_amount is not None:
+            return self._charge_amount
+        else:
+            return MyMoney('0', self._currency)
+
+    @charge.setter
+    def charge(self, value):
+        self._charge_amount = parse_money(value, self._currency)
+        self._charge_percent = round(self._charge_amount / self.gross_subtotal(), 2)
+
+    @property
+    def discount(self):
+        if self._discount_amount is not None:
+            return self._discount_amount
+        else:
+            return MyMoney('0', self._currency)
+
+    @discount.setter
+    def discount(self, value):
+        self._discount_amount = parse_money(value, self._currency)
+        self._discount_percent = round(self._discount_amount / self.gross_subtotal(), 2)
+
     def add_line(self, line):
         self.lines.append(line)
 
@@ -162,9 +190,7 @@ class Invoice:
         return sum(result, MyMoney('0', self._currency))
 
     def taxable_base(self, tax_type=None):
-        # TODO global discount
-        allowance_total_amount = MyMoney('0', self._currency)
-        return self.gross_subtotal(tax_type=tax_type) - allowance_total_amount
+        return self.gross_subtotal(tax_type=tax_type) - self.discount
 
     def gross_subtotal(self, tax_type=None):
         """Sum of gross amount of each invoice line."""
@@ -177,11 +203,8 @@ class Invoice:
 
             TotalGrossAmount - AllowanceTotalAmount + ChargeTotalAmount
         """
-        # TODO global charges and discounts
         gross_subtotal = self.gross_subtotal(tax_type=tax_type)
-        allowance_total_amount = MyMoney('0', self._currency)
-        charge_total_amount = MyMoney('0', self._currency)
-        return gross_subtotal - allowance_total_amount + charge_total_amount
+        return gross_subtotal - self.discount + self.charge
 
     def total(self):
         return self.subtotal() + self.tax_amount()
@@ -224,7 +247,7 @@ class Invoice:
             return self._payable_amount
         # TODO PrepaidAmount
         prepaid_amount = MyMoney('0', self._currency)
-        return (self.total() - prepaid_amount)
+        return self.total() - prepaid_amount
 
     @payable_amount.setter
     def payable_amount(self, value):

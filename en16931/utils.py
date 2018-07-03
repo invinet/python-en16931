@@ -6,6 +6,8 @@ from en16931.money import MyMoney
 def parse_money(amount, currency):
     if amount is None:
         return None
+    elif isinstance(amount, MyMoney):
+        return amount
     try:
         return MyMoney(amount, currency)
     except InvalidOperation:
