@@ -7,6 +7,26 @@ xpaths = None
 namespaces = None
 
 
+def get_discount(root, namespaces=None, xpaths=None):
+    if namespaces is None:
+        namespaces = get_namespaces()
+    if xpaths is None:
+        xpaths = get_xpaths()
+    for line in root.findall('cac:AllowanceCharge', namespaces=namespaces):
+        if get_from_xpath(line, "acharge_indicator") == "false":
+            return get_from_xpath(line, "acharge_amount")
+
+
+def get_charge(root, namespaces=None, xpaths=None):
+    if namespaces is None:
+        namespaces = get_namespaces()
+    if xpaths is None:
+        xpaths = get_xpaths()
+    for line in root.findall('cac:AllowanceCharge', namespaces=namespaces):
+        if get_from_xpath(line, "acharge_indicator") == "true":
+            return get_from_xpath(line, "acharge_amount")
+
+
 def get_invoice_lines(root, namespaces=None):
     if namespaces is None:
         namespaces = get_namespaces()

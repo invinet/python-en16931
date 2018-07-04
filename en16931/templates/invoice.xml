@@ -69,6 +69,42 @@
       </cac:Contact>
     </cac:Party>
   </cac:AccountingCustomerParty>
+  {%- if invoice.discount.amount > 0 %}
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>discount</cbc:AllowanceChargeReason>
+    <cbc:MultiplierFactorNumeric>{{ invoice.discount_percent * 100 }}</cbc:MultiplierFactorNumeric>
+    <cbc:Amount currencyID="{{ invoice.currency }}">{{ invoice.discount }}</cbc:Amount>
+    <cbc:BaseAmount currencyID="{{ invoice.currency }}">{{ invoice.discount_base_amount }}</cbc:BaseAmount>
+    {%- for tax in invoice.unique_taxes -%}
+    <cac:TaxCategory>
+      <cbc:ID>{{ tax.category }}</cbc:ID>
+      <cbc:Percent>{{ tax.percent * 100 }}</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+    {%- endfor %}
+  </cac:AllowanceCharge>
+  {%- endif %}
+  {%- if invoice.charge.amount > 0 %}
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>charge</cbc:AllowanceChargeReason>
+    <cbc:MultiplierFactorNumeric>{{ invoice.charge_percent * 100 }}</cbc:MultiplierFactorNumeric>
+    <cbc:Amount currencyID="{{ invoice.currency }}">{{ invoice.charge }}</cbc:Amount>
+    <cbc:BaseAmount currencyID="{{ invoice.currency }}">{{ invoice.charge_base_amount }}</cbc:BaseAmount>
+    {%- for tax in invoice.unique_taxes %}
+    <cac:TaxCategory>
+      <cbc:ID>{{ tax.category }}</cbc:ID>
+      <cbc:Percent>{{ tax.percent * 100 }}</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+    {%- endfor %}
+  </cac:AllowanceCharge>
+  {%- endif %}
   <cac:TaxTotal>
     <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_amount() }}</cbc:TaxAmount>
     {% for tax in invoice.unique_taxes -%}
@@ -89,6 +125,12 @@
     <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ invoice.line_extension_amount }}</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_exclusive_amount }}</cbc:TaxExclusiveAmount>
     <cbc:TaxInclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_inclusive_amount }}</cbc:TaxInclusiveAmount>
+    {% if invoice.discount.amount > 0 -%}
+      <cbc:AllowanceTotalAmount currencyID="EUR">{{ invoice.discount }}</cbc:AllowanceTotalAmount>
+    {% endif -%}
+    {% if invoice.charge.amount > 0 -%}
+      <cbc:ChargeTotalAmount currencyID="{{ invoice.currency }}">{{ invoice.charge }}</cbc:ChargeTotalAmount>
+    {% endif -%}
     <cbc:PayableAmount currencyID="{{ invoice.currency }}">{{ invoice.payable_amount }}</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
   {% for line in invoice.lines -%}

@@ -10,6 +10,8 @@ from en16931.utils import parse_money
 from en16931.xpaths import get_from_xpath
 from en16931.xpaths import get_entity
 from en16931.xpaths import get_invoice_lines
+from en16931.xpaths import get_discount
+from en16931.xpaths import get_charge
 
 from jinja2 import Environment, PackageLoader
 
@@ -60,6 +62,13 @@ class Invoice:
         invoice.payable_amount = get_from_xpath(root, "payable_amount")
         # lines
         invoice.add_lines_from(get_invoice_lines(root))
+        # discount and charge
+        discount = get_discount(root)
+        if discount is not None:
+            invoice.discount = discount
+        charge = get_charge(root)
+        if charge is not None:
+            invoice.charge = charge
         return invoice
 
     @property
@@ -155,6 +164,15 @@ class Invoice:
         self._charge_percent = round(self._charge_amount / self.gross_subtotal(), 2)
 
     @property
+    def charge_percent(self):
+        return self._charge_percent
+
+    @property
+    def charge_base_amount(self):
+        if self._charge_amount is not None and self._charge_percent is not None:
+            return self._charge_amount / self._charge_percent
+
+    @property
     def discount(self):
         if self._discount_amount is not None:
             return self._discount_amount
@@ -165,6 +183,15 @@ class Invoice:
     def discount(self, value):
         self._discount_amount = parse_money(value, self._currency)
         self._discount_percent = round(self._discount_amount / self.gross_subtotal(), 2)
+
+    @property
+    def discount_percent(self):
+        return self._discount_percent
+
+    @property
+    def discount_base_amount(self):
+        if self._discount_amount is not None and self._discount_percent is not None:
+            return self._discount_amount / self._discount_percent
 
     def add_line(self, line):
         self.lines.append(line)
@@ -190,7 +217,7 @@ class Invoice:
         return sum(result, MyMoney('0', self._currency))
 
     def taxable_base(self, tax_type=None):
-        return self.gross_subtotal(tax_type=tax_type) - self.discount
+        return self.gross_subtotal(tax_type=tax_type) - self.discount + self.charge
 
     def gross_subtotal(self, tax_type=None):
         """Sum of gross amount of each invoice line."""

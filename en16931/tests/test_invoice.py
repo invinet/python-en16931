@@ -115,7 +115,12 @@ class TestInvoiceXMLGeneration:
         out = invoice1.to_xml()
         assert len(out) > 0
 
-    def test_writes_a_xml_file(self, invoice1):
-        path = '/tmp/invoice.xml'
+    def test_writes_xml_file_invoice1(self, invoice1):
+        path = '/tmp/invoice1.xml'
         invoice1.save(path)
+        assert os.path.exists(path)
+
+    def test_writes_xml_file_invoice2(self, invoice2):
+        path = '/tmp/invoice2.xml'
+        invoice2.save(path)
         assert os.path.exists(path)
