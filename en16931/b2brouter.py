@@ -1,8 +1,8 @@
 import requests
 
-IMPORT_URL = "https://app.b2brouter.net/projects/{}/invoices/facturae.json"
+IMPORT_URL = "https://app.b2brouter.net/projects/{}/invoices/xml.json"
 HALTR_URL = "https://app.b2brouter.net"
-IMPORT_URL_TEST = "http://localhost:3001/projects/{}/invoices/facturae.json"
+IMPORT_URL_TEST = "http://localhost:3001/projects/{}/invoices/xml.json"
 HALTR_URL_TEST = "http://localhost:3001"
 
 
