@@ -6,10 +6,10 @@ IMPORT_URL_TEST = "http://localhost:3001/projects/{}/invoices/xml.json"
 HALTR_URL_TEST = "http://localhost:3001"
 
 
-def post_to_b2brouter(invoice, api_key, haltr_project_id, test=False):
+def post_to_b2brouter(invoice, api_key, project_id, test=False):
     payload = invoice.to_xml().encode('utf8')
-    import_url = IMPORT_URL.format(haltr_project_id) if not test else \
-                 IMPORT_URL_TEST.format(haltr_project_id)
+    import_url = IMPORT_URL.format(project_id) if not test else \
+                 IMPORT_URL_TEST.format(project_id)
     headers = {
         'content-type': 'application/octet-stream',
         'X-Redmine-API-Key': api_key,
