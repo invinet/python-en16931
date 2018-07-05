@@ -35,6 +35,7 @@ def get_invoice_lines(root, namespaces=None):
         'unit_code': 'line_unit',
         'line_extension_amount': 'line_extension_amount',
         'item_name': 'line_item_name',
+        'price': 'line_price',
         'currency': 'line_currency',
         'tax_percent': 'line_tax_percent',
         'tax_category': 'line_tax_category',
