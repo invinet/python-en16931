@@ -149,7 +149,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">{{ line.line_extension_amount }}</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">{{ line.price }}</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
   {% endfor -%}

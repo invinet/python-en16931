@@ -85,7 +85,10 @@ class InvoiceLine:
 
     @property
     def line_extension_amount(self):
-        return self._line_extension_amount
+        if self._line_extension_amount is not None:
+            return self._line_extension_amount
+        else:
+            return self._price * self._quantity
 
     @line_extension_amount.setter
     def line_extension_amount(self, price):
@@ -93,7 +96,6 @@ class InvoiceLine:
             return
         try:
             self._line_extension_amount = parse_money(price, self._currency)
-            self._price = self._line_extension_amount / self.quantity
         except ValueError:
             raise ValueError("Unrecognized line_extension_amount {}".format(price))
 

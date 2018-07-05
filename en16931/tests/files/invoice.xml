@@ -74,7 +74,7 @@
         <cbc:TaxAmount currencyID="EUR">1.50</cbc:TaxAmount>
         <cac:TaxCategory>
           <cbc:ID>S</cbc:ID>
-          <cbc:Percent>10.00</cbc:Percent>
+          <cbc:Percent>10.0</cbc:Percent>
           <cac:TaxScheme>
             <cbc:ID>VAT</cbc:ID>
           </cac:TaxScheme>
@@ -85,7 +85,7 @@
         <cbc:TaxAmount currencyID="EUR">15.12</cbc:TaxAmount>
         <cac:TaxCategory>
           <cbc:ID>S</cbc:ID>
-          <cbc:Percent>21.00</cbc:Percent>
+          <cbc:Percent>21.0</cbc:Percent>
           <cac:TaxScheme>
             <cbc:ID>VAT</cbc:ID>
           </cac:TaxScheme>
@@ -106,14 +106,14 @@
       <cbc:Name>test 1</cbc:Name>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
-        <cbc:Percent>21.00</cbc:Percent>
+        <cbc:Percent>21.0</cbc:Percent>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">22.00</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">2.00</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
   <cac:InvoiceLine>
@@ -124,14 +124,14 @@
       <cbc:Name>test 2</cbc:Name>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
-        <cbc:Percent>21.00</cbc:Percent>
+        <cbc:Percent>21.0</cbc:Percent>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">50.00</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
   <cac:InvoiceLine>
@@ -142,14 +142,14 @@
       <cbc:Name>test 3</cbc:Name>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
-        <cbc:Percent>10.00</cbc:Percent>
+        <cbc:Percent>10.0</cbc:Percent>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">15.00</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">3.00</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
   </Invoice>
