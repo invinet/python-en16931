@@ -6,6 +6,18 @@ To run the tests from the root of the git repository:
 
 $ python3 -m pytest
 
-or for more verbose output
+or just:
 
-$ python3 -m pytest -v
+$ py.test-3
+
+For coverage information install the pytest-cov plugin with:
+
+$ pip3 install --user pytest-cov
+
+And run:
+
+$ py.test-3 --cov=en16931
+
+For information on the missing statements:
+
+$ py.test-3 --cov-report term-missing --cov=en16931

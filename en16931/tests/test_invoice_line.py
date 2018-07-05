@@ -10,6 +10,16 @@ class TestInvoiceLine:
                          item_name='test', currency="EUR",
                          tax_percent=0.21, tax_category="S")
         assert il.is_valid()
+        assert il.currency == "EUR"
+
+    def test_invalid_currency(self):
+        il = InvoiceLine()
+        with pytest.raises(KeyError):
+            il.currency = "blah"
+
+    def test_no_taxes(self):
+        il = InvoiceLine()
+        assert il.tax is None
 
     def test_creation(self):
         il = InvoiceLine()
@@ -35,6 +45,11 @@ class TestInvoiceLine:
         il = InvoiceLine()
         with pytest.raises(ValueError):
             il.price = "dasdas"
+
+    def test_invalid_line_extension_amount(self):
+        il = InvoiceLine()
+        with pytest.raises(ValueError):
+            il.line_extension_amount = "expensive"
 
     def test_invalid_quantity(self):
         il = InvoiceLine()

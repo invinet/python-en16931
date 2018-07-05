@@ -54,6 +54,12 @@ class TestInvoiceAttributes:
             i = Invoice()
             i.due_date = "asdef"
 
+    def test_invalid_currency(self):
+        with pytest.raises(KeyError):
+            i = Invoice()
+            i.currency = "asdef"
+
+
 
 class TestInvoiceOperations:
 
@@ -124,3 +130,4 @@ class TestInvoiceXMLGeneration:
         path = '/tmp/invoice2.xml'
         invoice2.save(path)
         assert os.path.exists(path)
+
