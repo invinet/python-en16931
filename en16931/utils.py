@@ -1,3 +1,6 @@
+"""
+Miscelanious util functions
+"""
 from datetime import datetime
 from decimal import InvalidOperation
 

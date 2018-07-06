@@ -1,3 +1,7 @@
+"""
+Manipulate and parse XML files
+"""
+
 import lxml.etree
 
 from en16931.entity import Entity
@@ -8,6 +12,8 @@ namespaces = None
 
 
 def get_discount(root, namespaces=None, xpaths=None):
+    """Gets the discount of an Invoice
+    """
     if namespaces is None:
         namespaces = get_namespaces()
     if xpaths is None:
@@ -18,6 +24,8 @@ def get_discount(root, namespaces=None, xpaths=None):
 
 
 def get_charge(root, namespaces=None, xpaths=None):
+    """Gets the charge of an Invoice
+    """
     if namespaces is None:
         namespaces = get_namespaces()
     if xpaths is None:
@@ -28,6 +36,8 @@ def get_charge(root, namespaces=None, xpaths=None):
 
 
 def get_invoice_lines(root, namespaces=None):
+    """Generator of InvoiceLines of an Invoice
+    """
     if namespaces is None:
         namespaces = get_namespaces()
     keys = {
@@ -47,6 +57,8 @@ def get_invoice_lines(root, namespaces=None):
 
 
 def get_entity(root, kind='seller'):
+    """Gets an Entity of an Invoice
+    """
     if kind == 'seller':
         keys = {
 	    'party_legal_entity_id': 'seller_party_legal_entity_id',
@@ -82,6 +94,8 @@ def get_entity(root, kind='seller'):
 
 
 def get_from_xpath(root, tag, xpaths=None, namespaces=None):
+    """Gets the content of an XPATH in an XML file.
+    """
     if xpaths is None:
         xpaths = get_xpaths()
     if namespaces is None:
@@ -97,6 +111,8 @@ def get_from_xpath(root, tag, xpaths=None, namespaces=None):
 
 
 def get_namespaces():
+    """Get a dictionari with all namespaces.
+    """
     global namespaces
     if namespaces is None:
         #print("loading namespace")
@@ -105,6 +121,8 @@ def get_namespaces():
 
 
 def en16931_namespaces():
+    """Namespaces for the en16931 invoice format
+    """
     namespaces = {
         "xmlns":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
         "cac":"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
@@ -114,6 +132,8 @@ def en16931_namespaces():
 
 
 def get_xpaths():
+    """Get a dictionary with all xpaths
+    """
     global xpaths
     if xpaths is None:
         #print("loading xpaths")
@@ -122,6 +142,8 @@ def get_xpaths():
 
 
 def en16931_xpaths():
+    """Xpaths for the en16931 invoice format.
+    """
     xpaths = {}
     xpaths["invoice_id"] = "/xmlns:Invoice/cbc:ID"
     xpaths["invoice_date"] = "/xmlns:Invoice/cbc:IssueDate"

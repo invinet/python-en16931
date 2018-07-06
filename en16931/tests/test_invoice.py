@@ -12,7 +12,7 @@ class TestInvoiceAttributes:
 
     def test_default_id_number(self):
         i = Invoice()
-        assert i.invoice_id == 1
+        assert i.invoice_id == '1'
 
     def test_id_number(self):
         i = Invoice(invoice_id="1-2018")
