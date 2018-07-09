@@ -16,6 +16,3 @@ __pycache__/*
 
 # Vim swap files
 *.sw[op]
-
-# reports in txt format
-*.txt

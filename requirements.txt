@@ -1,0 +1,6 @@
+Jinja2
+lxml
+pytest
+pytest-cov
+requests
+Sphinx
