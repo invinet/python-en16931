@@ -123,7 +123,6 @@ in the EN16931 standard are implemented:
 * Only global charges and discounts are supported. Line discounts and
   charges are not supported.
 * Delivery information is not supported.
-* 
 
 If you need a particular feature implemented, see the following section
 for feature requests.
