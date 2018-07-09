@@ -1,3 +1,4 @@
+codecov
 Jinja2
 lxml
 pytest
