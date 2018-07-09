@@ -5,5 +5,5 @@ b2brouter
 =========
 
 .. currentmodule:: en16931
-.. automodule:: b2brouter
+.. automodule:: en16931.b2brouter
     :members:

@@ -5,5 +5,5 @@ xpaths
 ======
 
 .. currentmodule:: en16931
-.. automodule:: xpaths
+.. automodule:: en16931.xpaths
     :members:
