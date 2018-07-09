@@ -15,3 +15,4 @@ from en16931.postal_address import PostalAddress
 from en16931 import xpaths
 from en16931 import b2brouter
 from en16931 import utils
+from en16931 import validex

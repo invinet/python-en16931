@@ -24,6 +24,7 @@ Modules
    b2brouter
    xpaths
    utils
+   validex
 
 Indices and tables
 ==================
