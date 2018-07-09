@@ -1,0 +1,256 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>python-en16931 &#8212; python-en16931 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Invoice" href="invoice.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="python-en16931">
+<h1>python-en16931<a class="headerlink" href="#python-en16931" title="Permalink to this headline">¶</a></h1>
+<p>Python 3 package to read, write and manage the new <a class="reference external" href="http://docs.peppol.eu/poacc/billing/3.0/bis/">EN16931 Invoice format</a>.</p>
+<p>This <a class="reference external" href="https://standards.cen.eu/dyn/www/f?p=204:110:0::::FSP_PROJECT:60602&amp;cs=1B61B766636F9FB34B7DBD72CE9026C72">European Standard</a> establishes a semantic data model of the core elements of an electronic invoice. The semantic model includes only the essential information elements that an electronic invoice needs to ensure legal (including fiscal) compliance and to enable interoperability for cross-border, cross sector and for domestic trade.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>This library allows you to:</p>
+<ol class="arabic simple">
+<li>De-serialize an XML in EN16931 format to a python Invoice object.</li>
+<li>Serialize a python Invoice object to a valid XML representation.</li>
+<li>Validate an Invoice using <a class="reference external" href="https://open.validex.net">validex</a>.</li>
+<li>Import an Invoice to <a class="reference external" href="https://www.b2brouter.net/">B2BRouter</a>.</li>
+</ol>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>You can import an invoice from an XML file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">en16931</span> <span class="kn">import</span> <span class="n">Invoice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="s1">&#39;en16931/tests/files/invoice.xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And use the API to access its internal values and entities:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">issue_date</span>
+<span class="go">datetime.datetime(2018, 6, 11, 0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">seller_party</span>
+<span class="go">&lt;en16931.entity.Entity at 0x7f2b7c12b860&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">buyer_party</span>
+<span class="go">&lt;en16931.entity.Entity at 0x7f2b7c0fd160&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">unique_taxes</span>
+<span class="go">{ Tax S: 0.21  , Tax S: 0.1  }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">lines</span>
+<span class="go">[&lt;en16931.invoice_line.InvoiceLine at 0x7f2b7c0fd400&gt;,</span>
+<span class="go"> &lt;en16931.invoice_line.InvoiceLine at 0x7f2b7c0fd518&gt;,</span>
+<span class="go"> &lt;en16931.invoice_line.InvoiceLine at 0x7f2b7c0fd748&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">tax_exclusive_amount</span>
+<span class="go">87.00</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">tax_amount</span><span class="p">()</span>
+<span class="go">16.62</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">tax_inclusive_amount</span>
+<span class="go">103.62</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">payable_amount</span>
+<span class="go">103.62</span>
+</pre></div>
+</div>
+<p>If you import an XML file, all relevant quantities are not computed; we
+use the ones defined on the XML. You can check that the computed and
+imported quantities match by calling the relevant methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">invoice</span><span class="o">.</span><span class="n">tax_exclusive_amount</span> <span class="o">==</span> <span class="n">invoice</span><span class="o">.</span><span class="n">subtotal</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">invoice</span><span class="o">.</span><span class="n">tax_inclusive_amount</span> <span class="o">==</span> <span class="n">invoice</span><span class="o">.</span><span class="n">total</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">invoice</span><span class="o">.</span><span class="n">payable_amount</span> <span class="o">==</span> <span class="n">invoice</span><span class="o">.</span><span class="n">total</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Or you can also build, step by step, an invoice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">en16931</span> <span class="kn">import</span> <span class="n">Invoice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">(</span><span class="n">invoice_id</span><span class="o">=</span><span class="s2">&quot;2018-01&quot;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seller</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acme Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">party_legal_entity_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">registration_name</span><span class="o">=</span><span class="s2">&quot;Acme INc.&quot;</span><span class="p">,</span> <span class="n">mail</span><span class="o">=</span><span class="s2">&quot;acme@acme.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">endpoint_scheme</span><span class="o">=</span><span class="s2">&quot;ES:VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">address</span><span class="o">=</span><span class="s2">&quot;easy street&quot;</span><span class="p">,</span> <span class="n">postalzone</span><span class="o">=</span><span class="s2">&quot;08080&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buyer</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Corp Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">party_legal_entity_id</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">registration_name</span><span class="o">=</span><span class="s2">&quot;Corp INc.&quot;</span><span class="p">,</span> <span class="n">mail</span><span class="o">=</span><span class="s2">&quot;corp@corp.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">endpoint_scheme</span><span class="o">=</span><span class="s2">&quot;ES:VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">address</span><span class="o">=</span><span class="s2">&quot;busy street&quot;</span><span class="p">,</span> <span class="n">postalzone</span><span class="o">=</span><span class="s2">&quot;08080&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">buyer_party</span> <span class="o">=</span> <span class="n">buyer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">seller_party</span> <span class="o">=</span> <span class="n">seller</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="s2">&quot;2018-09-11&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">issue_date</span> <span class="o">=</span> <span class="s2">&quot;2018-06-11&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># lines</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il1</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test 1&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il2</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test 2&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il3</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test 3&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">add_lines_from</span><span class="p">([</span><span class="n">il1</span><span class="p">,</span> <span class="n">il2</span><span class="p">,</span> <span class="n">il3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>And serialize it to XML:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xml</span> <span class="o">=</span> <span class="n">invoice</span><span class="o">.</span><span class="n">to_xml</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or save it directly to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;example_invoice.xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<p>This is a proof of concept implementation and not all features defined
+in the EN16931 standard are implemented:</p>
+<ul class="simple">
+<li>Only global charges and discounts are supported. Line discounts and
+charges are not supported.</li>
+<li>Delivery information is not supported.</li>
+<li></li>
+</ul>
+<p>If you need a particular feature implemented, see the following section
+for feature requests.</p>
+</div>
+<div class="section" id="bugs-and-feature-requests">
+<h2>Bugs and Feature Requests<a class="headerlink" href="#bugs-and-feature-requests" title="Permalink to this headline">¶</a></h2>
+<p>Please report any bugs that you find <a class="reference external" href="https://github.com/invinet/python-en16931/issues">here</a>.
+Or, even better, fork the repository on <a class="reference external" href="https://github.com/invinet/python-en16931">GitHub</a>
+and create a pull request (PR). We welcome all changes, big or small.</p>
+</div>
+</div>
+<div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="invoice.html">Invoice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoice_line.html">Invoice Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">Entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postal_address.html">Postal Address</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tax.html">Tax</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="b2brouter.html">b2brouter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpaths.html">xpaths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">python-en16931</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+<li><a class="reference internal" href="#bugs-and-feature-requests">Bugs and Feature Requests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="invoice.html" title="next chapter">Invoice</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Invinet Sistemes.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
