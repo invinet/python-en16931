@@ -25,6 +25,9 @@ class TestImportInvoices:
         assert invoice.tax_exclusive_amount == invoice.subtotal()
         assert invoice.tax_inclusive_amount == invoice.total()
         assert invoice.payable_amount == invoice.total()
+        # Check that we stored the original xml
+        with open(xml_path, 'rb') as fh:
+            assert invoice.to_xml().encode('utf8') == fh.read()
 
     def test_imports_invoice2_xml(self, xml_path_invoice2):
         invoice = Invoice.from_xml(xml_path_invoice2)
@@ -48,3 +51,6 @@ class TestImportInvoices:
         assert invoice.tax_exclusive_amount == invoice.subtotal()
         assert invoice.tax_inclusive_amount == invoice.total()
         assert invoice.payable_amount == invoice.total()
+        # Check that we stored the original xml
+        with open(xml_path_invoice2, 'rb') as fh:
+            assert invoice.to_xml().encode('utf8') == fh.read()

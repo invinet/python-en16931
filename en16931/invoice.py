@@ -88,6 +88,7 @@ class Invoice:
         self._charge_percent = None
         self._discount_amount = None
         self._discount_percent = None
+        self._original_xml = None
         self.lines = []
 
     @classmethod
@@ -118,6 +119,7 @@ class Invoice:
         invoice_id = get_from_xpath(root, "invoice_id")
         currency = get_from_xpath(root, "currency")
         invoice = cls(invoice_id=invoice_id, currency=currency, from_xml=True)
+        invoice._original_xml = xml.decode('utf8')
         invoice.issue_date = get_from_xpath(root, "invoice_issue_date")
         invoice.due_date = get_from_xpath(root, "invoice_due_date")
         # seller and buyer
@@ -172,6 +174,8 @@ class Invoice:
         Generate a valid PEPPOL BIS 3 XML document using the UBL 2.1
         syntax.
         """
+        if self._original_xml is not None:
+            return self._original_xml
         return self._templates.render(invoice=self)
 
     def save(self, path=None):
@@ -187,8 +191,9 @@ class Invoice:
         """
         if path is None:
             path = 'invoice_{}.xml'.format(self.invoice_id)
+        xml = self._original_xml if self._original_xml is not None else self.to_xml()
         with open(path, 'w') as f:
-            f.write(self.to_xml())
+            f.write(xml)
 
     @property
     def issue_date(self):
