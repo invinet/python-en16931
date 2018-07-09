@@ -2,5 +2,6 @@ Jinja2
 lxml
 pytest
 pytest-cov
+python-money
 requests
 Sphinx
