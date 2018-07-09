@@ -133,3 +133,10 @@ Bugs and Feature Requests
 Please report any bugs that you find `here <https://github.com/invinet/python-en16931/issues>`_.
 Or, even better, fork the repository on `GitHub <https://github.com/invinet/python-en16931>`_
 and create a pull request (PR). We welcome all changes, big or small.
+
+License
+-------
+
+Released under the Apache License Version 2.0 (see `LICENSE.txt`)::
+
+    Copyright (C) 2018 Invinet Sistemes
