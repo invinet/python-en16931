@@ -1,5 +1,6 @@
 import os
 import pytest
+from datetime import datetime
 from decimal import Decimal
 
 from en16931.entity import Entity
@@ -31,10 +32,27 @@ class TestInvoiceAttributes:
             i.issue_date = date
             assert i.issue_date.strftime(fmt) == date
 
+    def test_set_dates_none(self):
+        i = Invoice()
+        i.issue_date = None
+        assert i.issue_date is None
+        i.due_date = None
+        assert i.due_date is None
+
+    def test_set_dates_datetime(self):
+        i = Invoice()
+        i.issue_date = datetime(2018, 7, 10)
+        assert i.issue_date == datetime(2018, 7, 10)
+        i.due_date = datetime(2018, 9, 10)
+        assert i.due_date == datetime(2018, 9, 10)
+
     def test_wrong_issue_date(self):
         with pytest.raises(ValueError):
             i = Invoice()
             i.issue_date = "asdef"
+        with pytest.raises(ValueError):
+            i = Invoice()
+            i.issue_date = 123
 
     def test_set_due_date(self):
         dts = {
@@ -53,12 +71,30 @@ class TestInvoiceAttributes:
         with pytest.raises(ValueError):
             i = Invoice()
             i.due_date = "asdef"
+        with pytest.raises(ValueError):
+            i = Invoice()
+            i.due_date = 123
 
     def test_invalid_currency(self):
         with pytest.raises(KeyError):
             i = Invoice()
             i.currency = "asdef"
 
+    def test_wrong_seller_entity(self):
+        with pytest.raises(TypeError):
+            i = Invoice()
+            i.seller_party = 123
+        with pytest.raises(ValueError):
+            i = Invoice()
+            i.seller_party = Entity()
+
+    def test_wrong_buyer_entity(self):
+        with pytest.raises(TypeError):
+            i = Invoice()
+            i.buyer_party = 123
+        with pytest.raises(ValueError):
+            i = Invoice()
+            i.buyer_party = Entity()
 
 
 class TestInvoiceOperations:
