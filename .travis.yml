@@ -10,4 +10,7 @@ python:
 install:
   - pip install -r requirements.txt
 # command to run tests
-script: py.test --cov=./ ; codecov
+script: py.test --cov=./
+# run after the build succeded
+after_success:
+  - codecov
