@@ -27,6 +27,10 @@ def is_valid_at_validex(invoice, api_key, user_id):
     user_id: string.
         The user ID of validex.net
 
+    Notes
+    -----
+    Warnings are not reported.
+
     """
     payload = {
         'userId': user_id,
@@ -34,7 +38,7 @@ def is_valid_at_validex(invoice, api_key, user_id):
         'fileContents64': base64.b64encode(invoice.to_xml().encode('utf8')),
     }
     headers = {
-        'content-type': 'json',
+        'content_type': 'json',
         'accept': 'json',
         'Authorization': "apikey={}".format(api_key),
     }
@@ -43,6 +47,7 @@ def is_valid_at_validex(invoice, api_key, user_id):
         result = response.json()
         if result.get('report') and result['report'].get('result') and\
                 result['report']['result'] != 'fatal':
+            # Warnings are not reported
             return True
         elif result.get('report') and result['report'].get('id'):
             raise ValueError(_get_validation_errors(result['report']['id']))
