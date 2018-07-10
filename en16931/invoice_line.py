@@ -84,25 +84,23 @@ class InvoiceLine:
 
     @property
     def currency(self):
-        """String representation of the ISO 4217 currency code.
-        """
-        return self._currency.name
-
-    @currency.setter
-    def currency(self, currency_str):
-        """Sets the currency of the Invoice.
-
+        """Property: String representation of the ISO 4217 currency code.
 
         Parameters
         ----------
         currency_str: string
             String representation of the ISO 4217 currency code.
 
-
         Raises
         ------
         KeyError: If the currency code is not a valid ISO 4217 code.
 
+        """
+        return self._currency.name
+
+    @currency.setter
+    def currency(self, currency_str):
+        """Sets the currency of the Invoice.
         """
         try:
             self._currency = Currency[currency_str]
@@ -121,12 +119,6 @@ class InvoiceLine:
     @property
     def item_name(self):
         """The arbitrary name of the item of the line.
-        """
-        return self._item_name
-
-    @item_name.setter
-    def item_name(self, name):
-        """Sets the arbitrary name of the item of the line.
 
         Parameters
         ----------
@@ -134,22 +126,29 @@ class InvoiceLine:
             Arbitrary name to define the item of the line.
 
         """
+        return self._item_name
+
+    @item_name.setter
+    def item_name(self, name):
+        """Sets the arbitrary name of the item of the line.
+        """
         self._item_name = name
 
     @property
     def quantity(self):
-        """Quantity of items of the line.
+        """Property: Quantity of items of the line.
+
+        Parameters
+        ---------
+        quantity: float or integer.
+            The number of items of the line.
+
         """
         return self._quantity
 
     @quantity.setter
     def quantity(self, quantity):
         """Sets the quantity of items of the line.
-
-        Paramters
-        ---------
-        quantity: float or integer.
-            The number of items of the line.
         """
         try:
             self._quantity = parse_float(quantity)
@@ -158,20 +157,20 @@ class InvoiceLine:
 
     @property
     def price(self):
-        """The price of one item.
+        """Property: The price of one item.
+
+        Parameters
+        ---------
+        price: string, integer, float
+            The input must be a valid input for the Decimal class
+            the Python Standard Library.
+
         """
         return self._price
 
     @price.setter
     def price(self, price):
         """Sets the price of one item.
-
-        Paramters
-        ---------
-        price: string, integer, float
-            The input must be a valid input for the Decimal class
-            the Python Standard Library.
-
         """
         if price is None:
             return
@@ -183,7 +182,16 @@ class InvoiceLine:
 
     @property
     def line_extension_amount(self):
-        """The LineExtensionAmount
+        """Property: The LineExtensionAmount
+
+        Parameters
+        ---------
+        line_extension_amount: string, integer, float
+            The input must be a valid input for the Decimal class
+            the Python Standard Library. Computed unless the invoice
+            is imported from an XML file.
+
+
         """
         if self._line_extension_amount is not None:
             return self._line_extension_amount
@@ -193,14 +201,6 @@ class InvoiceLine:
     @line_extension_amount.setter
     def line_extension_amount(self, price):
         """Sets the LineExtensionAmount.
-
-        Paramters
-        ---------
-        line_extension_amount: string, integer, float
-            The input must be a valid input for the Decimal class
-            the Python Standard Library. Computed unless the invoice
-            is imported from an XML file.
-
         """
         if price is None:
             return
@@ -211,13 +211,7 @@ class InvoiceLine:
 
     @property
     def unit_code(self):
-        """The defining the nature of the quantities.
-        """
-        return self._unit_code
-
-    @unit_code.setter
-    def unit_code(self, code):
-        """Sets the unit code defining the nature of the quantities.
+        """property: The unit code defining the nature of the quantities.
 
         Parameters
         ----------
@@ -227,6 +221,12 @@ class InvoiceLine:
             'HUR': 'hours', 'KGM': 'kilograms', 'LTR': 'litters',
             'DAY': 'days', 'CS': 'boxes'.
 
+        """
+        return self._unit_code
+
+    @unit_code.setter
+    def unit_code(self, code):
+        """Sets the unit code defining the nature of the quantities.
         """
         if code not in UNIT_CODES:
             raise ValueError("Unsupported unit code {}".format(code))

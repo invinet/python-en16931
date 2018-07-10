@@ -76,21 +76,9 @@ class Entity:
 
     @property
     def postal_address(self):
-        """The PostalAddress of the Entity.
+        """Property: The PostalAddress of the Entity.
 
-        See the PostalAddress class.
-        """
-        if self._postal_address is not None:
-            return self._postal_address
-        elif self.postalzone is None or self.country is None:
-            return None
-        else:
-            return PostalAddress(address=self.address, city_name=self.city,
-                                 postal_zone=self.postalzone, country=self.country)
-
-    @postal_address.setter
-    def postal_address(self, address):
-        """Sets the PostalAddress of the Entity
+        See the :class:`PostalAddress` class.
 
         Parameters
         ----------
@@ -103,6 +91,18 @@ class Entity:
             or a subclass.
 
         """
+        if self._postal_address is not None:
+            return self._postal_address
+        elif self.postalzone is None or self.country is None:
+            return None
+        else:
+            return PostalAddress(address=self.address, city_name=self.city,
+                                 postal_zone=self.postalzone, country=self.country)
+
+    @postal_address.setter
+    def postal_address(self, address):
+        """Sets the PostalAddress of the Entity
+        """
         if isinstance(address, PostalAddress):
             self._postal_address = address
         else:
@@ -111,13 +111,7 @@ class Entity:
 
     @property
     def name(self):
-        """The name of the Entity.
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of the Entity
+        """Property: The name of the Entity.
 
         Parameters
         ----------
@@ -125,17 +119,17 @@ class Entity:
             The name for the Entity.
 
         """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of the Entity
+        """
         self._name = name
 
     @property
     def tax_scheme(self):
-        """The tax scheme of the Entity.
-        """
-        return self._tax_scheme
-
-    @tax_scheme.setter
-    def tax_scheme(self, scheme):
-        """Sets the tax scheme of the Entity.
+        """Property: The tax scheme of the Entity.
 
         Parameters
         ----------
@@ -147,6 +141,12 @@ class Entity:
         ValueError: if the tax scheme is not valid.
 
         """
+        return self._tax_scheme
+
+    @tax_scheme.setter
+    def tax_scheme(self, scheme):
+        """Sets the tax scheme of the Entity.
+        """
         supported_schemes = {None, "VAT"}
         if scheme not in supported_schemes:
             raise ValueError("Unsupported tax scheme %s" % scheme)
@@ -154,13 +154,7 @@ class Entity:
 
     @property
     def tax_scheme_id(self):
-        """The tax ID of the Entity.
-        """
-        return self._tax_scheme_id
-
-    @tax_scheme_id.setter
-    def tax_scheme_id(self, tax_scheme_id):
-        """Sets the tax ID of the Entity.
+        """Property: The tax ID of the Entity.
 
         Parameters
         ----------
@@ -168,18 +162,18 @@ class Entity:
             The tax ID of the Entity.
 
         """
+        return self._tax_scheme_id
+
+    @tax_scheme_id.setter
+    def tax_scheme_id(self, tax_scheme_id):
+        """Sets the tax ID of the Entity.
+        """
         # TODO validate ID
         self._tax_scheme_id = tax_scheme_id
 
     @property
     def endpoint_scheme(self):
-        """The endpoint scheme of the Entity.
-        """
-        return self._endpoint_scheme
-
-    @endpoint_scheme.setter
-    def endpoint_scheme(self, scheme):
-        """Sets the endpoint scheme of the Entity.
+        """Property: The endpoint scheme of the Entity.
 
         Parameters
         ----------
@@ -187,18 +181,18 @@ class Entity:
             The scheme defining the endpoint.
 
         """
+        return self._endpoint_scheme
+
+    @endpoint_scheme.setter
+    def endpoint_scheme(self, scheme):
+        """Sets the endpoint scheme of the Entity.
+        """
         # TODO validate scheme
         self._endpoint_scheme = scheme
 
     @property
     def endpoint(self):
-        """The endpoint ID of the Entity.
-        """
-        return self._endpoint
-
-    @endpoint.setter
-    def endpoint(self, endpoint):
-        """Sets the endpoint ID of the Entity
+        """Property: The endpoint ID of the Entity.
 
         Parameters
         ----------
@@ -206,23 +200,30 @@ class Entity:
             A valid PEPPOL endpoint.
 
         """
+        return self._endpoint
+
+    @endpoint.setter
+    def endpoint(self, endpoint):
+        """Sets the endpoint ID of the Entity
+        """
         # TODO validate endpoint
         self._endpoint = endpoint
 
     @property
     def country(self):
-        """The country of the entity.
+        """Property: The country of the entity.
+
+        Parameters
+        ----------
+        country: string.
+            Two letter code for the country of the Entity.
+
         """
         return self._country
 
     @country.setter
     def country(self, country):
         """Sets the country of the entity.
-
-        Parameters
-        ----------
-        country: string.
-            Two letter code for the country of the Entity.
         """
         # TODO validate country
         self._country = country

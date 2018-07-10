@@ -84,7 +84,17 @@ price and tax.</p>
 <dl class="attribute">
 <dt id="en16931.InvoiceLine.currency">
 <code class="descname">currency</code><a class="headerlink" href="#en16931.InvoiceLine.currency" title="Permalink to this definition">¶</a></dt>
-<dd><p>String representation of the ISO 4217 currency code.</p>
+<dd><p><em>Property</em> – String representation of the ISO 4217 currency code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>currency_str</strong> (<em>string</em>) – String representation of the ISO 4217 currency code.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">KeyError: If the currency code is not a valid ISO 4217 code.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -111,24 +121,59 @@ price and tax.</p>
 <dt id="en16931.InvoiceLine.item_name">
 <code class="descname">item_name</code><a class="headerlink" href="#en16931.InvoiceLine.item_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The arbitrary name of the item of the line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item_name</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em></em>) – Arbitrary name to define the item of the line.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="en16931.InvoiceLine.line_extension_amount">
 <code class="descname">line_extension_amount</code><a class="headerlink" href="#en16931.InvoiceLine.line_extension_amount" title="Permalink to this definition">¶</a></dt>
-<dd><p>The LineExtensionAmount</p>
+<dd><p><em>Property</em> – The LineExtensionAmount</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line_extension_amount</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library. Computed unless the invoice
+is imported from an XML file.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="en16931.InvoiceLine.price">
 <code class="descname">price</code><a class="headerlink" href="#en16931.InvoiceLine.price" title="Permalink to this definition">¶</a></dt>
-<dd><p>The price of one item.</p>
+<dd><p><em>Property</em> – The price of one item.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>price</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="en16931.InvoiceLine.quantity">
 <code class="descname">quantity</code><a class="headerlink" href="#en16931.InvoiceLine.quantity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Quantity of items of the line.</p>
+<dd><p><em>Property</em> – Quantity of items of the line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>quantity</strong> (<em>float</em><em> or </em><em>integer.</em>) – The number of items of the line.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -140,7 +185,18 @@ price and tax.</p>
 <dl class="attribute">
 <dt id="en16931.InvoiceLine.unit_code">
 <code class="descname">unit_code</code><a class="headerlink" href="#en16931.InvoiceLine.unit_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>The defining the nature of the quantities.</p>
+<dd><p><em>property</em> – The unit code defining the nature of the quantities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unit_code</strong> (<em>string.</em>) – A unit code defining the nature of the quantities of the
+items of the line. It must be one of: ‘EA’: ‘units’,
+‘HUR’: ‘hours’, ‘KGM’: ‘kilograms’, ‘LTR’: ‘litters’,
+‘DAY’: ‘days’, ‘CS’: ‘boxes’.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

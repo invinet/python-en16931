@@ -143,26 +143,22 @@ class Invoice:
 
     @property
     def currency(self):
-        """String representation of the ISO 4217 currency code.
-        """
-        return self._currency.name
-
-    @currency.setter
-    def currency(self, currency_str):
-        """Sets the currency of the Invoice.
-
+        """Property: String representation of the ISO 4217 currency code.
 
         Parameters
         ----------
         currency_str: string
             String representation of the ISO 4217 currency code.
 
-
         Raises
         ------
         KeyError: If the currency code is not a valid ISO 4217 code.
 
         """
+        return self._currency.name
+
+    @currency.setter
+    def currency(self, currency_str):
         try:
             self._currency = Currency[currency_str]
         except KeyError:
@@ -197,14 +193,7 @@ class Invoice:
 
     @property
     def issue_date(self):
-        """The issue date of the invoice.
-        """
-        return self._issue_date
-
-    @issue_date.setter
-    def issue_date(self, date):
-        """Set the issue date of the invoice.
-
+        """Property: The issue date of the invoice.
 
         Parameters
         ----------
@@ -213,13 +202,12 @@ class Invoice:
             following formats: "%Y-%m-%d", "%Y%m%d", "%d-%m-%Y",
             "%Y/%m/%d", "%d/%m/%Y".
 
-
         Raises
         ------
-        ValueError: if the input string cannot be converted to a
+        ValueError:
+            if the input string cannot be converted to a
             datetime object.
 
-        
         Examples
         --------
 
@@ -250,6 +238,12 @@ class Invoice:
         ValueError: See documentation for string date formats supported
 
         """
+        return self._issue_date
+
+    @issue_date.setter
+    def issue_date(self, date):
+        """Set the issue date of the invoice.
+        """
         if not date:
             return
         elif isinstance(date, datetime):
@@ -261,14 +255,7 @@ class Invoice:
 
     @property
     def due_date(self):
-        """Due date of the invoice.
-        """
-        return self._due_date
-
-    @due_date.setter
-    def due_date(self, date):
-        """Set the due date of the invoice.
-
+        """Property: Due date of the invoice.
 
         Parameters
         ----------
@@ -277,12 +264,11 @@ class Invoice:
             following formats: "%Y-%m-%d", "%Y%m%d", "%d-%m-%Y",
             "%Y/%m/%d", "%d/%m/%Y".
 
-
         Raises
         ------
-        ValueError: if the input string cannot be converted to a
+        ValueError
+            if the input string cannot be converted to a
             datetime object.
-
         
         Examples
         --------
@@ -314,7 +300,12 @@ class Invoice:
         ValueError: See documentation for string date formats supported
 
         """
+        return self._due_date
 
+    @due_date.setter
+    def due_date(self, date):
+        """Set the due date of the invoice.
+        """
         if not date:
             return
         elif isinstance(date, datetime):
@@ -326,15 +317,9 @@ class Invoice:
 
     @property
     def seller_party(self):
-        """The Entity with the role of AccountingSupplierParty.
+        """Property: The Entity with the role of AccountingSupplierParty.
 
-        See the Entity class for details
-        """
-        return self._seller_party
-
-    @seller_party.setter
-    def seller_party(self, party):
-        """Set the Entity with the role of AccountingSupplierParty.
+        See the :class:`Entity` class for details
 
         Parameters
         ----------
@@ -344,10 +329,18 @@ class Invoice:
 
         Raises
         ------
-        ValueError: if the Entity is not valid.
+        ValueError:
+            if the Entity is not valid.
 
-        TypeError: if the input is not an Entity or Entity subclass.
+        TypeError:
+            if the input is not an Entity or Entity subclass.
 
+        """
+        return self._seller_party
+
+    @seller_party.setter
+    def seller_party(self, party):
+        """Set the Entity with the role of AccountingSupplierParty.
         """
         if isinstance(party, Entity):
             if party.is_valid():
@@ -360,15 +353,9 @@ class Invoice:
 
     @property
     def buyer_party(self):
-        """The Entity with the role of AccountingCustomerParty.
+        """Property: The Entity with the role of AccountingCustomerParty.
 
-        See the Entity class for details
-        """
-        return self._buyer_party
-
-    @buyer_party.setter
-    def buyer_party(self, party):
-        """Set the Entity with the role of AccountingCustomerParty.
+        See the :class:`Entity` class for details
 
         Parameters
         ----------
@@ -378,10 +365,18 @@ class Invoice:
 
         Raises
         ------
-        ValueError: if the Entity is not valid.
+        ValueError
+            if the Entity is not valid.
 
-        TypeError: if the input is not an Entity or Entity subclass.
+        TypeError
+            if the input is not an Entity or Entity subclass.
 
+        """
+        return self._buyer_party
+
+    @buyer_party.setter
+    def buyer_party(self, party):
+        """Set the Entity with the role of AccountingCustomerParty.
         """
         if isinstance(party, Entity):
             if party.is_valid():
@@ -394,16 +389,7 @@ class Invoice:
 
     @property
     def charge(self):
-        """The ChargeTotalAmount of the Invoice.
-        """
-        if self._charge_amount is not None:
-            return self._charge_amount
-        else:
-            return MyMoney('0', self._currency)
-
-    @charge.setter
-    def charge(self, value):
-        """Sets the ChargeTotalAmount of the invoice.
+        """Property: The ChargeTotalAmount of the Invoice.
 
         Parameters
         ----------
@@ -416,6 +402,15 @@ class Invoice:
         decimal.InvalidOperation: If the input cannot be converted
             to a Decimal.
 
+        """
+        if self._charge_amount is not None:
+            return self._charge_amount
+        else:
+            return MyMoney('0', self._currency)
+
+    @charge.setter
+    def charge(self, value):
+        """Sets the ChargeTotalAmount of the invoice.
         """
         self._charge_amount = parse_money(value, self._currency)
         self._charge_percent = round(self._charge_amount / self.gross_subtotal(), 2)
@@ -439,16 +434,7 @@ class Invoice:
 
     @property
     def discount(self):
-        """The AllowanceTotalAmount of the Invoice.
-        """
-        if self._discount_amount is not None:
-            return self._discount_amount
-        else:
-            return MyMoney('0', self._currency)
-
-    @discount.setter
-    def discount(self, value):
-        """Sets the AllowanceTotalAmount of the invoice.
+        """Property: The AllowanceTotalAmount of the Invoice.
 
         Parameters
         ----------
@@ -461,6 +447,15 @@ class Invoice:
         decimal.InvalidOperation: If the input cannot be converted
             to a Decimal.
 
+        """
+        if self._discount_amount is not None:
+            return self._discount_amount
+        else:
+            return MyMoney('0', self._currency)
+
+    @discount.setter
+    def discount(self, value):
+        """Sets the AllowanceTotalAmount of the invoice.
         """
         self._discount_amount = parse_money(value, self._currency)
         self._discount_percent = round(self._discount_amount / self.gross_subtotal(), 2)

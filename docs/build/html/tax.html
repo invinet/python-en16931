@@ -91,7 +91,19 @@ percentage, category, and name.</p>
 <dl class="attribute">
 <dt id="en16931.Tax.category">
 <code class="descname">category</code><a class="headerlink" href="#en16931.Tax.category" title="Permalink to this definition">¶</a></dt>
-<dd><p>The category of the Tax.</p>
+<dd><p><em>Property</em> – The category of the Tax.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>category</strong> (<em>string.</em>) – A string representing the category of the Tax.
+It must be one of ‘AE’, ‘L’, ‘M’, ‘E’, ‘S’, ‘Z’,
+‘G’, ‘O’, or ‘K’.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError: if the category is not valid.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">

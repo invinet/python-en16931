@@ -45,13 +45,7 @@ class Tax:
 
     @property
     def category(self):
-        """The category of the Tax.
-        """
-        return self._category
-
-    @category.setter
-    def category(self, category):
-        """Sets the category of the Tax.
+        """Property: The category of the Tax.
 
         Parameters
         ----------
@@ -63,6 +57,13 @@ class Tax:
         Raises
         ------
         ValueError: if the category is not valid.
+
+        """
+        return self._category
+
+    @category.setter
+    def category(self, category):
+        """Sets the category of the Tax.
         """
         if category not in CATEGORIES:
             msg = "Category {} not valid. Use one of {}"
