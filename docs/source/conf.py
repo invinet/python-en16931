@@ -88,6 +88,8 @@ html_theme = 'alabaster'
 html_theme_options = {
     'github_user': 'invinet',
     'github_repo': 'python-en16931',
+    #'travis_button': True,
+    #'codecov_button': True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -145,7 +147,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'python-en16931.tex', 'python-en16931 Documentation',
-     'Invinet Sistemes', 'manual'),
+     'Invinet Sistemes', 'howto'),
 ]
 
 
