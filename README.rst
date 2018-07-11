@@ -118,11 +118,17 @@ Limitations
 -----------
 
 This is a proof of concept implementation and not all features defined
-in the EN16931 standard are implemented:
+in the EN16931 standard are implemented. But it is easy, in some cases
+trivial, to implement them. The main not implemented features are:
 
+* CreditNotes are not supported.
+* File attachments are not supported.
+* Delivery information is not supported.
 * Only global charges and discounts are supported. Line discounts and
   charges are not supported.
-* Delivery information is not supported.
+* Other potentially useful attributes (such as InvoicePeriod, BuyerReference,
+  OrderReference, BillingReference, ContractDocumentReference, among others)
+  are not implemented.
 
 If you need a particular feature implemented, see the following section
 for feature requests.
