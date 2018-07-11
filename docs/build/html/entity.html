@@ -15,7 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Postal Address" href="postal_address.html" />
+    <link rel="next" title="BankInfo" href="bank_info.html" />
     <link rel="prev" title="Invoice Line" href="invoice_line.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -74,6 +74,27 @@ valid taxscheme and endpoint, and has an address.</p>
 <dt id="en16931.Entity.__weakref__">
 <code class="descname">__weakref__</code><a class="headerlink" href="#en16931.Entity.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="en16931.Entity.bank_info">
+<code class="descname">bank_info</code><a class="headerlink" href="#en16931.Entity.bank_info" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Property</em> – a <a class="reference internal" href="bank_info.html#en16931.BankInfo" title="en16931.BankInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">BankInfo</span></code></a> instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>bank_info</strong> (<em>BankInfo instance</em>) – a valid BankInfo instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code> – If the parameter is not a BankInfo instance</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the BankInfo instance is not valid</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -237,7 +258,7 @@ valid taxscheme and endpoint, and has an address.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="invoice_line.html" title="previous chapter">Invoice Line</a></li>
-      <li>Next: <a href="postal_address.html" title="next chapter">Postal Address</a></li>
+      <li>Next: <a href="bank_info.html" title="next chapter">BankInfo</a></li>
   </ul></li>
 </ul>
 </div>

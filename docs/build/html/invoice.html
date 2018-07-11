@@ -368,6 +368,35 @@ was not imported from an XML file. In that case, its value is
 the one reported on the XML.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="en16931.Invoice.payment_means_code">
+<code class="descname">payment_means_code</code><a class="headerlink" href="#en16931.Invoice.payment_means_code" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Property</em> – The payment means code.</p>
+<dl class="docutils">
+<dt>It has to be one of:</dt>
+<dd><ul class="first last simple">
+<li>‘10’: ‘cash’</li>
+<li>‘49’: ‘debit’</li>
+<li>‘31’: ‘transfer’</li>
+<li>‘26’: ‘cheque’</li>
+<li>‘23’: ‘cheque_b’</li>
+<li>‘48’: ‘credit’</li>
+<li>‘ZZZ’: ‘awarding, reposition, special’</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>string</em>) – A valid payment means code.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the code is not valid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="en16931.Invoice.save">
 <code class="descname">save</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.save" title="Permalink to this definition">¶</a></dt>
