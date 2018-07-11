@@ -69,6 +69,41 @@
       </cac:Contact>
     </cac:Party>
   </cac:AccountingCustomerParty>
+  {%- if invoice.payment_means_code is defined %}
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>{{ invoice.payment_means_code }}</cbc:PaymentMeansCode>
+    {%- if invoice.payment_means_code == "49" and invoice.buyer_party.bank_info.iban is defined %}
+    <cac:PaymentMandate>
+      {%- if invoice.buyer_party.bank_info.mandate_reference_identifier is defined %}
+      <cbc:ID>{{ invoice.buyer_party.bank_info.mandate_reference_identifier }}</cbc:ID>
+      {%- endif %}
+      <cac:PayerFinancialAccount>
+        <cbc:ID>{{ invoice.buyer_party.bank_info.iban }}</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+    {%- elif invoice.payment_means_code == "49" and invoice.buyer_party.bank_info.account is defined %}
+    <cac:PaymentMandate>
+      {%- if invoice.buyer_party.bank_info.mandate_reference_identifier is defined %}
+      <cbc:ID>{{ invoice.buyer_party.bank_info.mandate_reference_identifier }}</cbc:ID>
+      {%- endif %}
+      <cac:PayerFinancialAccount>
+        <cbc:ID>{{ invoice.buyer_party.bank_info.account }}</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+    {%- elif invoice.payment_means_code == "31" and invoice.seller_party.bank_info.iban is defined and invoice.seller_party.bank_info.bic is defined %}
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>{{ invoice.seller_party.bank_info.iban }}</cbc:ID>
+      <cac:FinancialInstitutionBranch>
+        <cbc:ID>{{ invoice.seller_party.bank_info.bic }}</cbc:ID>
+      </cac:FinancialInstitutionBranch>
+    </cac:PayeeFinancialAccount>
+    {%- elif invoice.payment_means_code == "31" and invoice.seller_party.bank_info.account is defined -%}
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>{{ invoice.seller_party.bank_info.account }}</cbc:ID>
+    </cac:PayeeFinancialAccount>
+    {%- endif %}
+  </cac:PaymentMeans>
+  {%- endif %}
   {%- if invoice.discount.amount > 0 %}
   <cac:AllowanceCharge>
     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>

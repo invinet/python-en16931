@@ -96,6 +96,16 @@ class TestInvoiceAttributes:
             i = Invoice()
             i.buyer_party = Entity()
 
+    def test_invalid_payment_code(self):
+        with pytest.raises(ValueError):
+            i = Invoice()
+            i.payment_means_code = "asdef"
+
+    def test_payment_code(self):
+            i = Invoice()
+            i.payment_means_code = "10"
+            assert i.payment_means_code == "10"
+
 
 class TestInvoiceOperations:
 
@@ -153,8 +163,16 @@ class TestInvoiceOperations:
 
 class TestInvoiceXMLGeneration:
 
-    def test_generates_xml(self, invoice1):
+    def test_generates_xml_invoice1(self, invoice1):
         out = invoice1.to_xml()
+        assert len(out) > 0
+
+    def test_generates_xml_invoice2(self, invoice2):
+        out = invoice2.to_xml()
+        assert len(out) > 0
+
+    def test_generates_xml_invoice3(self, invoice3):
+        out = invoice3.to_xml()
         assert len(out) > 0
 
     def test_writes_xml_file_invoice1(self, invoice1):
@@ -162,8 +180,12 @@ class TestInvoiceXMLGeneration:
         invoice1.save(path)
         assert os.path.exists(path)
 
-    def test_writes_xml_file_invoice2(self, invoice2):
+    def test_writes_xml_file_invoice2_with_discount_and_charge(self, invoice2):
         path = '/tmp/invoice2.xml'
         invoice2.save(path)
         assert os.path.exists(path)
 
+    def test_writes_xml_file_invoice3_with_payment_means(self, invoice3):
+        path = '/tmp/invoice3.xml'
+        invoice3.save(path)
+        assert os.path.exists(path)

@@ -2,6 +2,7 @@
 Class representing an Entity.
 """
 
+from en16931.bank_info import BankInfo
 from en16931.postal_address import PostalAddress
 
 
@@ -73,6 +74,38 @@ class Entity:
         self.city = city
         self.address = address
         self._postal_address = None
+        self._bank_info = None
+
+    @property
+    def bank_info(self):
+        """Property: a :class:`BankInfo` instance
+
+        Parameters
+        ----------
+        bank_info: BankInfo instance
+            a valid BankInfo instance.
+
+        Raises
+        ------
+        TypeError
+            If the parameter is not a BankInfo instance
+        ValueError
+            If the BankInfo instance is not valid
+
+        """
+        return self._bank_info
+
+    @bank_info.setter
+    def bank_info(self, bank_info):
+        """Sets the BankInfor instance
+        """
+        if isinstance(bank_info, BankInfo):
+            if bank_info.is_valid():
+                self._bank_info = bank_info
+            else:
+                raise ValueError("Invalid BankInfo instance")
+        else:
+            raise TypeError('Expected a BankInfo instance')
 
     @property
     def postal_address(self):

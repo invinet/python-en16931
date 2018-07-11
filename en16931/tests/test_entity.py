@@ -1,5 +1,6 @@
 import pytest
 
+from en16931.bank_info import BankInfo
 from en16931.entity import Entity
 from en16931.postal_address import PostalAddress
 
@@ -52,3 +53,27 @@ class TestEntity:
         assert e.tax_scheme_id == "ES34626691F"
         assert e.endpoint == "ES76281415Y"
         assert e.registration_name == "Acme INc."
+
+    def test_bank_info(self):
+        seller = Entity(name="Acme Inc.", tax_scheme="VAT",
+                        tax_scheme_id="ES34626691F", country="ES",
+                        party_legal_entity_id="ES34626691F",
+                        registration_name="Acme INc.", mail="acme@acme.io",
+                        endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
+                        address="easy street", postalzone="08080",
+                        city="Barcelona")
+        bank_info_seller = BankInfo(iban="ES661234563156", bic="AAAABBCCDDD")
+        seller.bank_info = bank_info_seller
+        assert seller.is_valid()
+        assert seller.bank_info.iban == "ES661234563156"
+        assert seller.bank_info.bic == "AAAABBCCDDD"
+
+    def test_invalid_bank_info(self):
+        e = Entity()
+        with pytest.raises(ValueError):
+            e.bank_info = BankInfo()
+
+    def test_wrong_bank_info(self):
+        e = Entity()
+        with pytest.raises(TypeError):
+            e.bank_info = "asdf"

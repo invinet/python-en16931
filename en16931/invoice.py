@@ -4,6 +4,7 @@ Class for representing an Invoice.
 from datetime import datetime
 import lxml.etree
 
+from jinja2 import Environment, PackageLoader
 from money.currency import Currency
 
 from en16931.entity import Entity
@@ -16,9 +17,18 @@ from en16931.xpaths import get_invoice_lines
 from en16931.xpaths import get_discount
 from en16931.xpaths import get_charge
 
-from jinja2 import Environment, PackageLoader
 
 templates = Environment(loader=PackageLoader('en16931', 'templates'))
+
+VALID_PAYMENT_CODES = {
+    '10': 'cash',
+    '49': 'debit',
+    '31': 'transfer',
+    '26': 'cheque',
+    '23': 'cheque_b',
+    '48': 'credit',
+    'ZZZ': 'awarding, reposition, special',
+}
 
 
 class Invoice:
@@ -89,6 +99,7 @@ class Invoice:
         self._discount_amount = None
         self._discount_percent = None
         self._original_xml = None
+        self._payment_means_code = None
         self.lines = []
 
     @classmethod
@@ -190,6 +201,40 @@ class Invoice:
         xml = self._original_xml if self._original_xml is not None else self.to_xml()
         with open(path, 'w') as f:
             f.write(xml)
+
+    @property
+    def payment_means_code(self):
+        """Property: The payment means code.
+
+        It has to be one of:
+            * '10': 'cash'
+            * '49': 'debit'
+            * '31': 'transfer'
+            * '26': 'cheque'
+            * '23': 'cheque_b'
+            * '48': 'credit'
+            * 'ZZZ': 'awarding, reposition, special'
+
+        Parameters
+        ----------
+        code: string
+            A valid payment means code.
+
+        Raises
+        ------
+        ValueError
+            If the code is not valid.
+
+        """
+        return self._payment_means_code
+
+    @payment_means_code.setter
+    def payment_means_code(self, code):
+        """Sets the payment means code
+        """
+        if code not in VALID_PAYMENT_CODES:
+            raise ValueError('Invalid code {}, see documentation'.format(code))
+        self._payment_means_code = code
 
     @property
     def issue_date(self):
