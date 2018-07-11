@@ -134,11 +134,17 @@ imported quantities match by calling the relevant methods:</p>
 <div class="section" id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
 <p>This is a proof of concept implementation and not all features defined
-in the EN16931 standard are implemented:</p>
+in the EN16931 standard are implemented. But it is easy, in some cases
+trivial, to implement them. The main not implemented features are:</p>
 <ul class="simple">
+<li>CreditNotes are not supported.</li>
+<li>File attachments are not supported.</li>
+<li>Delivery information is not supported.</li>
 <li>Only global charges and discounts are supported. Line discounts and
 charges are not supported.</li>
-<li>Delivery information is not supported.</li>
+<li>Other potentially useful attributes (such as InvoicePeriod, BuyerReference,
+OrderReference, BillingReference, ContractDocumentReference, among others)
+are not implemented.</li>
 </ul>
 <p>If you need a particular feature implemented, see the following section
 for feature requests.</p>

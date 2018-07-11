@@ -38,7 +38,36 @@
 <dl class="class">
 <dt id="en16931.InvoiceLine">
 <em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">InvoiceLine</code><span class="sig-paren">(</span><em>quantity=None</em>, <em>unit_code='EA'</em>, <em>price=None</em>, <em>item_name=None</em>, <em>currency='EUR'</em>, <em>tax_percent=None</em>, <em>line_extension_amount=None</em>, <em>tax_category=None</em>, <em>tax_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>EN16931 InvoiceLine class.</p>
+<p>Each <a class="reference internal" href="invoice.html#en16931.Invoice" title="en16931.Invoice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Invoice</span></code></a> has to have at least one invoice
+line in which the quantity and the price of the items is
+reflected.</p>
+<p>You can initialize an InvoiceLine instance with all its
+attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                 <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                 <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or cou can do it step by step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">item_name</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">tax_percent</span> <span class="o">=</span> <span class="mf">0.21</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">tax_category</span> <span class="o">=</span> <span class="s2">&quot;S&quot;</span>
+</pre></div>
+</div>
+<p>An InvoiceLine is only valid if it has quantity, price and
+tax defined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_line</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_line</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="method">
 <dt id="en16931.InvoiceLine.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>quantity=None</em>, <em>unit_code='EA'</em>, <em>price=None</em>, <em>item_name=None</em>, <em>currency='EUR'</em>, <em>tax_percent=None</em>, <em>line_extension_amount=None</em>, <em>tax_category=None</em>, <em>tax_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize an Invoice Line.</p>

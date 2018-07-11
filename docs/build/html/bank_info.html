@@ -38,7 +38,31 @@
 <dl class="class">
 <dt id="en16931.BankInfo">
 <em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">BankInfo</code><span class="sig-paren">(</span><em>account=None</em>, <em>iban=None</em>, <em>bic=None</em>, <em>mandate_reference_identifier=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>BankInfo class.</p>
+<p>Stores relevant banking information of <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a>
+to specify the needed information when the payment means
+of the invoice involves a Bank.</p>
+<p>You can initialize a BankInfo instance with all needed
+attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">(</span><span class="n">account</span><span class="o">=</span><span class="s2">&quot;1234567321&quot;</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="s2">&quot;AAAABBCCDDD&quot;</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">mandate_reference_identifier</span><span class="o">=</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or build it, step by step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">account</span> <span class="o">=</span> <span class="s2">&quot;1234567321&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">bic</span> <span class="o">=</span> <span class="s2">&quot;AAAABBCCDDD&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">mandate_reference_identifier</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span>
+</pre></div>
+</div>
+<p>For the bank information to be complete it has to contain the
+IBAN number, or the bank account and the BIC. The mandate
+reference identifier is used in the context of debit payments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="method">
 <dt id="en16931.BankInfo.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>account=None</em>, <em>iban=None</em>, <em>bic=None</em>, <em>mandate_reference_identifier=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the Bank Information for an Entity.</p>

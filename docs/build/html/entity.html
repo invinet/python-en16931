@@ -38,7 +38,50 @@
 <dl class="class">
 <dt id="en16931.Entity">
 <em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">Entity</code><span class="sig-paren">(</span><em>name=None</em>, <em>tax_scheme=None</em>, <em>tax_scheme_id=None</em>, <em>country=None</em>, <em>party_legal_entity_id=None</em>, <em>registration_name=None</em>, <em>mail=None</em>, <em>endpoint=None</em>, <em>endpoint_scheme=None</em>, <em>postalzone=None</em>, <em>city=None</em>, <em>address=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Entity class.</p>
+<p>It represents a party involved in the trade described by the
+invoice, such as seller or buyer party.</p>
+<p>You can initialize an Entity with most of its attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acme Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">party_legal_entity_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">registration_name</span><span class="o">=</span><span class="s2">&quot;Acme INc.&quot;</span><span class="p">,</span> <span class="n">mail</span><span class="o">=</span><span class="s2">&quot;acme@acme.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">endpoint_scheme</span><span class="o">=</span><span class="s2">&quot;ES:VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">address</span><span class="o">=</span><span class="s2">&quot;easy street&quot;</span><span class="p">,</span> <span class="n">postalzone</span><span class="o">=</span><span class="s2">&quot;08080&quot;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or you can build it step by step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Acme Inc.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">tax_scheme</span> <span class="o">=</span> <span class="s2">&quot;VAT&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">tax_scheme_id</span> <span class="o">=</span> <span class="s2">&quot;ES34626691F&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">country</span> <span class="o">=</span> <span class="s2">&quot;ES&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">party_legal_entity_id</span> <span class="o">=</span> <span class="s2">&quot;ES34626691F&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">registration_name</span> <span class="o">=</span> <span class="s2">&quot;Acme INc.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;ES76281415Y&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">endpoint_scheme</span> <span class="o">=</span> <span class="s2">&quot;ES:VAT&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PostalAddress</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="s2">&quot;easy street&quot;</span><span class="p">,</span> <span class="n">city_name</span><span class="o">=</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">postal_zone</span><span class="o">=</span><span class="s2">&quot;08080&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">postal_address</span> <span class="o">=</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>You can assign a <a class="reference internal" href="postal_address.html#en16931.PostalAddress" title="en16931.PostalAddress"><code class="xref py py-class docutils literal notranslate"><span class="pre">PostalAddress</span></code></a> to its <a class="reference internal" href="#en16931.Entity.postal_address" title="en16931.Entity.postal_address"><code class="xref py py-meth docutils literal notranslate"><span class="pre">postal_address()</span></code></a>
+property. You can also associate a <a class="reference internal" href="bank_info.html#en16931.BankInfo" title="en16931.BankInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">BankInfo</span></code></a> instance to an
+Entity in order to store relevant banking information for debit and
+transfer payments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bank_info</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">(</span><span class="n">iban</span><span class="o">=</span><span class="s2">&quot;ES661234563156&quot;</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="s2">&quot;AAAABBCCDDD&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">bank_info</span> <span class="o">=</span> <span class="n">bank_info</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">bank_info</span><span class="o">.</span><span class="n">iban</span>
+<span class="go">&quot;ES661234563156&quot;</span>
+</pre></div>
+</div>
+<p>An entity is valid if it has a name, a country, valid ids,
+valid taxscheme and endpoint, and has an address.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">is_Valid</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="method">
 <dt id="en16931.Entity.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>name=None</em>, <em>tax_scheme=None</em>, <em>tax_scheme_id=None</em>, <em>country=None</em>, <em>party_legal_entity_id=None</em>, <em>registration_name=None</em>, <em>mail=None</em>, <em>endpoint=None</em>, <em>endpoint_scheme=None</em>, <em>postalzone=None</em>, <em>city=None</em>, <em>address=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize an Entity.</p>

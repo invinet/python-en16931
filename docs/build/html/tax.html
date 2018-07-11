@@ -38,7 +38,19 @@
 <dl class="class">
 <dt id="en16931.Tax">
 <em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">Tax</code><span class="sig-paren">(</span><em>percent</em>, <em>category</em>, <em>name</em>, <em>comment=''</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Tax" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Tax class.</p>
+<p>It representas a tax to apply globally or to a concrete
+invoice line.</p>
+<p>Only categories of taxes enabled by the EN16931 standard are
+supported. See the documentation of <a class="reference internal" href="#en16931.Tax.category" title="en16931.Tax.category"><code class="xref py py-meth docutils literal notranslate"><span class="pre">category()</span></code></a> property
+for more details.</p>
+<p>You can create Tax objects directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Tax</span><span class="p">(</span><span class="mf">0.21</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;IVA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or specify the relevant attributes when building
+<code class="xref py py-class docutils literal notranslate"><span class="pre">InvoiceLines</span></code> or <a class="reference internal" href="invoice.html#en16931.Invoice" title="en16931.Invoice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Invoice</span></code></a></p>
+<dl class="method">
 <dt id="en16931.Tax.__eq__">
 <code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Tax.__eq__" title="Permalink to this definition">¶</a></dt>
 <dd><p>A tax is compared to other Tax objects by equality of their

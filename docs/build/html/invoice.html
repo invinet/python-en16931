@@ -38,7 +38,53 @@
 <dl class="class">
 <dt id="en16931.Invoice">
 <em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">Invoice</code><span class="sig-paren">(</span><em>invoice_id=None</em>, <em>currency='EUR'</em>, <em>from_xml=False</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>EN16931 Invoice class.</p>
+<p>This is the main entry point of this library. You can build, step
+by step, an Invoice and then serialize to XML.</p>
+<p>It uses the class <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a> to represent seller and buyer
+parties, and the class <a class="reference internal" href="invoice_line.html#en16931.InvoiceLine" title="en16931.InvoiceLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvoiceLine</span></code></a> to represent
+invoice lines.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">en16931</span> <span class="k">import</span> <span class="n">Invoice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">(</span><span class="n">invoice_id</span><span class="o">=</span><span class="s2">&quot;2018-01&quot;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seller</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acme Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">party_legal_entity_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">registration_name</span><span class="o">=</span><span class="s2">&quot;Acme INc.&quot;</span><span class="p">,</span> <span class="n">mail</span><span class="o">=</span><span class="s2">&quot;acme@acme.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">endpoint_scheme</span><span class="o">=</span><span class="s2">&quot;ES:VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">address</span><span class="o">=</span><span class="s2">&quot;easy street&quot;</span><span class="p">,</span> <span class="n">postalzone</span><span class="o">=</span><span class="s2">&quot;08080&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buyer</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Corp Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">party_legal_entity_id</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">registration_name</span><span class="o">=</span><span class="s2">&quot;Corp INc.&quot;</span><span class="p">,</span> <span class="n">mail</span><span class="o">=</span><span class="s2">&quot;corp@corp.io&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;ES76281415Y&quot;</span><span class="p">,</span> <span class="n">endpoint_scheme</span><span class="o">=</span><span class="s2">&quot;ES:VAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">address</span><span class="o">=</span><span class="s2">&quot;busy street&quot;</span><span class="p">,</span> <span class="n">postalzone</span><span class="o">=</span><span class="s2">&quot;08080&quot;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">buyer_party</span> <span class="o">=</span> <span class="n">buyer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">seller_party</span> <span class="o">=</span> <span class="n">seller</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="s2">&quot;2018-09-11&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">issue_date</span> <span class="o">=</span> <span class="s2">&quot;2018-06-11&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># lines</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il1</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test 1&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il2</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test 2&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">il3</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test 3&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">add_lines_from</span><span class="p">([</span><span class="n">il1</span><span class="p">,</span> <span class="n">il2</span><span class="p">,</span> <span class="n">il3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>And serialize it to XML:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xml</span> <span class="o">=</span> <span class="n">invoice</span><span class="o">.</span><span class="n">to_xml</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or save it directly to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;example_invoice.xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
 <dt id="en16931.Invoice.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>invoice_id=None</em>, <em>currency='EUR'</em>, <em>from_xml=False</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize an Invoice.</p>
