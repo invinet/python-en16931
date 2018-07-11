@@ -12,6 +12,7 @@ Classes
    invoice
    invoice_line
    entity
+   bank_info
    postal_address
    tax
 
