@@ -3,6 +3,33 @@ Bank information Class
 """
 
 class BankInfo:
+    """BankInfo class.
+
+    Stores relevant banking information of :class:`Entity`
+    to specify the needed information when the payment means
+    of the invoice involves a Bank.
+
+    You can initialize a BankInfo instance with all needed
+    attributes:
+    
+    >>> b = BankInfo(account="1234567321", bic="AAAABBCCDDD",
+    ...              mandate_reference_identifier="123")
+
+    Or build it, step by step:
+
+    >>> b = BankInfo()
+    >>> b.account = "1234567321"
+    >>> b.bic = "AAAABBCCDDD"
+    >>> b.mandate_reference_identifier = "123"
+
+    For the bank information to be complete it has to contain the
+    IBAN number, or the bank account and the BIC. The mandate
+    reference identifier is used in the context of debit payments.
+
+    >>> b.is_valid()
+    True
+
+    """
 
     def __init__(self, account=None, iban=None, bic=None,
                  mandate_reference_identifier=None):

@@ -20,6 +20,38 @@ UNIT_CODES = {
 
 
 class InvoiceLine:
+    """EN16931 InvoiceLine class.
+
+    Each :class:`Invoice` has to have at least one invoice
+    line in which the quantity and the price of the items is
+    reflected.
+
+    You can initialize an InvoiceLine instance with all its
+    attributes:
+
+    >>> il = InvoiceLine(quantity=11, unit_code="EA", price=2,
+    ...                  item_name='test', currency="EUR",
+    ...                  tax_percent=0.21, tax_category="S")
+
+    Or cou can do it step by step:
+
+    >>> il = InvoiceLine()
+    >>> il.quantity = 11
+    >>> il.price = 2
+    >>> il.item_name = 'test'
+    >>> il.tax_percent = 0.21
+    >>> il.tax_category = "S"
+
+    An InvoiceLine is only valid if it has quantity, price and
+    tax defined:
+
+    >>> il.is_valid()
+    True
+    >>> new_line = InvoiceLine()
+    >>> new_line.is_valid()
+    False
+
+    """
 
     def __init__(self, quantity=None, unit_code="EA", price=None,
                  item_name=None, currency="EUR", tax_percent=None,

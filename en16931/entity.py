@@ -7,6 +7,52 @@ from en16931.postal_address import PostalAddress
 
 
 class Entity:
+    """Entity class.
+
+    It represents a party involved in the trade described by the
+    invoice, such as seller or buyer party.
+
+    You can initialize an Entity with most of its attributes:
+
+    >>> e = Entity(name="Acme Inc.", tax_scheme="VAT",
+    ...            tax_scheme_id="ES34626691F", country="ES",
+    ...            party_legal_entity_id="ES34626691F",
+    ...            registration_name="Acme INc.", mail="acme@acme.io",
+    ...            endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
+    ...            address="easy street", postalzone="08080",
+    ...            city="Barcelona")
+
+    Or you can build it step by step:
+
+    >>> e.name = "Acme Inc."
+    >>> e.tax_scheme = "VAT"
+    >>> e.tax_scheme_id = "ES34626691F"
+    >>> e.country = "ES"
+    >>> e.party_legal_entity_id = "ES34626691F"
+    >>> e.registration_name = "Acme INc."
+    >>> e.endpoint = "ES76281415Y"
+    >>> e.endpoint_scheme = "ES:VAT"
+    >>> p = PostalAddress(address="easy street", city_name="Barcelona",
+    ...                   postal_zone="08080", country="ES")
+    >>> e.postal_address = p
+
+    You can assign a :class:`PostalAddress` to its :meth:`postal_address`
+    property. You can also associate a :class:`BankInfo` instance to an
+    Entity in order to store relevant banking information for debit and
+    transfer payments:
+
+    >>> bank_info = BankInfo(iban="ES661234563156", bic="AAAABBCCDDD")
+    >>> e.bank_info = bank_info
+    >>> e.bank_info.iban
+    "ES661234563156"
+
+    An entity is valid if it has a name, a country, valid ids,
+    valid taxscheme and endpoint, and has an address.
+
+    >>> e.is_Valid()
+    True
+
+    """
 
     def __init__(self, name=None, tax_scheme=None, tax_scheme_id=None, country=None,
                  party_legal_entity_id=None, registration_name=None, mail=None,

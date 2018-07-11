@@ -8,6 +8,23 @@ CATEGORIES = {'AE', 'L', 'M', 'E', 'S', 'Z', 'G', 'O', 'K'}
 
 
 class Tax:
+    """Tax class.
+
+    It representas a tax to apply globally or to a concrete
+    invoice line.
+
+    Only categories of taxes enabled by the EN16931 standard are
+    supported. See the documentation of :meth:`category` property
+    for more details.
+
+    You can create Tax objects directly:
+
+    >>> t = Tax(0.21, "S", "IVA")
+
+    Or specify the relevant attributes when building
+    :class:`InvoiceLines` or :class:`Invoice`
+
+    """
 
     def __init__(self, percent, category, name, comment=""):
         """Initialize a Tax object.

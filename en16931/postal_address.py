@@ -2,6 +2,10 @@
 Class for representing a Postal Address
 """
 class PostalAddress:
+    """PostalAddress class
+
+    It represents a postal address of an :class:`Entity`.
+    """
 
     def __init__(self, address=None, city_name=None,
                  postal_zone=None, country=None):
