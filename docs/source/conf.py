@@ -26,7 +26,7 @@ author = 'Invinet Sistemes'
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -86,10 +86,15 @@ html_theme = 'alabaster'
 #
 # html_theme_options = {}
 html_theme_options = {
+    'description': 'EN16931 invoice standard',
     'github_user': 'invinet',
     'github_repo': 'python-en16931',
-    #'travis_button': True,
-    #'codecov_button': True,
+    'github_button': True,
+    'github_type': 'star',
+    'github_banner': True,
+    'travis_button': True,
+    'codecov_button': True,
+    'extra_nav_links': {'PDF documentation': '../latex/python-en16931.pdf'},
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -111,6 +116,7 @@ html_sidebars = {
         'about.html',
 	'localtoc.html',
 	'relations.html',
+	'navigation.html',
         'searchbox.html',
     ]
 }
