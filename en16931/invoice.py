@@ -195,10 +195,10 @@ class Invoice:
         # discount and charge
         discount = get_discount(root)
         if discount is not None:
-            invoice.discount = discount
+            invoice.discount_amount = discount
         charge = get_charge(root)
         if charge is not None:
-            invoice.charge = charge
+            invoice.charge_amount = charge
         return invoice
 
     @property
@@ -482,7 +482,7 @@ class Invoice:
             raise TypeError(msg.format(type(party)))
 
     @property
-    def charge(self):
+    def charge_amount(self):
         """Property: The ChargeTotalAmount of the Invoice.
 
         Parameters
@@ -502,8 +502,8 @@ class Invoice:
         else:
             return MyMoney('0', self._currency)
 
-    @charge.setter
-    def charge(self, value):
+    @charge_amount.setter
+    def charge_amount(self, value):
         """Sets the ChargeTotalAmount of the invoice.
         """
         self._charge_amount = parse_money(value, self._currency)
@@ -514,8 +514,26 @@ class Invoice:
         """The percentage that the charge represents.
 
         The MultiplierFactorNumeric of the charge in PEPPOL BIS 3 terms.
+
+        Parameters
+        ----------
+        value: string, integer, float
+            The input must be a valid input for the Decimal class
+            the Python Standard Library.
+
         """
         return self._charge_percent
+
+    @charge_percent.setter
+    def charge_percent(self, value):
+        """Sets the Charge percent of the invoice.
+        """
+        if value > 1 or value < -1:
+            self._charge_percent = round(value / 100, 2)
+        else:
+            self._charge_percent = round(value, 2)
+        amount = self._charge_percent * self.gross_subtotal()
+        self._charge_amount = parse_money(amount, self._currency)
 
     @property
     def charge_base_amount(self):
@@ -527,7 +545,7 @@ class Invoice:
             return self._charge_amount / self._charge_percent
 
     @property
-    def discount(self):
+    def discount_amount(self):
         """Property: The AllowanceTotalAmount of the Invoice.
 
         Parameters
@@ -547,8 +565,8 @@ class Invoice:
         else:
             return MyMoney('0', self._currency)
 
-    @discount.setter
-    def discount(self, value):
+    @discount_amount.setter
+    def discount_amount(self, value):
         """Sets the AllowanceTotalAmount of the invoice.
         """
         self._discount_amount = parse_money(value, self._currency)
@@ -561,6 +579,17 @@ class Invoice:
         The MultiplierFactorNumeric of the discount in PEPPOL BIS 3 terms.
         """
         return self._discount_percent
+
+    @discount_percent.setter
+    def discount_percent(self, value):
+        """Sets the discount percent of the invoice.
+        """
+        if value > 1 or value < -1:
+            self._discount_percent = round(value / 100, 2)
+        else:
+            self._discount_percent = round(value, 2)
+        amount = self._discount_percent * self.gross_subtotal()
+        self._discount_amount = parse_money(amount, self._currency)
 
     @property
     def discount_base_amount(self):
@@ -638,7 +667,7 @@ class Invoice:
             to the porvided Tax. If None the total taxable base.
 
         """
-        return self.gross_subtotal(tax_type=tax_type) - self.discount + self.charge
+        return self.gross_subtotal(tax_type=tax_type) - self.discount_amount + self.charge_amount
 
     def gross_subtotal(self, tax_type=None):
         """Sum of gross amount of each invoice line."""
@@ -652,7 +681,7 @@ class Invoice:
             TotalGrossAmount - AllowanceTotalAmount + ChargeTotalAmount
         """
         gross_subtotal = self.gross_subtotal(tax_type=tax_type)
-        return gross_subtotal - self.discount + self.charge
+        return gross_subtotal - self.discount_amount + self.charge_amount
 
     def total(self):
         """Computes the TaxInclusiveAmount of the Invoice

@@ -149,16 +149,29 @@ class TestInvoiceOperations:
         assert str(invoice1.payable_amount) == '103.62'
 
     def test_charge_amount(self, invoice1):
-        assert str(invoice1.charge) == '0.00'
-        invoice1.charge = 10
-        assert str(invoice1.charge) == '10.00'
+        assert str(invoice1.charge_amount) == '0.00'
+        invoice1.charge_amount = 10
+        assert str(invoice1.charge_amount) == '10.00'
         assert str(invoice1.subtotal()) == '97.00'
 
     def test_discount_amount(self, invoice1):
-        assert str(invoice1.discount) == '0.00'
-        invoice1.discount = 10
-        assert str(invoice1.discount) == '10.00'
+        assert str(invoice1.discount_amount) == '0.00'
+        invoice1.discount_amount = 10
+        assert str(invoice1.discount_amount) == '10.00'
         assert str(invoice1.subtotal()) == '77.00'
+
+    def test_charge_percent(self, invoice1):
+        invoice1.charge_percent = 10
+        assert str(invoice1.charge_percent) == '0.1'
+        assert str(invoice1.charge_amount) == '8.70'
+        assert str(invoice1.subtotal()) == '95.70'
+
+    def test_discount_percent(self, invoice1):
+        invoice1.discount_percent = 10
+        assert str(invoice1.discount_percent) == '0.1'
+        assert str(invoice1.discount_amount) == '8.70'
+        assert str(invoice1.subtotal()) == '78.30'
+
 
 
 class TestInvoiceXMLGeneration:

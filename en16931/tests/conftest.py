@@ -85,8 +85,8 @@ def invoice2():
                       tax_percent=0.21, tax_category="S")
     invoice.add_lines_from([il1, il2])
     # discount and charge
-    invoice.charge = 10
-    invoice.discount = 20
+    invoice.charge_amount = 10
+    invoice.discount_amount = 20
     return invoice
 
 @pytest.fixture()

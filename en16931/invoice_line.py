@@ -283,3 +283,10 @@ class InvoiceLine:
         if tax is None:
             return True
         return self.tax == tax
+
+    def __repr__(self):
+        if not self.is_valid():
+            return "{}: empty".format(self.__class__)
+        return "{}: {} {} x {} {}".format(self.__class__, self.quantity,
+                                          self.item_name, self.price,
+                                          self.currency)

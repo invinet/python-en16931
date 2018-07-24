@@ -43,8 +43,8 @@ class TestImportInvoices:
         assert str(invoice.tax_inclusive_amount) == '60.50'
         assert str(invoice.payable_amount) == '60.50'
         # discount and charge
-        assert str(invoice.charge) == '10.00'
-        assert str(invoice.discount) == '20.00'
+        assert str(invoice.charge_amount) == '10.00'
+        assert str(invoice.discount_amount) == '20.00'
         # Check imported lines by computing the values of
         # totals from lines and charges and discounts and
         # comparing them to those from the XML.
