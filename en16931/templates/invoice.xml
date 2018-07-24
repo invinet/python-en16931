@@ -42,9 +42,9 @@
   </cac:AccountingSupplierParty>
   <cac:AccountingCustomerParty>
     <cac:Party>
-      <cbc:EndpointID schemeID="{{ invoice.seller_party.endpoint_scheme or 'ES:VAT' }}">{{ invoice.seller_party.party_legal_entity_id }}</cbc:EndpointID>
+      <cbc:EndpointID schemeID="{{ invoice.buyer_party.endpoint_scheme or 'ES:VAT' }}">{{ invoice.buyer_party.party_legal_entity_id }}</cbc:EndpointID>
       <cac:PartyName>
-        <cbc:Name>{{ invoice.seller_party.name }}</cbc:Name>
+        <cbc:Name>{{ invoice.buyer_party.name }}</cbc:Name>
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>{{ invoice.buyer_party.postal_address.address }}</cbc:StreetName>
@@ -55,17 +55,17 @@
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
-        <cbc:CompanyID>{{ invoice.seller_party.party_legal_entity_id }}</cbc:CompanyID>
+        <cbc:CompanyID>{{ invoice.buyer_party.party_legal_entity_id }}</cbc:CompanyID>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
       <cac:PartyLegalEntity>
-        <cbc:RegistrationName>{{ invoice.seller_party.name }}</cbc:RegistrationName>
-        <cbc:CompanyID>{{ invoice.seller_party.party_legal_entity_id }}</cbc:CompanyID>
+        <cbc:RegistrationName>{{ invoice.buyer_party.name }}</cbc:RegistrationName>
+        <cbc:CompanyID>{{ invoice.buyer_party.party_legal_entity_id }}</cbc:CompanyID>
       </cac:PartyLegalEntity>                              
       <cac:Contact>
-        <cbc:ElectronicMail>{{ invoice.seller_party.mail }}</cbc:ElectronicMail>
+        <cbc:ElectronicMail>{{ invoice.buyer_party.mail }}</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
   </cac:AccountingCustomerParty>
