@@ -21,6 +21,15 @@ This library allows you to:
 3. Validate an Invoice using `validex <https://open.validex.net>`_.
 4. Import an Invoice to `B2BRouter <https://www.b2brouter.net/>`_.
 
+Installation
+------------
+
+You can use pip to install this package:
+
+.. code-block:: bash
+    
+    $ pip install en16931
+
 Usage
 -----
 
