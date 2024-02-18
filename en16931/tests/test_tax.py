@@ -1,5 +1,5 @@
 import pytest
-from collections import Hashable
+from collections.abc import Hashable
 
 from en16931.tax import Tax
 
