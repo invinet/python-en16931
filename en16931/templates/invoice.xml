@@ -21,6 +21,7 @@
         <cbc:StreetName>{{ invoice.seller_party.postal_address.address }}</cbc:StreetName>
         <cbc:CityName>{{ invoice.seller_party.postal_address.city_name }}</cbc:CityName>
         <cbc:PostalZone>{{ invoice.seller_party.postal_address.postal_zone }}</cbc:PostalZone>
+        <cbc:CountrySubentity>{{ invoice.seller_party.postal_address.province }}</cbc:CountrySubentity>
         <cac:Country>
           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">{{ invoice.seller_party.postal_address.country }}</cbc:IdentificationCode>
         </cac:Country>
@@ -50,6 +51,7 @@
         <cbc:StreetName>{{ invoice.buyer_party.postal_address.address }}</cbc:StreetName>
         <cbc:CityName>{{ invoice.buyer_party.postal_address.city_name }}</cbc:CityName>
         <cbc:PostalZone>{{ invoice.buyer_party.postal_address.postal_zone }}</cbc:PostalZone>
+        <cbc:CountrySubentity>{{ invoice.buyer_party.postal_address.province }}</cbc:CountrySubentity>
         <cac:Country>
           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">{{ invoice.buyer_party.postal_address.country }}</cbc:IdentificationCode>
         </cac:Country>

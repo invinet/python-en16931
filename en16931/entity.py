@@ -57,7 +57,7 @@ class Entity:
     def __init__(self, name=None, tax_scheme=None, tax_scheme_id=None, country=None,
                  party_legal_entity_id=None, registration_name=None, mail=None,
                  endpoint=None, endpoint_scheme=None, postalzone=None, city=None,
-                 address=None):
+                 address=None, province=None):
         """Initialize an Entity.
 
         TODO formal definition of Entity.
@@ -100,6 +100,8 @@ class Entity:
         address: string.
             The address of the Entity.
 
+        province: string.
+            The province of the Entity.
 
         Notes
         -----
@@ -119,6 +121,7 @@ class Entity:
         self.postalzone = postalzone
         self.city = city
         self.address = address
+        self.province = province
         self._postal_address = None
         self._bank_info = None
 
@@ -306,6 +309,25 @@ class Entity:
         """
         # TODO validate country
         self._country = country
+
+    @property
+    def province(self):
+        """Property: The province of the entity.
+
+        Parameters
+        ----------
+        province: string.
+            Code for the province of the Entity.
+
+        """
+        return self._province
+
+    @province.setter
+    def province(self, province):
+        """Sets the country of the entity.
+        """
+        # TODO validate country
+        self._province = province
 
     @property
     def party_legal_entity_id(self):
