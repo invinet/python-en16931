@@ -14,7 +14,7 @@ class TestEntity:
                    registration_name="Acme INc.", mail="acme@acme.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                    address="easy street", postalzone="08080",
-                   city="Barcelona", province="ES-B")
+                   city="Barcelona", province="Barcelona")
         assert e.is_valid()
         assert e.tax_scheme == "VAT"
         assert e.tax_scheme_id == "ES34626691F"
@@ -46,7 +46,7 @@ class TestEntity:
         e.endpoint = "ES76281415Y"
         e.endpoint_scheme = "ES:VAT"
         p = PostalAddress(address="easy street", city_name="Barcelona",
-                          postal_zone="08080", country="ES", province="ES-B")
+                          postal_zone="08080", country="ES", province="Barcelona")
         e.postal_address = p
         assert e.is_valid()
         assert e.tax_scheme == "VAT"
@@ -61,7 +61,7 @@ class TestEntity:
                         registration_name="Acme INc.", mail="acme@acme.io",
                         endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                         address="easy street", postalzone="08080",
-                        city="Barcelona", province="ES-B")
+                        city="Barcelona", province="Barcelona")
         bank_info_seller = BankInfo(iban="ES661234563156", bic="AAAABBCCDDD")
         seller.bank_info = bank_info_seller
         assert seller.is_valid()

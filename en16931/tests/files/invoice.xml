@@ -18,7 +18,7 @@
       <cac:PostalAddress>
         <cbc:StreetName>easy street</cbc:StreetName>
         <cbc:CityName>Barcelona</cbc:CityName>
-        <cbc:CountrySubentity>ES-B</cbc:CountrySubentity>
+        <cbc:CountrySubentity>Barcelona</cbc:CountrySubentity>
         <cbc:PostalZone>08080</cbc:PostalZone>
         <cac:Country>
           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">ES</cbc:IdentificationCode>
@@ -48,7 +48,7 @@
       <cac:PostalAddress>
         <cbc:StreetName>busy street</cbc:StreetName>
         <cbc:CityName>Barcelona</cbc:CityName>
-        <cbc:CountrySubentity>ES-B</cbc:CountrySubentity>
+        <cbc:CountrySubentity>Barcelona</cbc:CountrySubentity>
         <cbc:PostalZone>08080</cbc:PostalZone>
         <cac:Country>
           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">ES</cbc:IdentificationCode>
