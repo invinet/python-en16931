@@ -1,18 +1,16 @@
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Invoice Line &#8212; python-en16931 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Entity" href="entity.html" />
@@ -20,8 +18,9 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -33,24 +32,24 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="invoice-line">
-<span id="id1"></span><h1>Invoice Line<a class="headerlink" href="#invoice-line" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="en16931.InvoiceLine">
-<em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">InvoiceLine</code><span class="sig-paren">(</span><em>quantity=None</em>, <em>unit_code='EA'</em>, <em>price=None</em>, <em>item_name=None</em>, <em>currency='EUR'</em>, <em>tax_percent=None</em>, <em>line_extension_amount=None</em>, <em>tax_category=None</em>, <em>tax_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine" title="Permalink to this definition">¶</a></dt>
+  <section id="invoice-line">
+<span id="id1"></span><h1>Invoice Line<a class="headerlink" href="#invoice-line" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="en16931.InvoiceLine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">en16931.</span></span><span class="sig-name descname"><span class="pre">InvoiceLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EUR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_extension_amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine" title="Link to this definition">¶</a></dt>
 <dd><p>EN16931 InvoiceLine class.</p>
 <p>Each <a class="reference internal" href="invoice.html#en16931.Invoice" title="en16931.Invoice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Invoice</span></code></a> has to have at least one invoice
 line in which the quantity and the price of the items is
 reflected.</p>
 <p>You can initialize an InvoiceLine instance with all its
 attributes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">unit_code</span><span class="o">=</span><span class="s2">&quot;EA&quot;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>                 <span class="n">item_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                 <span class="n">tax_percent</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">tax_category</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or cou can do it step by step:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">11</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">item_name</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
@@ -60,183 +59,174 @@ attributes:</p>
 </div>
 <p>An InvoiceLine is only valid if it has quantity, price and
 tax defined:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_line</span> <span class="o">=</span> <span class="n">InvoiceLine</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_line</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
 <span class="go">False</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="en16931.InvoiceLine.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>quantity=None</em>, <em>unit_code='EA'</em>, <em>price=None</em>, <em>item_name=None</em>, <em>currency='EUR'</em>, <em>tax_percent=None</em>, <em>line_extension_amount=None</em>, <em>tax_category=None</em>, <em>tax_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EUR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_extension_amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Initialize an Invoice Line.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>quantity</strong> (<em>float</em><em> or </em><em>integer.</em>) – The number of items of the line.</li>
-<li><strong>unit_code</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em></em>) – A unit code defining the nature of the quantities of the
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>quantity</strong> (<em>float</em><em> or </em><em>integer.</em>) – The number of items of the line.</p></li>
+<li><p><strong>unit_code</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em>.</em>) – A unit code defining the nature of the quantities of the
 items of the line. It must be one of: ‘EA’: ‘units’,
 ‘HUR’: ‘hours’, ‘KGM’: ‘kilograms’, ‘LTR’: ‘litters’,
-‘DAY’: ‘days’, ‘CS’: ‘boxes’.</li>
-<li><strong>price</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
-the Python Standard Library.</li>
-<li><strong>item_name</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em></em>) – Arbitrary name to define the item of the line.</li>
-<li><strong>currency</strong> (<em>string.</em>) – String representation of the ISO 4217 currency code.</li>
-<li><strong>tax_percent</strong> (<em>float.</em>) – The percentage of the Tax applied to the line.
-Can be 0.</li>
-<li><strong>tax_category</strong> (<em>string.</em>) – A string representing the category of the Tax.
+‘DAY’: ‘days’, ‘CS’: ‘boxes’.</p></li>
+<li><p><strong>price</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library.</p></li>
+<li><p><strong>item_name</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em>.</em>) – Arbitrary name to define the item of the line.</p></li>
+<li><p><strong>currency</strong> (<em>string.</em>) – String representation of the ISO 4217 currency code.</p></li>
+<li><p><strong>tax_percent</strong> (<em>float.</em>) – The percentage of the Tax applied to the line.
+Can be 0.</p></li>
+<li><p><strong>tax_category</strong> (<em>string.</em>) – A string representing the category of the Tax.
 It must be one of ‘AE’, ‘L’, ‘M’, ‘E’, ‘S’, ‘Z’,
-‘G’, ‘O’, or ‘K’.</li>
-<li><strong>tax_name</strong> (<em>string.</em>) – Arbitrary name to identify the Tax.</li>
-<li><strong>line_extension_amount</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+‘G’, ‘O’, or ‘K’.</p></li>
+<li><p><strong>tax_name</strong> (<em>string.</em>) – Arbitrary name to identify the Tax.</p></li>
+<li><p><strong>line_extension_amount</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
 the Python Standard Library. Computed unless the invoice
-is imported from an XML file.</li>
+is imported from an XML file.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>An InvoiceLine is considered valid if and only if it has quantity,
 price and tax.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.InvoiceLine.__repr__">
-<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.__repr__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.__repr__" title="Link to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#en16931.InvoiceLine.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#en16931.InvoiceLine.__weakref__" title="Link to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.currency">
-<code class="descname">currency</code><a class="headerlink" href="#en16931.InvoiceLine.currency" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – String representation of the ISO 4217 currency code.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>currency_str</strong> (<em>string</em>) – String representation of the ISO 4217 currency code.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">KeyError: If the currency code is not a valid ISO 4217 code.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.currency">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">currency</span></span><a class="headerlink" href="#en16931.InvoiceLine.currency" title="Link to this definition">¶</a></dt>
+<dd><p>String representation of the ISO 4217 currency code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>currency_str</strong> (<em>string</em>) – String representation of the ISO 4217 currency code.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the currency code is not a valid ISO 4217 code.:</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.InvoiceLine.has_tax">
-<code class="descname">has_tax</code><span class="sig-paren">(</span><em>tax</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.has_tax" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.has_tax">
+<span class="sig-name descname"><span class="pre">has_tax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.has_tax" title="Link to this definition">¶</a></dt>
 <dd><p>Returns True if the line has this tax.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tax</strong> (<em>Tax Object.</em>) – </td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tax</strong> (<em>Tax Object.</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.InvoiceLine.is_valid">
-<code class="descname">is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.is_valid" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.InvoiceLine.is_valid" title="Link to this definition">¶</a></dt>
 <dd><p>Returns True if the line is valid.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.item_name">
-<code class="descname">item_name</code><a class="headerlink" href="#en16931.InvoiceLine.item_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.item_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">item_name</span></span><a class="headerlink" href="#en16931.InvoiceLine.item_name" title="Link to this definition">¶</a></dt>
 <dd><p>The arbitrary name of the item of the line.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item_name</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em></em>) – Arbitrary name to define the item of the line.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item_name</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em><em>.</em>) – Arbitrary name to define the item of the line.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.line_extension_amount">
-<code class="descname">line_extension_amount</code><a class="headerlink" href="#en16931.InvoiceLine.line_extension_amount" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The LineExtensionAmount</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line_extension_amount</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.line_extension_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_extension_amount</span></span><a class="headerlink" href="#en16931.InvoiceLine.line_extension_amount" title="Link to this definition">¶</a></dt>
+<dd><p>The LineExtensionAmount</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line_extension_amount</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
 the Python Standard Library. Computed unless the invoice
-is imported from an XML file.</td>
-</tr>
-</tbody>
-</table>
+is imported from an XML file.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.price">
-<code class="descname">price</code><a class="headerlink" href="#en16931.InvoiceLine.price" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The price of one item.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>price</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
-the Python Standard Library.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.price">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#en16931.InvoiceLine.price" title="Link to this definition">¶</a></dt>
+<dd><p>The price of one item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>price</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.quantity">
-<code class="descname">quantity</code><a class="headerlink" href="#en16931.InvoiceLine.quantity" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – Quantity of items of the line.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>quantity</strong> (<em>float</em><em> or </em><em>integer.</em>) – The number of items of the line.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.quantity">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">quantity</span></span><a class="headerlink" href="#en16931.InvoiceLine.quantity" title="Link to this definition">¶</a></dt>
+<dd><p>Quantity of items of the line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>quantity</strong> (<em>float</em><em> or </em><em>integer.</em>) – The number of items of the line.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.tax">
-<code class="descname">tax</code><a class="headerlink" href="#en16931.InvoiceLine.tax" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.tax">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tax</span></span><a class="headerlink" href="#en16931.InvoiceLine.tax" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a Tax object representing the taxes applied to the line.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.InvoiceLine.unit_code">
-<code class="descname">unit_code</code><a class="headerlink" href="#en16931.InvoiceLine.unit_code" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>property</em> – The unit code defining the nature of the quantities.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unit_code</strong> (<em>string.</em>) – A unit code defining the nature of the quantities of the
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.InvoiceLine.unit_code">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unit_code</span></span><a class="headerlink" href="#en16931.InvoiceLine.unit_code" title="Link to this definition">¶</a></dt>
+<dd><p>The unit code defining the nature of the quantities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unit_code</strong> (<em>string.</em>) – A unit code defining the nature of the quantities of the
 items of the line. It must be one of: ‘EA’: ‘units’,
 ‘HUR’: ‘hours’, ‘KGM’: ‘kilograms’, ‘LTR’: ‘litters’,
-‘DAY’: ‘days’, ‘CS’: ‘boxes’.</td>
-</tr>
-</tbody>
-</table>
+‘DAY’: ‘days’, ‘CS’: ‘boxes’.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>property</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -266,7 +256,7 @@ items of the line. It must be one of: ‘EA’: ‘units’,
     
 
 <p>
-<a href="https://travis-ci.org/invinet/python-en16931">
+<a class="badge" href="https://travis-ci.org/invinet/python-en16931">
     <img
         alt="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
         src="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
@@ -280,14 +270,38 @@ items of the line. It must be one of: ‘EA’: ‘units’,
     
 
 <p>
-<a href="https://codecov.io/github/invinet/python-en16931">
+<a class="badge" href="https://codecov.io/github/invinet/python-en16931">
     <img
     alt="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     src="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     />
 </a>
 </p>
-<div class="relations">
+
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Invoice Line</a><ul>
+<li><a class="reference internal" href="#en16931.InvoiceLine"><code class="docutils literal notranslate"><span class="pre">InvoiceLine</span></code></a><ul>
+<li><a class="reference internal" href="#en16931.InvoiceLine.__init__"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.__repr__"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.__repr__()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.__weakref__"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.__weakref__</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.currency"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.currency</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.has_tax"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.has_tax()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.is_valid"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.is_valid()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.item_name"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.item_name</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.line_extension_amount"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.line_extension_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.price"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.price</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.quantity"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.quantity</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.tax"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.tax</span></code></a></li>
+<li><a class="reference internal" href="#en16931.InvoiceLine.unit_code"><code class="docutils literal notranslate"><span class="pre">InvoiceLine.unit_code</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -298,7 +312,10 @@ items of the line. It must be one of: ‘EA’: ‘units’,
 </div><h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="invoice.html">Invoice</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Invoice Line</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Invoice Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#en16931.InvoiceLine"><code class="docutils literal notranslate"><span class="pre">InvoiceLine</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">Entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bank_info.html">BankInfo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postal_address.html">Postal Address</a></li>
@@ -320,27 +337,25 @@ items of the line. It must be one of: ‘EA’: ‘units’,
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Invinet Sistemes.
+      &#169;2018, Invinet Sistemes.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="_sources/invoice_line.rst.txt"
@@ -349,7 +364,7 @@ items of the line. It must be one of: ‘EA’: ‘units’,
 
     
     <a href="https://github.com/invinet/python-en16931" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
     </a>
     
 

@@ -1,18 +1,16 @@
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Postal Address &#8212; python-en16931 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tax" href="tax.html" />
@@ -20,8 +18,9 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -33,48 +32,51 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="postal-address">
-<span id="id1"></span><h1>Postal Address<a class="headerlink" href="#postal-address" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="en16931.PostalAddress">
-<em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">PostalAddress</code><span class="sig-paren">(</span><em>address=None</em>, <em>city_name=None</em>, <em>postal_zone=None</em>, <em>country=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.PostalAddress" title="Permalink to this definition">¶</a></dt>
+  <section id="postal-address">
+<span id="id1"></span><h1>Postal Address<a class="headerlink" href="#postal-address" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="en16931.PostalAddress">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">en16931.</span></span><span class="sig-name descname"><span class="pre">PostalAddress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">city_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postal_zone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">province</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.PostalAddress" title="Link to this definition">¶</a></dt>
 <dd><p>PostalAddress class</p>
 <p>It represents a postal address of an <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a>.</p>
-<dl class="method">
-<dt id="en16931.PostalAddress.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>address=None</em>, <em>city_name=None</em>, <em>postal_zone=None</em>, <em>country=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.PostalAddress.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.PostalAddress.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">city_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postal_zone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">province</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.PostalAddress.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Initializes a PostalAddress.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>address</strong> (<em>string.</em>) – An address.</li>
-<li><strong>city_name</strong> (<em>string.</em>) – The name of a city.</li>
-<li><strong>postal_zone</strong> (<em>string.</em>) – A valid postal zone.</li>
-<li><strong>country</strong> (<em>string.</em>) – A valid two letter country code.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>string.</em>) – An address.</p></li>
+<li><p><strong>city_name</strong> (<em>string.</em>) – The name of a city.</p></li>
+<li><p><strong>postal_zone</strong> (<em>string.</em>) – A valid postal zone.</p></li>
+<li><p><strong>country</strong> (<em>string.</em>) – A valid two letter country code.</p></li>
+<li><p><strong>province</strong> (<em>string.</em>) – A valid province code.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.PostalAddress.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#en16931.PostalAddress.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="en16931.PostalAddress.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#en16931.PostalAddress.__weakref__" title="Link to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.PostalAddress.country">
-<code class="descname">country</code><a class="headerlink" href="#en16931.PostalAddress.country" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.PostalAddress.country">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">country</span></span><a class="headerlink" href="#en16931.PostalAddress.country" title="Link to this definition">¶</a></dt>
 <dd><p>The country of the address</p>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.PostalAddress.province">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">province</span></span><a class="headerlink" href="#en16931.PostalAddress.province" title="Link to this definition">¶</a></dt>
+<dd><p>The province of the address</p>
 </dd></dl>
 
-</div>
+</dd></dl>
+
+</section>
 
 
           </div>
@@ -104,7 +106,7 @@
     
 
 <p>
-<a href="https://travis-ci.org/invinet/python-en16931">
+<a class="badge" href="https://travis-ci.org/invinet/python-en16931">
     <img
         alt="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
         src="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
@@ -118,14 +120,30 @@
     
 
 <p>
-<a href="https://codecov.io/github/invinet/python-en16931">
+<a class="badge" href="https://codecov.io/github/invinet/python-en16931">
     <img
     alt="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     src="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     />
 </a>
 </p>
-<div class="relations">
+
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Postal Address</a><ul>
+<li><a class="reference internal" href="#en16931.PostalAddress"><code class="docutils literal notranslate"><span class="pre">PostalAddress</span></code></a><ul>
+<li><a class="reference internal" href="#en16931.PostalAddress.__init__"><code class="docutils literal notranslate"><span class="pre">PostalAddress.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.PostalAddress.__weakref__"><code class="docutils literal notranslate"><span class="pre">PostalAddress.__weakref__</span></code></a></li>
+<li><a class="reference internal" href="#en16931.PostalAddress.country"><code class="docutils literal notranslate"><span class="pre">PostalAddress.country</span></code></a></li>
+<li><a class="reference internal" href="#en16931.PostalAddress.province"><code class="docutils literal notranslate"><span class="pre">PostalAddress.province</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -139,7 +157,10 @@
 <li class="toctree-l1"><a class="reference internal" href="invoice_line.html">Invoice Line</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">Entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bank_info.html">BankInfo</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Postal Address</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Postal Address</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#en16931.PostalAddress"><code class="docutils literal notranslate"><span class="pre">PostalAddress</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tax.html">Tax</a></li>
 </ul>
 <ul>
@@ -158,27 +179,25 @@
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Invinet Sistemes.
+      &#169;2018, Invinet Sistemes.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="_sources/postal_address.rst.txt"
@@ -187,7 +206,7 @@
 
     
     <a href="https://github.com/invinet/python-en16931" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
     </a>
     
 

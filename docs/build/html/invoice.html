@@ -1,18 +1,16 @@
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Invoice &#8212; python-en16931 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Invoice Line" href="invoice_line.html" />
@@ -20,8 +18,9 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -33,18 +32,18 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="invoice">
-<span id="id1"></span><h1>Invoice<a class="headerlink" href="#invoice" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="en16931.Invoice">
-<em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">Invoice</code><span class="sig-paren">(</span><em>invoice_id=None</em>, <em>currency='EUR'</em>, <em>from_xml=False</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice" title="Permalink to this definition">¶</a></dt>
+  <section id="invoice">
+<span id="id1"></span><h1>Invoice<a class="headerlink" href="#invoice" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="en16931.Invoice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">en16931.</span></span><span class="sig-name descname"><span class="pre">Invoice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">invoice_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EUR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice" title="Link to this definition">¶</a></dt>
 <dd><p>EN16931 Invoice class.</p>
 <p>This is the main entry point of this library. You can build, step
 by step, an Invoice and then serialize to XML.</p>
 <p>It uses the class <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a> to represent seller and buyer
 parties, and the class <a class="reference internal" href="invoice_line.html#en16931.InvoiceLine" title="en16931.InvoiceLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvoiceLine</span></code></a> to represent
 invoice lines.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">en16931</span> <span class="k">import</span> <span class="n">Invoice</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">en16931</span> <span class="kn">import</span> <span class="n">Invoice</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">(</span><span class="n">invoice_id</span><span class="o">=</span><span class="s2">&quot;2018-01&quot;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;EUR&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seller</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acme Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
@@ -78,37 +77,33 @@ invoice lines.</p>
 </pre></div>
 </div>
 <p>And serialize it to XML:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a string</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a string</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xml</span> <span class="o">=</span> <span class="n">invoice</span><span class="o">.</span><span class="n">to_xml</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or save it directly to a file</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">invoice</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;example_invoice.xml&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="en16931.Invoice.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>invoice_id=None</em>, <em>currency='EUR'</em>, <em>from_xml=False</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">invoice_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EUR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_xml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Initialize an Invoice.</p>
 <p>This is the main class and entry point for creating an Invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>invoice_id</strong> (<em>string</em><em> (</em><em>optional</em><em>, </em><em>default '1'</em><em>)</em>) – Arbitrary string to identify the invoice.</li>
-<li><strong>currency</strong> (<em>string</em><em> (</em><em>optional</em><em>, </em><em>default 'EUR'</em><em>)</em>) – An ISO 4217 currency code.</li>
-<li><strong>from_xml</strong> (<em>bool</em><em> (</em><em>optional</em><em>, </em><em>default False</em><em>)</em>) – A flag to mark if the object is the result of importing
-an XML invoice.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>invoice_id</strong> (<em>string</em><em> (</em><em>optional</em><em>, </em><em>default '1'</em><em>)</em>) – Arbitrary string to identify the invoice.</p></li>
+<li><p><strong>currency</strong> (<em>string</em><em> (</em><em>optional</em><em>, </em><em>default 'EUR'</em><em>)</em>) – An ISO 4217 currency code.</p></li>
+<li><p><strong>from_xml</strong> (<em>bool</em><em> (</em><em>optional</em><em>, </em><em>default False</em><em>)</em>) – A flag to mark if the object is the result of importing
+an XML invoice.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">KeyError: If the currency code is not a valid ISO 4217 code.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the currency code is not a valid ISO 4217 code.:</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <p>By default the currency of the invoice is EUR and its id is 1:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">invoice_id</span>
 <span class="go">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">currency</span>
@@ -117,7 +112,7 @@ an XML invoice.</li>
 </div>
 <p>You can also specify an arbitrary id and a valid ISO 4217
 currency code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">(</span><span class="n">invoice_id</span><span class="o">=</span><span class="s2">&quot;0001-2018&quot;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;USD&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">(</span><span class="n">invoice_id</span><span class="o">=</span><span class="s2">&quot;0001-2018&quot;</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">&quot;USD&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">invoice_id</span>
 <span class="go">0001-2018</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">currency</span>
@@ -126,174 +121,165 @@ currency code.</p>
 </div>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#en16931.Invoice.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="en16931.Invoice.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#en16931.Invoice.__weakref__" title="Link to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.add_line">
-<code class="descname">add_line</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.add_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.add_line">
+<span class="sig-name descname"><span class="pre">add_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.add_line" title="Link to this definition">¶</a></dt>
 <dd><p>Adds an InvoiceLine to the Invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<em>InvoiceLine object.</em>) – </td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>InvoiceLine object.</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.add_lines_from">
-<code class="descname">add_lines_from</code><span class="sig-paren">(</span><em>container</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.add_lines_from" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.add_lines_from">
+<span class="sig-name descname"><span class="pre">add_lines_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.add_lines_from" title="Link to this definition">¶</a></dt>
 <dd><p>Adds InvoiceLine instances from a container.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>container</em>) – An iterable container of InvoiceLine objects.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>container</strong> (<em>container</em>) – An iterable container of InvoiceLine objects.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.buyer_party">
-<code class="descname">buyer_party</code><a class="headerlink" href="#en16931.Invoice.buyer_party" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The Entity with the role of AccountingCustomerParty.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.buyer_party">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">buyer_party</span></span><a class="headerlink" href="#en16931.Invoice.buyer_party" title="Link to this definition">¶</a></dt>
+<dd><p>The Entity with the role of AccountingCustomerParty.</p>
 <p>See the <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a> class for details</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>party</strong> (<em>Entity object.</em>) – The Entity object that plays the role of
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>party</strong> (<em>Entity object.</em>) – The Entity object that plays the role of
 AccountingCustomerParty.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – if the Entity is not valid.</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code> – if the input is not an Entity or Entity subclass.</li>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – if the Entity is not valid.</p></li>
+<li><p><strong>TypeError</strong> – if the input is not an Entity or Entity subclass.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.charge_amount">
-<code class="descname">charge_amount</code><a class="headerlink" href="#en16931.Invoice.charge_amount" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The ChargeTotalAmount of the Invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
-the Python Standard Library.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><em>decimal.InvalidOperation: If the input cannot be converted</em> – to a Decimal.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.charge_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">charge_amount</span></span><a class="headerlink" href="#en16931.Invoice.charge_amount" title="Link to this definition">¶</a></dt>
+<dd><p>The ChargeTotalAmount of the Invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>decimal.InvalidOperation</strong> – If the input cannot be converted: to a Decimal.</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.charge_base_amount">
-<code class="descname">charge_base_amount</code><a class="headerlink" href="#en16931.Invoice.charge_base_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.charge_base_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">charge_base_amount</span></span><a class="headerlink" href="#en16931.Invoice.charge_base_amount" title="Link to this definition">¶</a></dt>
 <dd><p>The base amount of the charge.</p>
 <p>The BaseAmount of the charge in PEPPOL BIS 3 terms.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.charge_percent">
-<code class="descname">charge_percent</code><a class="headerlink" href="#en16931.Invoice.charge_percent" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.charge_percent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">charge_percent</span></span><a class="headerlink" href="#en16931.Invoice.charge_percent" title="Link to this definition">¶</a></dt>
 <dd><p>The percentage that the charge represents.</p>
 <p>The MultiplierFactorNumeric of the charge in PEPPOL BIS 3 terms.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
-the Python Standard Library.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.currency">
-<code class="descname">currency</code><a class="headerlink" href="#en16931.Invoice.currency" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – String representation of the ISO 4217 currency code.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>currency_str</strong> (<em>string</em>) – String representation of the ISO 4217 currency code.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">KeyError: If the currency code is not a valid ISO 4217 code.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.currency">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">currency</span></span><a class="headerlink" href="#en16931.Invoice.currency" title="Link to this definition">¶</a></dt>
+<dd><p>String representation of the ISO 4217 currency code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>currency_str</strong> (<em>string</em>) – String representation of the ISO 4217 currency code.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the currency code is not a valid ISO 4217 code.:</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.discount_amount">
-<code class="descname">discount_amount</code><a class="headerlink" href="#en16931.Invoice.discount_amount" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The AllowanceTotalAmount of the Invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
-the Python Standard Library.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><em>decimal.InvalidOperation: If the input cannot be converted</em> – to a Decimal.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.discount_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">discount_amount</span></span><a class="headerlink" href="#en16931.Invoice.discount_amount" title="Link to this definition">¶</a></dt>
+<dd><p>The AllowanceTotalAmount of the Invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>string</em><em>, </em><em>integer</em><em>, </em><em>float</em>) – The input must be a valid input for the Decimal class
+the Python Standard Library.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>decimal.InvalidOperation</strong> – If the input cannot be converted: to a Decimal.</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.discount_base_amount">
-<code class="descname">discount_base_amount</code><a class="headerlink" href="#en16931.Invoice.discount_base_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.discount_base_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">discount_base_amount</span></span><a class="headerlink" href="#en16931.Invoice.discount_base_amount" title="Link to this definition">¶</a></dt>
 <dd><p>The base amount of the discount.</p>
 <p>The BaseAmount of the discount in PEPPOL BIS 3 terms.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.discount_percent">
-<code class="descname">discount_percent</code><a class="headerlink" href="#en16931.Invoice.discount_percent" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.discount_percent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">discount_percent</span></span><a class="headerlink" href="#en16931.Invoice.discount_percent" title="Link to this definition">¶</a></dt>
 <dd><p>The percentage that the discount represents.</p>
 <p>The MultiplierFactorNumeric of the discount in PEPPOL BIS 3 terms.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.due_date">
-<code class="descname">due_date</code><a class="headerlink" href="#en16931.Invoice.due_date" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – Due date of the invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>date</strong> (<em>datetime</em><em> or </em><em>string</em>) – If the input is a string, it should be in one of the
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.due_date">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">due_date</span></span><a class="headerlink" href="#en16931.Invoice.due_date" title="Link to this definition">¶</a></dt>
+<dd><p>Due date of the invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>date</strong> (<em>datetime</em><em> or </em><em>string</em>) – If the input is a string, it should be in one of the
 following formats: “%Y-%m-%d”, “%Y%m%d”, “%d-%m-%Y”,
-“%Y/%m/%d”, “%d/%m/%Y”.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – if the input string cannot be converted to a
-datetime object.</td>
-</tr>
-</tbody>
-</table>
+“%Y/%m/%d”, “%d/%m/%Y”.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if the input string cannot be converted to a
+    datetime object.</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Supported date formats are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">due_date</span>
 <span class="go">datetime.datetime(2018, 6, 21, 0, 0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="s2">&quot;2018-06-21&quot;</span>
@@ -309,64 +295,65 @@ datetime object.</td>
 </pre></div>
 </div>
 <p>Incorrect date formats will raise a ValueError:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; i.due_date = &quot;today&quot;
-Traceback (most recent call last):
-[...]
-ValueError: See documentation for string date formats supported
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">due_date</span> <span class="o">=</span> <span class="s2">&quot;today&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="gr">[...]</span>
+<span class="gr">ValueError</span>: <span class="n">See documentation for string date formats supported</span>
 </pre></div>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="classmethod">
-<dt id="en16931.Invoice.from_xml">
-<em class="property">classmethod </em><code class="descname">from_xml</code><span class="sig-paren">(</span><em>xml_path</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.from_xml" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.from_xml">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xml_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.from_xml" title="Link to this definition">¶</a></dt>
 <dd><p>Import a XML invoice in EN16931 format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>xml_path</strong> (<em>path</em>) – A path to the XML file.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">FileNotFoundError: if the file does not exist.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>xml_path</strong> (<em>path</em>) – A path to the XML file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – if the file does not exist.:</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="s1">&#39;path/to/invoice.xml&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="o">.</span><span class="n">from_xml</span><span class="p">(</span><span class="s1">&#39;path/to/invoice.xml&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.gross_subtotal">
-<code class="descname">gross_subtotal</code><span class="sig-paren">(</span><em>tax_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.gross_subtotal" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.gross_subtotal">
+<span class="sig-name descname"><span class="pre">gross_subtotal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.gross_subtotal" title="Link to this definition">¶</a></dt>
 <dd><p>Sum of gross amount of each invoice line.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.issue_date">
-<code class="descname">issue_date</code><a class="headerlink" href="#en16931.Invoice.issue_date" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The issue date of the invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>date</strong> (<em>datetime</em><em> or </em><em>string</em>) – If the input is a string, it should be in one of the
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.issue_date">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">issue_date</span></span><a class="headerlink" href="#en16931.Invoice.issue_date" title="Link to this definition">¶</a></dt>
+<dd><p>The issue date of the invoice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>date</strong> (<em>datetime</em><em> or </em><em>string</em>) – If the input is a string, it should be in one of the
 following formats: “%Y-%m-%d”, “%Y%m%d”, “%d-%m-%Y”,
-“%Y/%m/%d”, “%d/%m/%Y”.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError: – if the input string cannot be converted to a
-datetime object.</td>
-</tr>
-</tbody>
-</table>
+“%Y/%m/%d”, “%d/%m/%Y”.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError:</strong> – if the input string cannot be converted to a
+    datetime object.</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Invoice</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Supported date formats are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">issue_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">issue_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">issue_date</span>
 <span class="go">datetime.datetime(2018, 6, 21, 0, 0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">issue_date</span> <span class="o">=</span> <span class="s2">&quot;2018-06-21&quot;</span>
@@ -382,192 +369,184 @@ datetime object.</td>
 </pre></div>
 </div>
 <p>Incorrect date formats will raise a ValueError:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; i.issue_date = &quot;today&quot;
-Traceback (most recent call last):
-[...]
-ValueError: See documentation for string date formats supported
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">issue_date</span> <span class="o">=</span> <span class="s2">&quot;today&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="gr">[...]</span>
+<span class="gr">ValueError</span>: <span class="n">See documentation for string date formats supported</span>
 </pre></div>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.line_extension_amount">
-<code class="descname">line_extension_amount</code><a class="headerlink" href="#en16931.Invoice.line_extension_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.line_extension_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_extension_amount</span></span><a class="headerlink" href="#en16931.Invoice.line_extension_amount" title="Link to this definition">¶</a></dt>
 <dd><p>The total LineExtensionAmount of the invoice.</p>
 <p>It’s only computed as the <a class="reference internal" href="#en16931.Invoice.gross_subtotal" title="en16931.Invoice.gross_subtotal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gross_subtotal()</span></code></a> if the Invoice
 was not imported from an XML file. In that case, its value is
 the one reported on the XML.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.lines_with_taxes">
-<code class="descname">lines_with_taxes</code><span class="sig-paren">(</span><em>tax_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.lines_with_taxes" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.lines_with_taxes">
+<span class="sig-name descname"><span class="pre">lines_with_taxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.lines_with_taxes" title="Link to this definition">¶</a></dt>
 <dd><p>Generator of InvoiceLines</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tax_type</strong> (<em>Tax object</em><em> (</em><em>default None</em><em>)</em><em></em>) – If a Tax object is provided, only generate lines with that
-Tax. If this parameter is None, generate all lines.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tax_type</strong> (<em>Tax object</em><em> (</em><em>default None</em><em>)</em><em>.</em>) – If a Tax object is provided, only generate lines with that
+Tax. If this parameter is None, generate all lines.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.payable_amount">
-<code class="descname">payable_amount</code><a class="headerlink" href="#en16931.Invoice.payable_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.payable_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">payable_amount</span></span><a class="headerlink" href="#en16931.Invoice.payable_amount" title="Link to this definition">¶</a></dt>
 <dd><p>The total PayableAmount of the invoice.</p>
 <p>It’s only computed as the <a class="reference internal" href="#en16931.Invoice.total" title="en16931.Invoice.total"><code class="xref py py-meth docutils literal notranslate"><span class="pre">total()</span></code></a> if the Invoice
 was not imported from an XML file. In that case, its value is
 the one reported on the XML.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.payment_means_code">
-<code class="descname">payment_means_code</code><a class="headerlink" href="#en16931.Invoice.payment_means_code" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The payment means code.</p>
-<dl class="docutils">
-<dt>It has to be one of:</dt>
-<dd><ul class="first last simple">
-<li>‘10’: ‘cash’</li>
-<li>‘49’: ‘debit’</li>
-<li>‘31’: ‘transfer’</li>
-<li>‘26’: ‘cheque’</li>
-<li>‘23’: ‘cheque_b’</li>
-<li>‘48’: ‘credit’</li>
-<li>‘ZZZ’: ‘awarding, reposition, special’</li>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.payment_means_code">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">payment_means_code</span></span><a class="headerlink" href="#en16931.Invoice.payment_means_code" title="Link to this definition">¶</a></dt>
+<dd><p>The payment means code.</p>
+<dl class="simple">
+<dt>It has to be one of:</dt><dd><ul class="simple">
+<li><p>‘10’: ‘cash’</p></li>
+<li><p>‘49’: ‘debit’</p></li>
+<li><p>‘31’: ‘transfer’</p></li>
+<li><p>‘26’: ‘cheque’</p></li>
+<li><p>‘23’: ‘cheque_b’</p></li>
+<li><p>‘48’: ‘credit’</p></li>
+<li><p>‘ZZZ’: ‘awarding, reposition, special’</p></li>
 </ul>
 </dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>string</em>) – A valid payment means code.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the code is not valid.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>string</em>) – A valid payment means code.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the code is not valid.</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.save" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.save" title="Link to this definition">¶</a></dt>
 <dd><p>Save the XML representation of the invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>a path</em><em> (</em><em>optional</em><em>, </em><em>default None</em><em>)</em>) – If the path is None it a file named ‘invoice_id.xml’
-will be created in the current working directory.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>a path</em><em> (</em><em>optional</em><em>, </em><em>default None</em><em>)</em>) – If the path is None it a file named ‘invoice_id.xml’
+will be created in the current working directory.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.seller_party">
-<code class="descname">seller_party</code><a class="headerlink" href="#en16931.Invoice.seller_party" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The Entity with the role of AccountingSupplierParty.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.seller_party">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">seller_party</span></span><a class="headerlink" href="#en16931.Invoice.seller_party" title="Link to this definition">¶</a></dt>
+<dd><p>The Entity with the role of AccountingSupplierParty.</p>
 <p>See the <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a> class for details</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>party</strong> (<em>Entity object.</em>) – The Entity object that plays the role of
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>party</strong> (<em>Entity object.</em>) – The Entity object that plays the role of
 AccountingSupplierParty.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li>ValueError: – if the Entity is not valid.</li>
-<li>TypeError: – if the input is not an Entity or Entity subclass.</li>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError:</strong> – if the Entity is not valid.</p></li>
+<li><p><strong>TypeError:</strong> – if the input is not an Entity or Entity subclass.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.subtotal">
-<code class="descname">subtotal</code><span class="sig-paren">(</span><em>tax_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.subtotal" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.subtotal">
+<span class="sig-name descname"><span class="pre">subtotal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.subtotal" title="Link to this definition">¶</a></dt>
 <dd><p>Gross amount before taxes.</p>
 <p>TotalGrossAmount - AllowanceTotalAmount + ChargeTotalAmount</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.tax_amount">
-<code class="descname">tax_amount</code><span class="sig-paren">(</span><em>tax_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.tax_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.tax_amount">
+<span class="sig-name descname"><span class="pre">tax_amount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.tax_amount" title="Link to this definition">¶</a></dt>
 <dd><p>Computes the tax amount of the Invoice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tax_type</strong> (<em>Tax object</em><em> (</em><em>default None</em><em>)</em><em></em>) – If a Tax object is provided, the tax amount corresponding
-to the porvided Tax. If None the total tax amount.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tax_type</strong> (<em>Tax object</em><em> (</em><em>default None</em><em>)</em><em>.</em>) – If a Tax object is provided, the tax amount corresponding
+to the porvided Tax. If None the total tax amount.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.tax_exclusive_amount">
-<code class="descname">tax_exclusive_amount</code><a class="headerlink" href="#en16931.Invoice.tax_exclusive_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.tax_exclusive_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tax_exclusive_amount</span></span><a class="headerlink" href="#en16931.Invoice.tax_exclusive_amount" title="Link to this definition">¶</a></dt>
 <dd><p>The total TaxExclusiveAmount of the invoice.</p>
 <p>It’s only computed as the <a class="reference internal" href="#en16931.Invoice.gross_subtotal" title="en16931.Invoice.gross_subtotal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gross_subtotal()</span></code></a> if the Invoice
 was not imported from an XML file. In that case, its value is
 the one reported on the XML.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.tax_inclusive_amount">
-<code class="descname">tax_inclusive_amount</code><a class="headerlink" href="#en16931.Invoice.tax_inclusive_amount" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.tax_inclusive_amount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tax_inclusive_amount</span></span><a class="headerlink" href="#en16931.Invoice.tax_inclusive_amount" title="Link to this definition">¶</a></dt>
 <dd><p>The total TaxInclusiveAmount of the invoice.</p>
 <p>It’s only computed as the <a class="reference internal" href="#en16931.Invoice.total" title="en16931.Invoice.total"><code class="xref py py-meth docutils literal notranslate"><span class="pre">total()</span></code></a> if the Invoice
 was not imported from an XML file. In that case, its value is
 the one reported on the XML.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.taxable_base">
-<code class="descname">taxable_base</code><span class="sig-paren">(</span><em>tax_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.taxable_base" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.taxable_base">
+<span class="sig-name descname"><span class="pre">taxable_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.taxable_base" title="Link to this definition">¶</a></dt>
 <dd><p>Computes the taxable base of the Invoice</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tax_type</strong> (<em>Tax object</em><em> (</em><em>default None</em><em>)</em><em></em>) – If a Tax object is provided, the taxable base corresponding
-to the porvided Tax. If None the total taxable base.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tax_type</strong> (<em>Tax object</em><em> (</em><em>default None</em><em>)</em><em>.</em>) – If a Tax object is provided, the taxable base corresponding
+to the porvided Tax. If None the total taxable base.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.to_xml">
-<code class="descname">to_xml</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.to_xml" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.to_xml">
+<span class="sig-name descname"><span class="pre">to_xml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.to_xml" title="Link to this definition">¶</a></dt>
 <dd><p>Serialize the invoice object to XML.</p>
 <p>Generate a valid PEPPOL BIS 3 XML document using the UBL 2.1
 syntax.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Invoice.total">
-<code class="descname">total</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.total" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Invoice.total">
+<span class="sig-name descname"><span class="pre">total</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Invoice.total" title="Link to this definition">¶</a></dt>
 <dd><p>Computes the TaxInclusiveAmount of the Invoice</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Invoice.unique_taxes">
-<code class="descname">unique_taxes</code><a class="headerlink" href="#en16931.Invoice.unique_taxes" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Invoice.unique_taxes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unique_taxes</span></span><a class="headerlink" href="#en16931.Invoice.unique_taxes" title="Link to this definition">¶</a></dt>
 <dd><p>Set of unique taxes in the Invoice.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -597,7 +576,7 @@ syntax.</p>
     
 
 <p>
-<a href="https://travis-ci.org/invinet/python-en16931">
+<a class="badge" href="https://travis-ci.org/invinet/python-en16931">
     <img
         alt="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
         src="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
@@ -611,14 +590,56 @@ syntax.</p>
     
 
 <p>
-<a href="https://codecov.io/github/invinet/python-en16931">
+<a class="badge" href="https://codecov.io/github/invinet/python-en16931">
     <img
     alt="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     src="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     />
 </a>
 </p>
-<div class="relations">
+
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Invoice</a><ul>
+<li><a class="reference internal" href="#en16931.Invoice"><code class="docutils literal notranslate"><span class="pre">Invoice</span></code></a><ul>
+<li><a class="reference internal" href="#en16931.Invoice.__init__"><code class="docutils literal notranslate"><span class="pre">Invoice.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.__weakref__"><code class="docutils literal notranslate"><span class="pre">Invoice.__weakref__</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.add_line"><code class="docutils literal notranslate"><span class="pre">Invoice.add_line()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.add_lines_from"><code class="docutils literal notranslate"><span class="pre">Invoice.add_lines_from()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.buyer_party"><code class="docutils literal notranslate"><span class="pre">Invoice.buyer_party</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.charge_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.charge_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.charge_base_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.charge_base_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.charge_percent"><code class="docutils literal notranslate"><span class="pre">Invoice.charge_percent</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.currency"><code class="docutils literal notranslate"><span class="pre">Invoice.currency</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.discount_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.discount_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.discount_base_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.discount_base_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.discount_percent"><code class="docutils literal notranslate"><span class="pre">Invoice.discount_percent</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.due_date"><code class="docutils literal notranslate"><span class="pre">Invoice.due_date</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.from_xml"><code class="docutils literal notranslate"><span class="pre">Invoice.from_xml()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.gross_subtotal"><code class="docutils literal notranslate"><span class="pre">Invoice.gross_subtotal()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.issue_date"><code class="docutils literal notranslate"><span class="pre">Invoice.issue_date</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.line_extension_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.line_extension_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.lines_with_taxes"><code class="docutils literal notranslate"><span class="pre">Invoice.lines_with_taxes()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.payable_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.payable_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.payment_means_code"><code class="docutils literal notranslate"><span class="pre">Invoice.payment_means_code</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.save"><code class="docutils literal notranslate"><span class="pre">Invoice.save()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.seller_party"><code class="docutils literal notranslate"><span class="pre">Invoice.seller_party</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.subtotal"><code class="docutils literal notranslate"><span class="pre">Invoice.subtotal()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.tax_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.tax_amount()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.tax_exclusive_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.tax_exclusive_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.tax_inclusive_amount"><code class="docutils literal notranslate"><span class="pre">Invoice.tax_inclusive_amount</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.taxable_base"><code class="docutils literal notranslate"><span class="pre">Invoice.taxable_base()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.to_xml"><code class="docutils literal notranslate"><span class="pre">Invoice.to_xml()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.total"><code class="docutils literal notranslate"><span class="pre">Invoice.total()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Invoice.unique_taxes"><code class="docutils literal notranslate"><span class="pre">Invoice.unique_taxes</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -628,7 +649,10 @@ syntax.</p>
 </ul>
 </div><h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Invoice</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Invoice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#en16931.Invoice"><code class="docutils literal notranslate"><span class="pre">Invoice</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="invoice_line.html">Invoice Line</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">Entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bank_info.html">BankInfo</a></li>
@@ -651,27 +675,25 @@ syntax.</p>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Invinet Sistemes.
+      &#169;2018, Invinet Sistemes.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="_sources/invoice.rst.txt"
@@ -680,7 +702,7 @@ syntax.</p>
 
     
     <a href="https://github.com/invinet/python-en16931" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
     </a>
     
 

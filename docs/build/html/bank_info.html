@@ -1,18 +1,16 @@
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>BankInfo &#8212; python-en16931 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Postal Address" href="postal_address.html" />
@@ -20,8 +18,9 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -33,23 +32,23 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="bankinfo">
-<span id="bank-info"></span><h1>BankInfo<a class="headerlink" href="#bankinfo" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="en16931.BankInfo">
-<em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">BankInfo</code><span class="sig-paren">(</span><em>account=None</em>, <em>iban=None</em>, <em>bic=None</em>, <em>mandate_reference_identifier=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo" title="Permalink to this definition">¶</a></dt>
+  <section id="bankinfo">
+<span id="bank-info"></span><h1>BankInfo<a class="headerlink" href="#bankinfo" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="en16931.BankInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">en16931.</span></span><span class="sig-name descname"><span class="pre">BankInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iban</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mandate_reference_identifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo" title="Link to this definition">¶</a></dt>
 <dd><p>BankInfo class.</p>
 <p>Stores relevant banking information of <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a>
 to specify the needed information when the payment means
 of the invoice involves a Bank.</p>
 <p>You can initialize a BankInfo instance with all needed
 attributes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">(</span><span class="n">account</span><span class="o">=</span><span class="s2">&quot;1234567321&quot;</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="s2">&quot;AAAABBCCDDD&quot;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">(</span><span class="n">account</span><span class="o">=</span><span class="s2">&quot;1234567321&quot;</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="s2">&quot;AAAABBCCDDD&quot;</span><span class="p">,</span>
 <span class="gp">... </span>             <span class="n">mandate_reference_identifier</span><span class="o">=</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or build it, step by step:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">account</span> <span class="o">=</span> <span class="s2">&quot;1234567321&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">bic</span> <span class="o">=</span> <span class="s2">&quot;AAAABBCCDDD&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">mandate_reference_identifier</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span>
@@ -58,126 +57,129 @@ attributes:</p>
 <p>For the bank information to be complete it has to contain the
 IBAN number, or the bank account and the BIC. The mandate
 reference identifier is used in the context of debit payments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="en16931.BankInfo.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>account=None</em>, <em>iban=None</em>, <em>bic=None</em>, <em>mandate_reference_identifier=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.BankInfo.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iban</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mandate_reference_identifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Initialize the Bank Information for an Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>account</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The bank account number.</li>
-<li><strong>bic</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The Bank Identification Code of the account.</li>
-<li><strong>iban</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The International Bank Account Number (IBAN)</li>
-<li><strong>mandate_reference_identifier</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The Mandate Reference Identifier</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The bank account number.</p></li>
+<li><p><strong>bic</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The Bank Identification Code of the account.</p></li>
+<li><p><strong>iban</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The International Bank Account Number (IBAN)</p></li>
+<li><p><strong>mandate_reference_identifier</strong> (<em>string</em><em> (</em><em>optional</em><em>)</em>) – The Mandate Reference Identifier</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>For the bank information to be complete it has to contain the
 IBAN number, or the bank account and the BIC. The mandate
 reference identifier is used in the context of debit payments.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.BankInfo.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#en16931.BankInfo.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="en16931.BankInfo.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#en16931.BankInfo.__weakref__" title="Link to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.BankInfo.account">
-<code class="descname">account</code><a class="headerlink" href="#en16931.BankInfo.account" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – Bank account number</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>account</strong> (<em>string</em>) – The bank account number.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.BankInfo.account">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">account</span></span><a class="headerlink" href="#en16931.BankInfo.account" title="Link to this definition">¶</a></dt>
+<dd><p>Bank account number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>account</strong> (<em>string</em>) – The bank account number.</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>No validation of the bank account number is performed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.BankInfo.bic">
-<code class="descname">bic</code><a class="headerlink" href="#en16931.BankInfo.bic" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The Bank Identification Code</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.BankInfo.bic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bic</span></span><a class="headerlink" href="#en16931.BankInfo.bic" title="Link to this definition">¶</a></dt>
+<dd><p>The Bank Identification Code</p>
 <p>Also known as SWIFT code.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bic</strong> (<em>string</em>) – The Bank Identification Code of the account.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the BIC code is not valid.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bic</strong> (<em>string</em>) – The Bank Identification Code of the account.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the BIC code is not valid.</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>A BIC code has either 8 or 11 characters without
 dashes and spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.BankInfo.has_mandate_reference">
-<code class="descname">has_mandate_reference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.has_mandate_reference" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.BankInfo.has_mandate_reference">
+<span class="sig-name descname"><span class="pre">has_mandate_reference</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.has_mandate_reference" title="Link to this definition">¶</a></dt>
 <dd><p>Returns True if it has a mandate reference identifier.</p>
 <p>This is necessary for debit payments.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.BankInfo.iban">
-<code class="descname">iban</code><a class="headerlink" href="#en16931.BankInfo.iban" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The International Bank Account Number (IBAN)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>iban</strong> (<em>string</em>) – The International Bank Account Number (IBAN)</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.BankInfo.iban">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">iban</span></span><a class="headerlink" href="#en16931.BankInfo.iban" title="Link to this definition">¶</a></dt>
+<dd><p>The International Bank Account Number (IBAN)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>iban</strong> (<em>string</em>) – The International Bank Account Number (IBAN)</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>No validation of the IBAN is performed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.BankInfo.is_valid">
-<code class="descname">is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.is_valid" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.BankInfo.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.BankInfo.is_valid" title="Link to this definition">¶</a></dt>
 <dd><p>Returns True if the information is complete.</p>
 <p>A valid bank information for an <a class="reference internal" href="entity.html#en16931.Entity" title="en16931.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></a> must have a bank
 account and a BIC or an IBAN.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.BankInfo.mandate_reference_identifier">
-<code class="descname">mandate_reference_identifier</code><a class="headerlink" href="#en16931.BankInfo.mandate_reference_identifier" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The Mandate Reference Identifier</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.BankInfo.mandate_reference_identifier">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mandate_reference_identifier</span></span><a class="headerlink" href="#en16931.BankInfo.mandate_reference_identifier" title="Link to this definition">¶</a></dt>
+<dd><p>The Mandate Reference Identifier</p>
 <p>The Mandate Reference Identifier is necessary for debit
 payments.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mandate_reference_identifier</strong> (<em>string</em>) – The Mandate Reference Identifier</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mandate_reference_identifier</strong> (<em>string</em>) – The Mandate Reference Identifier</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -207,7 +209,7 @@ payments.</p>
     
 
 <p>
-<a href="https://travis-ci.org/invinet/python-en16931">
+<a class="badge" href="https://travis-ci.org/invinet/python-en16931">
     <img
         alt="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
         src="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
@@ -221,14 +223,34 @@ payments.</p>
     
 
 <p>
-<a href="https://codecov.io/github/invinet/python-en16931">
+<a class="badge" href="https://codecov.io/github/invinet/python-en16931">
     <img
     alt="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     src="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     />
 </a>
 </p>
-<div class="relations">
+
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BankInfo</a><ul>
+<li><a class="reference internal" href="#en16931.BankInfo"><code class="docutils literal notranslate"><span class="pre">BankInfo</span></code></a><ul>
+<li><a class="reference internal" href="#en16931.BankInfo.__init__"><code class="docutils literal notranslate"><span class="pre">BankInfo.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.__weakref__"><code class="docutils literal notranslate"><span class="pre">BankInfo.__weakref__</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.account"><code class="docutils literal notranslate"><span class="pre">BankInfo.account</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.bic"><code class="docutils literal notranslate"><span class="pre">BankInfo.bic</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.has_mandate_reference"><code class="docutils literal notranslate"><span class="pre">BankInfo.has_mandate_reference()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.iban"><code class="docutils literal notranslate"><span class="pre">BankInfo.iban</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.is_valid"><code class="docutils literal notranslate"><span class="pre">BankInfo.is_valid()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.BankInfo.mandate_reference_identifier"><code class="docutils literal notranslate"><span class="pre">BankInfo.mandate_reference_identifier</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -241,7 +263,10 @@ payments.</p>
 <li class="toctree-l1"><a class="reference internal" href="invoice.html">Invoice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="invoice_line.html">Invoice Line</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">Entity</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">BankInfo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BankInfo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#en16931.BankInfo"><code class="docutils literal notranslate"><span class="pre">BankInfo</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="postal_address.html">Postal Address</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tax.html">Tax</a></li>
 </ul>
@@ -261,27 +286,25 @@ payments.</p>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Invinet Sistemes.
+      &#169;2018, Invinet Sistemes.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="_sources/bank_info.rst.txt"
@@ -290,7 +313,7 @@ payments.</p>
 
     
     <a href="https://github.com/invinet/python-en16931" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
     </a>
     
 

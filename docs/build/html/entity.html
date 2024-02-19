@@ -1,18 +1,16 @@
+<!DOCTYPE html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Entity &#8212; python-en16931 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="BankInfo" href="bank_info.html" />
@@ -20,8 +18,9 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -33,16 +32,16 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="entity">
-<span id="id1"></span><h1>Entity<a class="headerlink" href="#entity" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="en16931.Entity">
-<em class="property">class </em><code class="descclassname">en16931.</code><code class="descname">Entity</code><span class="sig-paren">(</span><em>name=None</em>, <em>tax_scheme=None</em>, <em>tax_scheme_id=None</em>, <em>country=None</em>, <em>party_legal_entity_id=None</em>, <em>registration_name=None</em>, <em>mail=None</em>, <em>endpoint=None</em>, <em>endpoint_scheme=None</em>, <em>postalzone=None</em>, <em>city=None</em>, <em>address=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity" title="Permalink to this definition">¶</a></dt>
+  <section id="entity">
+<span id="id1"></span><h1>Entity<a class="headerlink" href="#entity" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="en16931.Entity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">en16931.</span></span><span class="sig-name descname"><span class="pre">Entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_scheme_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">party_legal_entity_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registration_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mail</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postalzone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">city</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">province</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity" title="Link to this definition">¶</a></dt>
 <dd><p>Entity class.</p>
 <p>It represents a party involved in the trade described by the
 invoice, such as seller or buyer party.</p>
 <p>You can initialize an Entity with most of its attributes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acme Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acme Inc.&quot;</span><span class="p">,</span> <span class="n">tax_scheme</span><span class="o">=</span><span class="s2">&quot;VAT&quot;</span><span class="p">,</span>
 <span class="gp">... </span>           <span class="n">tax_scheme_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;ES&quot;</span><span class="p">,</span>
 <span class="gp">... </span>           <span class="n">party_legal_entity_id</span><span class="o">=</span><span class="s2">&quot;ES34626691F&quot;</span><span class="p">,</span>
 <span class="gp">... </span>           <span class="n">registration_name</span><span class="o">=</span><span class="s2">&quot;Acme INc.&quot;</span><span class="p">,</span> <span class="n">mail</span><span class="o">=</span><span class="s2">&quot;acme@acme.io&quot;</span><span class="p">,</span>
@@ -52,7 +51,7 @@ invoice, such as seller or buyer party.</p>
 </pre></div>
 </div>
 <p>Or you can build it step by step:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Acme Inc.&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Acme Inc.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">tax_scheme</span> <span class="o">=</span> <span class="s2">&quot;VAT&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">tax_scheme_id</span> <span class="o">=</span> <span class="s2">&quot;ES34626691F&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">country</span> <span class="o">=</span> <span class="s2">&quot;ES&quot;</span>
@@ -69,7 +68,7 @@ invoice, such as seller or buyer party.</p>
 property. You can also associate a <a class="reference internal" href="bank_info.html#en16931.BankInfo" title="en16931.BankInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">BankInfo</span></code></a> instance to an
 Entity in order to store relevant banking information for debit and
 transfer payments:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bank_info</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">(</span><span class="n">iban</span><span class="o">=</span><span class="s2">&quot;ES661234563156&quot;</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="s2">&quot;AAAABBCCDDD&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bank_info</span> <span class="o">=</span> <span class="n">BankInfo</span><span class="p">(</span><span class="n">iban</span><span class="o">=</span><span class="s2">&quot;ES661234563156&quot;</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="s2">&quot;AAAABBCCDDD&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">bank_info</span> <span class="o">=</span> <span class="n">bank_info</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">bank_info</span><span class="o">.</span><span class="n">iban</span>
 <span class="go">&quot;ES661234563156&quot;</span>
@@ -77,201 +76,213 @@ transfer payments:</p>
 </div>
 <p>An entity is valid if it has a name, a country, valid ids,
 valid taxscheme and endpoint, and has an address.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">is_Valid</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">is_Valid</span><span class="p">()</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="en16931.Entity.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>name=None</em>, <em>tax_scheme=None</em>, <em>tax_scheme_id=None</em>, <em>country=None</em>, <em>party_legal_entity_id=None</em>, <em>registration_name=None</em>, <em>mail=None</em>, <em>endpoint=None</em>, <em>endpoint_scheme=None</em>, <em>postalzone=None</em>, <em>city=None</em>, <em>address=None</em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Entity.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_scheme_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">party_legal_entity_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registration_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mail</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postalzone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">city</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">province</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity.__init__" title="Link to this definition">¶</a></dt>
 <dd><p>Initialize an Entity.</p>
 <p>TODO formal definition of Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>string.</em>) – The name of the Entity.</li>
-<li><strong>tax_scheme</strong> (<em>string.</em>) – The tax scheme of the Entity.</li>
-<li><strong>tax_scheme_id</strong> (<em>string.</em>) – The tax ID of the Entity.</li>
-<li><strong>country</strong> (<em>string.</em>) – Two letter code for the country of the Entity.</li>
-<li><strong>party_legal_entity_id</strong> (<em>string.</em>) – The party legal entity of the Entity.</li>
-<li><strong>registration_name</strong> (<em>string.</em>) – The Registration name of the Entity.</li>
-<li><strong>mail</strong> (<em>string.</em>) – The contact Email of the Entity.</li>
-<li><strong>endpoint</strong> (<em>string.</em>) – A valid PEPPOL endpoint.</li>
-<li><strong>endpoint_scheme</strong> (<em>string.</em>) – The scheme defining the endpoint.</li>
-<li><strong>postalzone</strong> (<em>string.</em>) – The postalzone of the address of the Entity.</li>
-<li><strong>city</strong> (<em>string.</em>) – The city of the address of the Entity.</li>
-<li><strong>address</strong> (<em>string.</em>) – The address of the Entity.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string.</em>) – The name of the Entity.</p></li>
+<li><p><strong>tax_scheme</strong> (<em>string.</em>) – The tax scheme of the Entity.</p></li>
+<li><p><strong>tax_scheme_id</strong> (<em>string.</em>) – The tax ID of the Entity.</p></li>
+<li><p><strong>country</strong> (<em>string.</em>) – Two letter code for the country of the Entity.</p></li>
+<li><p><strong>party_legal_entity_id</strong> (<em>string.</em>) – The party legal entity of the Entity.</p></li>
+<li><p><strong>registration_name</strong> (<em>string.</em>) – The Registration name of the Entity.</p></li>
+<li><p><strong>mail</strong> (<em>string.</em>) – The contact Email of the Entity.</p></li>
+<li><p><strong>endpoint</strong> (<em>string.</em>) – A valid PEPPOL endpoint.</p></li>
+<li><p><strong>endpoint_scheme</strong> (<em>string.</em>) – The scheme defining the endpoint.</p></li>
+<li><p><strong>postalzone</strong> (<em>string.</em>) – The postalzone of the address of the Entity.</p></li>
+<li><p><strong>city</strong> (<em>string.</em>) – The city of the address of the Entity.</p></li>
+<li><p><strong>address</strong> (<em>string.</em>) – The address of the Entity.</p></li>
+<li><p><strong>province</strong> (<em>string.</em>) – The province of the Entity.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>An entity is valid if it has a name, a country, valid ids,
 valid taxscheme and endpoint, and has an address.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.__weakref__">
-<code class="descname">__weakref__</code><a class="headerlink" href="#en16931.Entity.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="en16931.Entity.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#en16931.Entity.__weakref__" title="Link to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.bank_info">
-<code class="descname">bank_info</code><a class="headerlink" href="#en16931.Entity.bank_info" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – a <a class="reference internal" href="bank_info.html#en16931.BankInfo" title="en16931.BankInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">BankInfo</span></code></a> instance</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>bank_info</strong> (<em>BankInfo instance</em>) – a valid BankInfo instance.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code> – If the parameter is not a BankInfo instance</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If the BankInfo instance is not valid</li>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.bank_info">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bank_info</span></span><a class="headerlink" href="#en16931.Entity.bank_info" title="Link to this definition">¶</a></dt>
+<dd><p>a <a class="reference internal" href="bank_info.html#en16931.BankInfo" title="en16931.BankInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">BankInfo</span></code></a> instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bank_info</strong> (<em>BankInfo instance</em>) – a valid BankInfo instance.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the parameter is not a BankInfo instance</p></li>
+<li><p><strong>ValueError</strong> – If the BankInfo instance is not valid</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.country">
-<code class="descname">country</code><a class="headerlink" href="#en16931.Entity.country" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The country of the entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>country</strong> (<em>string.</em>) – Two letter code for the country of the Entity.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.country">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">country</span></span><a class="headerlink" href="#en16931.Entity.country" title="Link to this definition">¶</a></dt>
+<dd><p>The country of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>country</strong> (<em>string.</em>) – Two letter code for the country of the Entity.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.endpoint">
-<code class="descname">endpoint</code><a class="headerlink" href="#en16931.Entity.endpoint" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The endpoint ID of the Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>endpoint</strong> (<em>string.</em>) – A valid PEPPOL endpoint.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.endpoint">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">endpoint</span></span><a class="headerlink" href="#en16931.Entity.endpoint" title="Link to this definition">¶</a></dt>
+<dd><p>The endpoint ID of the Entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>endpoint</strong> (<em>string.</em>) – A valid PEPPOL endpoint.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.endpoint_scheme">
-<code class="descname">endpoint_scheme</code><a class="headerlink" href="#en16931.Entity.endpoint_scheme" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The endpoint scheme of the Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>endpoint_scheme</strong> (<em>string.</em>) – The scheme defining the endpoint.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.endpoint_scheme">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">endpoint_scheme</span></span><a class="headerlink" href="#en16931.Entity.endpoint_scheme" title="Link to this definition">¶</a></dt>
+<dd><p>The endpoint scheme of the Entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>endpoint_scheme</strong> (<em>string.</em>) – The scheme defining the endpoint.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="en16931.Entity.is_valid">
-<code class="descname">is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity.is_valid" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="en16931.Entity.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#en16931.Entity.is_valid" title="Link to this definition">¶</a></dt>
 <dd><p>Returns True if the Entity is valid.</p>
 <p>An entity is valid if it has a name, a country, valid ids,
 valid taxscheme and endpoint, and has an address.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.mail">
-<code class="descname">mail</code><a class="headerlink" href="#en16931.Entity.mail" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.mail">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mail</span></span><a class="headerlink" href="#en16931.Entity.mail" title="Link to this definition">¶</a></dt>
 <dd><p>The contact mail of the Entity.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.name">
-<code class="descname">name</code><a class="headerlink" href="#en16931.Entity.name" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The name of the Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>string.</em>) – The name for the Entity.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#en16931.Entity.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the Entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string.</em>) – The name for the Entity.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.party_legal_entity_id">
-<code class="descname">party_legal_entity_id</code><a class="headerlink" href="#en16931.Entity.party_legal_entity_id" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.party_legal_entity_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">party_legal_entity_id</span></span><a class="headerlink" href="#en16931.Entity.party_legal_entity_id" title="Link to this definition">¶</a></dt>
 <dd><p>The party legal entity ID</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.postal_address">
-<code class="descname">postal_address</code><a class="headerlink" href="#en16931.Entity.postal_address" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The PostalAddress of the Entity.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.postal_address">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">postal_address</span></span><a class="headerlink" href="#en16931.Entity.postal_address" title="Link to this definition">¶</a></dt>
+<dd><p>The PostalAddress of the Entity.</p>
 <p>See the <a class="reference internal" href="postal_address.html#en16931.PostalAddress" title="en16931.PostalAddress"><code class="xref py py-class docutils literal notranslate"><span class="pre">PostalAddress</span></code></a> class.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>address</strong> (<em>PostalAddress object.</em>) – A PostalAddress instance.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><em>TypeError: if the input is not a PostalAddreess</em> – or a subclass.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>PostalAddress object.</em>) – A PostalAddress instance.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – if the input is not a PostalAddreess: or a subclass.</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.registration_name">
-<code class="descname">registration_name</code><a class="headerlink" href="#en16931.Entity.registration_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.province">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">province</span></span><a class="headerlink" href="#en16931.Entity.province" title="Link to this definition">¶</a></dt>
+<dd><p>The province of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>province</strong> (<em>string.</em>) – Code for the province of the Entity.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.registration_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">registration_name</span></span><a class="headerlink" href="#en16931.Entity.registration_name" title="Link to this definition">¶</a></dt>
 <dd><p>The registration name of the Entity.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.tax_scheme">
-<code class="descname">tax_scheme</code><a class="headerlink" href="#en16931.Entity.tax_scheme" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The tax scheme of the Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>scheme</strong> (<em>string.</em>) – The tax scheme used by the Entity.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError: if the tax scheme is not valid.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.tax_scheme">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tax_scheme</span></span><a class="headerlink" href="#en16931.Entity.tax_scheme" title="Link to this definition">¶</a></dt>
+<dd><p>The tax scheme of the Entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scheme</strong> (<em>string.</em>) – The tax scheme used by the Entity.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if the tax scheme is not valid.:</p>
+</dd>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="en16931.Entity.tax_scheme_id">
-<code class="descname">tax_scheme_id</code><a class="headerlink" href="#en16931.Entity.tax_scheme_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Property</em> – The tax ID of the Entity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tax_scheme_id</strong> (<em>string.</em>) – The tax ID of the Entity.</td>
-</tr>
-</tbody>
-</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="en16931.Entity.tax_scheme_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tax_scheme_id</span></span><a class="headerlink" href="#en16931.Entity.tax_scheme_id" title="Link to this definition">¶</a></dt>
+<dd><p>The tax ID of the Entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tax_scheme_id</strong> (<em>string.</em>) – The tax ID of the Entity.</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Property</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
           </div>
@@ -301,7 +312,7 @@ valid taxscheme and endpoint, and has an address.</p>
     
 
 <p>
-<a href="https://travis-ci.org/invinet/python-en16931">
+<a class="badge" href="https://travis-ci.org/invinet/python-en16931">
     <img
         alt="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
         src="https://secure.travis-ci.org/invinet/python-en16931.svg?branch=master"
@@ -315,14 +326,41 @@ valid taxscheme and endpoint, and has an address.</p>
     
 
 <p>
-<a href="https://codecov.io/github/invinet/python-en16931">
+<a class="badge" href="https://codecov.io/github/invinet/python-en16931">
     <img
     alt="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     src="https://codecov.io/github/invinet/python-en16931/coverage.svg?branch=master"
     />
 </a>
 </p>
-<div class="relations">
+
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Entity</a><ul>
+<li><a class="reference internal" href="#en16931.Entity"><code class="docutils literal notranslate"><span class="pre">Entity</span></code></a><ul>
+<li><a class="reference internal" href="#en16931.Entity.__init__"><code class="docutils literal notranslate"><span class="pre">Entity.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.__weakref__"><code class="docutils literal notranslate"><span class="pre">Entity.__weakref__</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.bank_info"><code class="docutils literal notranslate"><span class="pre">Entity.bank_info</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.country"><code class="docutils literal notranslate"><span class="pre">Entity.country</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.endpoint"><code class="docutils literal notranslate"><span class="pre">Entity.endpoint</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.endpoint_scheme"><code class="docutils literal notranslate"><span class="pre">Entity.endpoint_scheme</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.is_valid"><code class="docutils literal notranslate"><span class="pre">Entity.is_valid()</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.mail"><code class="docutils literal notranslate"><span class="pre">Entity.mail</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.name"><code class="docutils literal notranslate"><span class="pre">Entity.name</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.party_legal_entity_id"><code class="docutils literal notranslate"><span class="pre">Entity.party_legal_entity_id</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.postal_address"><code class="docutils literal notranslate"><span class="pre">Entity.postal_address</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.province"><code class="docutils literal notranslate"><span class="pre">Entity.province</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.registration_name"><code class="docutils literal notranslate"><span class="pre">Entity.registration_name</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.tax_scheme"><code class="docutils literal notranslate"><span class="pre">Entity.tax_scheme</span></code></a></li>
+<li><a class="reference internal" href="#en16931.Entity.tax_scheme_id"><code class="docutils literal notranslate"><span class="pre">Entity.tax_scheme_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -334,7 +372,10 @@ valid taxscheme and endpoint, and has an address.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="invoice.html">Invoice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="invoice_line.html">Invoice Line</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Entity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Entity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#en16931.Entity"><code class="docutils literal notranslate"><span class="pre">Entity</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="bank_info.html">BankInfo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postal_address.html">Postal Address</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tax.html">Tax</a></li>
@@ -355,27 +396,25 @@ valid taxscheme and endpoint, and has an address.</p>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Invinet Sistemes.
+      &#169;2018, Invinet Sistemes.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="_sources/entity.rst.txt"
@@ -384,7 +423,7 @@ valid taxscheme and endpoint, and has an address.</p>
 
     
     <a href="https://github.com/invinet/python-en16931" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
     </a>
     
 
