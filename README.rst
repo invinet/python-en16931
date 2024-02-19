@@ -90,14 +90,14 @@ Or you can also build, step by step, an invoice:
     ...                 registration_name="Acme INc.", mail="acme@acme.io",
     ...                 endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
     ...                 address="easy street", postalzone="08080",
-    ...                 city="Barcelona")
+    ...                 city="Barcelona", province="ES-B")
     >>> buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
     ...                tax_scheme_id="ES76281415Y", country="ES",
     ...                party_legal_entity_id="ES76281415Y",
     ...                registration_name="Corp INc.", mail="corp@corp.io",
     ...                endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
     ...                address="busy street", postalzone="08080",
-    ...                city="Barcelona")
+    ...                city="Barcelona", province="ES-B")
     >>> invoice.buyer_party = buyer
     >>> invoice.seller_party = seller
     >>> invoice.due_date = "2018-09-11"

@@ -8,7 +8,7 @@ class PostalAddress:
     """
 
     def __init__(self, address=None, city_name=None,
-                 postal_zone=None, country=None):
+                 postal_zone=None, country=None, province=None):
         """Initializes a PostalAddress.
 
         Parameters
@@ -25,11 +25,15 @@ class PostalAddress:
         country: string.
             A valid two letter country code.
 
+        province: string.
+            A valid province code.
+
         """
         self.address = address
         self.city_name = city_name
         self.postal_zone = postal_zone
         self.country = country
+        self.province = province
 
     @property
     def country(self):
@@ -43,3 +47,16 @@ class PostalAddress:
         """
         # TODO validate country in ISO3166-1:Alpha2 format
         self._country = country
+    
+    @property
+    def province(self):
+        """The province of the address
+        """
+        return self._province
+
+    @province.setter
+    def province(self, province):
+        """Sets the country of the address.
+        """
+        # TODO validate country in ISO3166-1:Alpha2 format
+        self._province = province

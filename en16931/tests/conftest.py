@@ -29,14 +29,14 @@ def invoice1():
                     registration_name="Acme INc.", mail="acme@acme.io",
                     endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                     address="easy street", postalzone="08080",
-                    city="Barcelona")
+                    city="Barcelona", province="ES-B")
     buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
                    tax_scheme_id="ES76281415Y", country="ES",
                    party_legal_entity_id="ES76281415Y",
                    registration_name="Corp INc.", mail="corp@corp.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                    address="busy street", postalzone="08080",
-                   city="Barcelona")
+                   city="Barcelona", province="ES-B")
     invoice.buyer_party = buyer
     invoice.seller_party = seller
     invoice.due_date = "2018-09-11"
@@ -64,14 +64,14 @@ def invoice2():
                     registration_name="Acme INc.", mail="acme@acme.io",
                     endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                     address="easy street", postalzone="08080",
-                    city="Barcelona")
+                    city="Barcelona", province="ES-B")
     buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
                    tax_scheme_id="ES76281415Y", country="ES",
                    party_legal_entity_id="ES76281415Y",
                    registration_name="Corp INc.", mail="corp@corp.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                    address="busy street", postalzone="08080",
-                   city="Barcelona")
+                   city="Barcelona", province="ES-B")
     invoice.buyer_party = buyer
     invoice.seller_party = seller
     invoice.due_date = "2018-09-11"
@@ -98,7 +98,7 @@ def invoice3():
                     registration_name="Acme INc.", mail="acme@acme.io",
                     endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                     address="easy street", postalzone="08080",
-                    city="Barcelona")
+                    city="Barcelona", province="ES-B")
     bank_info_seller = BankInfo(iban="ES661234563156", bic="AAAABBCCDDD")
     seller.bank_info = bank_info_seller
     buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
@@ -107,7 +107,7 @@ def invoice3():
                    registration_name="Corp INc.", mail="corp@corp.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
                    address="busy street", postalzone="08080",
-                   city="Barcelona")
+                   city="Barcelona", province="ES-B")
     bank_info_buyer = BankInfo(iban="ES661234567321", bic="AAAABBCCDDD",
                                mandate_reference_identifier="123")
     buyer.bank_info = bank_info_buyer
