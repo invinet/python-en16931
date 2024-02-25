@@ -19,6 +19,9 @@
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>{{ invoice.seller_party.postal_address.address }}</cbc:StreetName>
+        {% if invoice.seller_party.postal_address.address2 is defined -%}
+        <cbc:AdditionalStreetName>{{ invoice.seller_party.postal_address.address2 }}</cbc:AdditionalStreetName>
+        {% endif -%}
         <cbc:CityName>{{ invoice.seller_party.postal_address.city_name }}</cbc:CityName>
         <cbc:PostalZone>{{ invoice.seller_party.postal_address.postal_zone }}</cbc:PostalZone>
         <cbc:CountrySubentity>{{ invoice.seller_party.postal_address.province }}</cbc:CountrySubentity>
@@ -49,6 +52,9 @@
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>{{ invoice.buyer_party.postal_address.address }}</cbc:StreetName>
+        {% if invoice.buyer_party.postal_address.address2 is defined -%}
+        <cbc:AdditionalStreetName>{{ invoice.buyer_party.postal_address.address2 }}</cbc:AdditionalStreetName>
+        {% endif -%}
         <cbc:CityName>{{ invoice.buyer_party.postal_address.city_name }}</cbc:CityName>
         <cbc:PostalZone>{{ invoice.buyer_party.postal_address.postal_zone }}</cbc:PostalZone>
         <cbc:CountrySubentity>{{ invoice.buyer_party.postal_address.province }}</cbc:CountrySubentity>
