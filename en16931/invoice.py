@@ -82,7 +82,7 @@ class Invoice:
 
     """
 
-    def __init__(self, invoice_id=None, currency="EUR", from_xml=False):
+    def __init__(self, invoice_id=None, currency="EUR", from_xml=False, template_name=None):
         """Initialize an Invoice.
 
         This is the main class and entry point for creating an Invoice.
@@ -137,7 +137,10 @@ class Invoice:
         self._due_date = None
         self._seller_party = None
         self._buyer_party = None
-        self._templates = templates.get_template('invoice.xml')
+        if (template_name is None):
+            self._templates = templates.get_template('invoice.xml')
+        else:
+            self._templates = templates.get_template(template_name)
         self._imported_from_xml = from_xml
         self._line_extension_amount = None
         self._tax_exclusive_amount = None

@@ -129,6 +129,38 @@ def invoice3():
     invoice.add_lines_from([il1, il2, il3])
     return invoice
 
+@pytest.fixture()
+def custom_invoice():
+    invoice = Invoice(currency="RON", template_name="ro_invoice.xml")
+    seller = Entity(name="sc furnizor srl", tax_scheme="VAT",
+                    tax_scheme_id="RO123456", country="RO",
+                    party_legal_entity_id="RO123456",
+                    registration_name="sc furnizor srl", mail="acme@acme.io",
+                    endpoint="RO123456", endpoint_scheme="VAT",
+                    address="str colentina nr 2", postalzone="08080",
+                    city="Craiova", province="RO-DJ")
+    buyer = Entity(name="SC Cumparator srl", tax_scheme="VAT",
+                   tax_scheme_id="RO43210", country="RO",
+                   party_legal_entity_id="RO43210",
+                   registration_name="SC Cumparator srl", mail="corp@corp.io",
+                   endpoint="RO43210", endpoint_scheme="VAT",
+                   address="str bucuresti nr 4", postalzone="08080",
+                   city="Iasi", province="RO-IS")
+    invoice.buyer_party = buyer
+    invoice.seller_party = seller
+    invoice.due_date = "2022-05-01"
+    invoice.issue_date = "2022-05-10"
+    # lines
+    il1 = InvoiceLine(quantity=11, unit_code="EA", price=5,
+                      item_name='caiet dictando', currency="RON",
+                      tax_percent=0.21, tax_category="S")
+    il2 = InvoiceLine(quantity=2, unit_code="EA", price=15,
+                      item_name='dictionar roman', currency="RON",
+                      tax_percent=0.05, tax_category="S")
+    invoice.add_lines_from([il1, il2])
+    invoice.payment_means_code = "10"
+    return invoice
+
 
 @pytest.fixture()
 def tax1():

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+xmlns:ns4="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1</cbc:CustomizationID>
+  <cbc:ID>{{ invoice.invoice_id }}</cbc:ID>
+  <cbc:IssueDate>{{ invoice.issue_date.strftime("%Y-%m-%d") }}</cbc:IssueDate>
+  {% if invoice.due_date is defined -%}
+    <cbc:DueDate>{{ invoice.due_date.strftime("%Y-%m-%d") }}</cbc:DueDate>
+  {% endif -%}
+  <cbc:InvoiceTypeCode>{{ invoice.invoice_type_code }}</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>{{ invoice.currency }}</cbc:DocumentCurrencyCode>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cac:PartyName>
+        <cbc:Name>{{ invoice.seller_party.name }}</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>{{ invoice.seller_party.postal_address.address }}</cbc:StreetName>
+        <cbc:CityName>{{ invoice.seller_party.postal_address.city_name }}</cbc:CityName>
+        {% if invoice.seller_party.postal_address.province is defined -%}
+        <cbc:CountrySubentity>{{ invoice.seller_party.postal_address.province }}</cbc:CountrySubentity>
+        {%endif -%}
+        <cac:Country>
+          <cbc:IdentificationCode>{{ invoice.seller_party.postal_address.country }}</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>{{ invoice.seller_party.party_legal_entity_id }}</cbc:CompanyID>
+        {% if invoice.seller_party.tax_scheme is defined -%}
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+        {% endif -%}
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>{{ invoice.seller_party.name }}</cbc:RegistrationName>
+        <cbc:CompanyID>{{ invoice.seller_party.party_legal_entity_id }}</cbc:CompanyID>
+      </cac:PartyLegalEntity>                              
+      <cac:Contact>
+        <cbc:ElectronicMail>{{ invoice.seller_party.mail }}</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cac:PartyName>
+        <cbc:Name>{{ invoice.buyer_party.name }}</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>{{ invoice.buyer_party.postal_address.address }}</cbc:StreetName>
+        <cbc:CityName>{{ invoice.buyer_party.postal_address.city_name }}</cbc:CityName>
+        <cbc:CountrySubentity>{{ invoice.buyer_party.postal_address.province }}</cbc:CountrySubentity>
+        <cac:Country>
+          <cbc:IdentificationCode>{{ invoice.buyer_party.postal_address.country }}</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        {% if invoice.buyer_party.party_legal_entity_id is defined -%}
+        <cbc:CompanyID>{{ invoice.buyer_party.party_legal_entity_id }}</cbc:CompanyID>
+        {% endif -%}
+        {% if invoice.buyer_party.tax_scheme is defined -%}
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+        {% endif -%}
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>{{ invoice.buyer_party.name }}</cbc:RegistrationName>
+        <cbc:CompanyID>{{ invoice.buyer_party.party_legal_entity_id }}</cbc:CompanyID>
+      </cac:PartyLegalEntity>                              
+      <cac:Contact>
+        {% if invoice.buyer_party.mail is defined -%}
+        <cbc:ElectronicMail>{{ invoice.buyer_party.mail }}</cbc:ElectronicMail>
+        {% endif %}
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  {%- if invoice.payment_means_code is defined %}
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>{{ invoice.payment_means_code }}</cbc:PaymentMeansCode>
+    {%- if invoice.payment_means_code == "49" and invoice.buyer_party.bank_info.iban is defined %}
+    <cac:PaymentMandate>
+      {%- if invoice.buyer_party.bank_info.mandate_reference_identifier is defined %}
+      <cbc:ID>{{ invoice.buyer_party.bank_info.mandate_reference_identifier }}</cbc:ID>
+      {%- endif %}
+      <cac:PayerFinancialAccount>
+        <cbc:ID>{{ invoice.buyer_party.bank_info.iban }}</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+    {%- elif invoice.payment_means_code == "49" and invoice.buyer_party.bank_info.account is defined %}
+    <cac:PaymentMandate>
+      {%- if invoice.buyer_party.bank_info.mandate_reference_identifier is defined %}
+      <cbc:ID>{{ invoice.buyer_party.bank_info.mandate_reference_identifier }}</cbc:ID>
+      {%- endif %}
+      <cac:PayerFinancialAccount>
+        <cbc:ID>{{ invoice.buyer_party.bank_info.account }}</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+    {%- elif invoice.payment_means_code == "31" and invoice.seller_party.bank_info.iban is defined and invoice.seller_party.bank_info.bic is defined %}
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>{{ invoice.seller_party.bank_info.iban }}</cbc:ID>
+      <cac:FinancialInstitutionBranch>
+        <cbc:ID>{{ invoice.seller_party.bank_info.bic }}</cbc:ID>
+      </cac:FinancialInstitutionBranch>
+    </cac:PayeeFinancialAccount>
+    {%- elif invoice.payment_means_code == "31" and invoice.seller_party.bank_info.account is defined -%}
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>{{ invoice.seller_party.bank_info.account }}</cbc:ID>
+    </cac:PayeeFinancialAccount>
+    {%- endif %}
+  </cac:PaymentMeans>
+  {%- endif %}
+  {%- if invoice.discount_amount.amount > 0 %}
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>discount</cbc:AllowanceChargeReason>
+    <cbc:MultiplierFactorNumeric>{{ invoice.discount_percent * 100 }}</cbc:MultiplierFactorNumeric>
+    <cbc:Amount currencyID="{{ invoice.currency }}">{{ invoice.discount_amount }}</cbc:Amount>
+    <cbc:BaseAmount currencyID="{{ invoice.currency }}">{{ invoice.discount_base_amount }}</cbc:BaseAmount>
+    {%- for tax in invoice.unique_taxes -%}
+    <cac:TaxCategory>
+      <cbc:ID>{{ tax.category }}</cbc:ID>
+      <cbc:Percent>{{ tax.percent * 100 }}</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+    {%- endfor %}
+  </cac:AllowanceCharge>
+  {%- endif %}
+  {%- if invoice.charge_amount.amount > 0 %}
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>charge</cbc:AllowanceChargeReason>
+    <cbc:MultiplierFactorNumeric>{{ invoice.charge_percent * 100 }}</cbc:MultiplierFactorNumeric>
+    <cbc:Amount currencyID="{{ invoice.currency }}">{{ invoice.charge_amount }}</cbc:Amount>
+    <cbc:BaseAmount currencyID="{{ invoice.currency }}">{{ invoice.charge_base_amount }}</cbc:BaseAmount>
+    {%- for tax in invoice.unique_taxes %}
+    <cac:TaxCategory>
+      <cbc:ID>{{ tax.category }}</cbc:ID>
+      <cbc:Percent>{{ tax.percent * 100 }}</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+    {%- endfor %}
+  </cac:AllowanceCharge>
+  {%- endif %}
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_amount() }}</cbc:TaxAmount>
+    {% for tax in invoice.unique_taxes -%}
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="{{ invoice.currency }}">{{ invoice.taxable_base(tax) }}</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_amount(tax) }}</cbc:TaxAmount>
+        <cac:TaxCategory>
+          <cbc:ID>{{ tax.category }}</cbc:ID>
+          <cbc:Percent>{{ tax.percent * 100 }}</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+          </cac:TaxScheme>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+    {% endfor -%}
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ invoice.line_extension_amount }}</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_exclusive_amount }}</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_inclusive_amount }}</cbc:TaxInclusiveAmount>
+    {% if invoice.discount_amount.amount > 0 -%}
+      <cbc:AllowanceTotalAmount currencyID="{{ invoice.currency }}">{{ invoice.discount_amount }}</cbc:AllowanceTotalAmount>
+    {% endif -%}
+    {% if invoice.charge_amount.amount > 0 -%}
+      <cbc:ChargeTotalAmount currencyID="{{ invoice.currency }}">{{ invoice.charge_amount }}</cbc:ChargeTotalAmount>
+    {% endif -%}
+    <cbc:PayableAmount currencyID="{{ invoice.currency }}">{{ invoice.payable_amount }}</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  {% for line in invoice.lines -%}
+  <cac:InvoiceLine>
+    <cbc:ID>{{ loop.index }}</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="{{ line.unit_code }}">{{ line.quantity }}</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="{{ invoice.currency }}">{{ line.line_extension_amount }}</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>{{ line.item_name }}</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>{{ line.tax.category }}</cbc:ID>
+        <cbc:Percent>{{ line.tax.percent * 100 }}</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="{{ invoice.currency }}">{{ line.price }}</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine> 
+  {% endfor -%}
+</Invoice>
