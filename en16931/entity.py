@@ -179,7 +179,8 @@ class Entity:
             return None
         else:
             return PostalAddress(address=self.address, city_name=self.city,
-                                 postal_zone=self.postalzone, country=self.country)
+                                 postal_zone=self.postalzone, province=self.province,
+                                 country=self.country)
 
     @postal_address.setter
     def postal_address(self, address):
