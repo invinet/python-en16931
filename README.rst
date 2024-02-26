@@ -82,7 +82,7 @@ Or you can also build, step by step, an invoice:
 
 .. code-block:: python
 
-    >>> from en16931 import Invoice
+    >>> from en16931 import Invoice, Entity, InvoiceLine
     >>> invoice = Invoice(invoice_id="2018-01", currency="EUR")
     >>> seller = Entity(name="Acme Inc.", tax_scheme="VAT",
     ...                 tax_scheme_id="ES34626691F", country="ES",
