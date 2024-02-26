@@ -28,14 +28,14 @@ def invoice1():
                     party_legal_entity_id="ES34626691F",
                     registration_name="Acme INc.", mail="acme@acme.io",
                     endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                    address="easy street", postalzone="08080",
+                    address="easy street", address2="3rd floor", postalzone="08080",
                     city="Barcelona", province="Barcelona")
     buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
                    tax_scheme_id="ES76281415Y", country="ES",
                    party_legal_entity_id="ES76281415Y",
                    registration_name="Corp INc.", mail="corp@corp.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                   address="busy street", postalzone="08080",
+                   address="busy street", address2="2nd floor", postalzone="08080",
                    city="Barcelona", province="Barcelona")
     invoice.buyer_party = buyer
     invoice.seller_party = seller
@@ -63,14 +63,14 @@ def invoice2():
                     party_legal_entity_id="ES34626691F",
                     registration_name="Acme INc.", mail="acme@acme.io",
                     endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                    address="easy street", postalzone="08080",
+                    address="easy street", address2="3rd floor", postalzone="08080",
                     city="Barcelona", province="Barcelona")
     buyer = Entity(name="Corp Inc.", tax_scheme="VAT",
                    tax_scheme_id="ES76281415Y", country="ES",
                    party_legal_entity_id="ES76281415Y",
                    registration_name="Corp INc.", mail="corp@corp.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                   address="busy street", postalzone="08080",
+                   address="busy street", address2="2nd floor", postalzone="08080",
                    city="Barcelona", province="Barcelona")
     invoice.buyer_party = buyer
     invoice.seller_party = seller
@@ -97,7 +97,7 @@ def invoice3():
                     party_legal_entity_id="ES34626691F",
                     registration_name="Acme INc.", mail="acme@acme.io",
                     endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                    address="easy street", postalzone="08080",
+                    address="easy street", address2="3rd floor", postalzone="08080",
                     city="Barcelona", province="Barcelona")
     bank_info_seller = BankInfo(iban="ES661234563156", bic="AAAABBCCDDD")
     seller.bank_info = bank_info_seller
@@ -106,7 +106,7 @@ def invoice3():
                    party_legal_entity_id="ES76281415Y",
                    registration_name="Corp INc.", mail="corp@corp.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                   address="busy street", postalzone="08080",
+                   address="busy street", address2="2nd floor", postalzone="08080",
                    city="Barcelona", province="Barcelona")
     bank_info_buyer = BankInfo(iban="ES661234567321", bic="AAAABBCCDDD",
                                mandate_reference_identifier="123")

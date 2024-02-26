@@ -57,7 +57,7 @@ class Entity:
     def __init__(self, name=None, tax_scheme=None, tax_scheme_id=None, country=None,
                  party_legal_entity_id=None, registration_name=None, mail=None,
                  endpoint=None, endpoint_scheme=None, postalzone=None, city=None,
-                 address=None, province=None):
+                 address=None, address2=None, province=None):
         """Initialize an Entity.
 
         TODO formal definition of Entity.
@@ -100,6 +100,9 @@ class Entity:
         address: string.
             The address of the Entity.
 
+        address2: string.
+            Additional addres field.
+
         province: string.
             The province of the Entity.
 
@@ -121,6 +124,7 @@ class Entity:
         self.postalzone = postalzone
         self.city = city
         self.address = address
+        self.address2 = address2
         self.province = province
         self._postal_address = None
         self._bank_info = None
@@ -178,9 +182,9 @@ class Entity:
         elif self.postalzone is None or self.country is None:
             return None
         else:
-            return PostalAddress(address=self.address, city_name=self.city,
-                                 postal_zone=self.postalzone, province=self.province,
-                                 country=self.country)
+            return PostalAddress(address=self.address, address2=self.address2,  
+                                 city_name=self.city, postal_zone=self.postalzone,
+                                 province=self.province, country=self.country)
 
     @postal_address.setter
     def postal_address(self, address):
