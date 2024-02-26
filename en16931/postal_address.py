@@ -7,7 +7,7 @@ class PostalAddress:
     It represents a postal address of an :class:`Entity`.
     """
 
-    def __init__(self, address=None, city_name=None,
+    def __init__(self, address=None, address2=None, city_name=None,
                  postal_zone=None, country=None, province=None):
         """Initializes a PostalAddress.
 
@@ -15,6 +15,9 @@ class PostalAddress:
         ----------
         address: string.
             An address.
+
+        address2: string.
+            Additional address details.
 
         city_name: string.
             The name of a city.
@@ -30,6 +33,7 @@ class PostalAddress:
 
         """
         self.address = address
+        self.address2 = address2
         self.city_name = city_name
         self.postal_zone = postal_zone
         self.country = country

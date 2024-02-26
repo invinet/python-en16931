@@ -13,7 +13,7 @@ class TestEntity:
                    party_legal_entity_id="ES34626691F",
                    registration_name="Acme INc.", mail="acme@acme.io",
                    endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                   address="easy street", postalzone="08080",
+                   address="easy street", address2="3rd floor", postalzone="08080",
                    city="Barcelona", province="Barcelona")
         assert e.is_valid()
         assert e.tax_scheme == "VAT"
@@ -45,7 +45,7 @@ class TestEntity:
         e.registration_name = "Acme INc."
         e.endpoint = "ES76281415Y"
         e.endpoint_scheme = "ES:VAT"
-        p = PostalAddress(address="easy street", city_name="Barcelona",
+        p = PostalAddress(address="easy street", address2="3rd floor", city_name="Barcelona",
                           postal_zone="08080", country="ES", province="Barcelona")
         e.postal_address = p
         assert e.is_valid()
@@ -60,7 +60,7 @@ class TestEntity:
                         party_legal_entity_id="ES34626691F",
                         registration_name="Acme INc.", mail="acme@acme.io",
                         endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
-                        address="easy street", postalzone="08080",
+                        address="easy street", address2="3rd floor", postalzone="08080",
                         city="Barcelona", province="Barcelona")
         bank_info_seller = BankInfo(iban="ES661234563156", bic="AAAABBCCDDD")
         seller.bank_info = bank_info_seller
