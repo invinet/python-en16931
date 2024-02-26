@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setuptools.setup(
     name="en16931",
-    version="0.1.1",
+    version="0.1.2",
     author="Invinet Sistemes",
     author_email="jtorrents@ingent.net",
     description="A Python 3 package to parse, generate and manage the EN16931 Invoice format",
