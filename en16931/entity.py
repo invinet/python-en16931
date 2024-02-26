@@ -20,7 +20,7 @@ class Entity:
     ...            registration_name="Acme INc.", mail="acme@acme.io",
     ...            endpoint="ES76281415Y", endpoint_scheme="ES:VAT",
     ...            address="easy street", postalzone="08080",
-    ...            city="Barcelona")
+    ...            province="Barcelona, city="Barcelona")
 
     Or you can build it step by step:
 
@@ -33,7 +33,7 @@ class Entity:
     >>> e.endpoint = "ES76281415Y"
     >>> e.endpoint_scheme = "ES:VAT"
     >>> p = PostalAddress(address="easy street", city_name="Barcelona",
-    ...                   postal_zone="08080", country="ES")
+    ...                   postal_zone="08080", province="Barcelona", country="ES")
     >>> e.postal_address = p
 
     You can assign a :class:`PostalAddress` to its :meth:`postal_address`
@@ -179,7 +179,8 @@ class Entity:
             return None
         else:
             return PostalAddress(address=self.address, city_name=self.city,
-                                 postal_zone=self.postalzone, country=self.country)
+                                 postal_zone=self.postalzone, province=self.province,
+                                 country=self.country)
 
     @postal_address.setter
     def postal_address(self, address):
