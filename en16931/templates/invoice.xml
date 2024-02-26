@@ -13,7 +13,7 @@
   <cbc:TaxCurrencyCode>{{ invoice.currency }}</cbc:TaxCurrencyCode>
   <cac:AccountingSupplierParty>
     <cac:Party>
-      <cbc:EndpointID schemeID="{{ invoice.seller_party.endpoint_scheme or 'ES:VAT' }}">{{ invoice.seller_party.party_legal_entity_id }}</cbc:EndpointID>
+      <cbc:EndpointID schemeID="{{ invoice.seller_party.endpoint_scheme or '9920' }}">{{ invoice.seller_party.party_legal_entity_id }}</cbc:EndpointID>
       <cac:PartyName>
         <cbc:Name>{{ invoice.seller_party.name }}</cbc:Name>
       </cac:PartyName>
@@ -26,7 +26,7 @@
         <cbc:PostalZone>{{ invoice.seller_party.postal_address.postal_zone }}</cbc:PostalZone>
         <cbc:CountrySubentity>{{ invoice.seller_party.postal_address.province }}</cbc:CountrySubentity>
         <cac:Country>
-          <cbc:IdentificationCode listID="ISO3166-1:Alpha2">{{ invoice.seller_party.postal_address.country }}</cbc:IdentificationCode>
+          <cbc:IdentificationCode>{{ invoice.seller_party.postal_address.country }}</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
@@ -46,7 +46,7 @@
   </cac:AccountingSupplierParty>
   <cac:AccountingCustomerParty>
     <cac:Party>
-      <cbc:EndpointID schemeID="{{ invoice.buyer_party.endpoint_scheme or 'ES:VAT' }}">{{ invoice.buyer_party.party_legal_entity_id }}</cbc:EndpointID>
+      <cbc:EndpointID schemeID="{{ invoice.buyer_party.endpoint_scheme or '9920' }}">{{ invoice.buyer_party.party_legal_entity_id }}</cbc:EndpointID>
       <cac:PartyName>
         <cbc:Name>{{ invoice.buyer_party.name }}</cbc:Name>
       </cac:PartyName>
@@ -59,7 +59,7 @@
         <cbc:PostalZone>{{ invoice.buyer_party.postal_address.postal_zone }}</cbc:PostalZone>
         <cbc:CountrySubentity>{{ invoice.buyer_party.postal_address.province }}</cbc:CountrySubentity>
         <cac:Country>
-          <cbc:IdentificationCode listID="ISO3166-1:Alpha2">{{ invoice.buyer_party.postal_address.country }}</cbc:IdentificationCode>
+          <cbc:IdentificationCode>{{ invoice.buyer_party.postal_address.country }}</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>

@@ -11,7 +11,7 @@
   <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cac:AccountingSupplierParty>
     <cac:Party>
-      <cbc:EndpointID schemeID="ES:VAT">ES34626691F</cbc:EndpointID>
+      <cbc:EndpointID schemeID="9920">ES34626691F</cbc:EndpointID>
       <cac:PartyName>
         <cbc:Name>Acme Inc.</cbc:Name>
       </cac:PartyName>
@@ -19,10 +19,10 @@
         <cbc:StreetName>easy street</cbc:StreetName>
         <cbc:AdditionalStreetName>3rd floor</cbc:AdditionalStreetName>
         <cbc:CityName>Barcelona</cbc:CityName>
-        <cbc:CountrySubentity>Barcelona</cbc:CountrySubentity>
         <cbc:PostalZone>08080</cbc:PostalZone>
+        <cbc:CountrySubentity>Barcelona</cbc:CountrySubentity>
         <cac:Country>
-          <cbc:IdentificationCode listID="ISO3166-1:Alpha2">ES</cbc:IdentificationCode>
+          <cbc:IdentificationCode>ES</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
@@ -42,7 +42,7 @@
   </cac:AccountingSupplierParty>
   <cac:AccountingCustomerParty>
     <cac:Party>
-      <cbc:EndpointID schemeID="ES:VAT">ES34626691F</cbc:EndpointID>
+      <cbc:EndpointID schemeID="9920">ES34626691F</cbc:EndpointID>
       <cac:PartyName>
         <cbc:Name>Acme Inc.</cbc:Name>
       </cac:PartyName>
@@ -50,10 +50,10 @@
         <cbc:StreetName>busy street</cbc:StreetName>
         <cbc:AdditionalStreetName>2nd floor</cbc:AdditionalStreetName>
         <cbc:CityName>Barcelona</cbc:CityName>
-        <cbc:CountrySubentity>Barcelona</cbc:CountrySubentity>
         <cbc:PostalZone>08080</cbc:PostalZone>
+        <cbc:CountrySubentity>Barcelona</cbc:CountrySubentity>
         <cac:Country>
-          <cbc:IdentificationCode listID="ISO3166-1:Alpha2">ES</cbc:IdentificationCode>
+          <cbc:IdentificationCode>ES</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
