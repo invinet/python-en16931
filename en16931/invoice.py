@@ -4,7 +4,7 @@ Class for representing an Invoice.
 from datetime import datetime
 import lxml.etree
 
-from jinja2 import Environment, PackageLoader
+from jinja2 import Environment, PackageLoader, select_autoescape
 from money.currency import Currency
 
 from en16931.entity import Entity
@@ -18,7 +18,10 @@ from en16931.xpaths import get_discount
 from en16931.xpaths import get_charge
 
 
-templates = Environment(loader=PackageLoader('en16931', 'templates'))
+templates = Environment(
+    loader=PackageLoader("en16931"),
+    autoescape=select_autoescape()
+)
 
 VALID_PAYMENT_CODES = {
     '10': 'cash',
