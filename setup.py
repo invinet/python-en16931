@@ -12,6 +12,15 @@ setuptools.setup(
     long_description=long_description,
     url="https://github.com/invinet/python-en16931",
     packages=setuptools.find_packages(),
+    package_data={
+        'en16931': ['templates/*'],
+    },
+    install_requires=[
+        "requests",
+        "py-money",
+        "Jinja2",
+        "lxml",
+    ],
     classifiers=(
 	"Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",
