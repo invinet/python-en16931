@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2">
   <cbc:UBLVersionID>{{ invoice.ubl_version_id }}</cbc:UBLVersionID>
-  <cbc:CustomizationID>{{ invoice.ubl_version_id }}</cbc:CustomizationID>
+  <cbc:CustomizationID>{{ invoice.customization_id }}</cbc:CustomizationID>
   <cbc:ProfileID>{{ invoice.profile_id }}</cbc:ProfileID>
   <cbc:ID>{{ invoice.invoice_id }}</cbc:ID>
   <cbc:IssueDate>{{ invoice.issue_date.strftime("%Y-%m-%d") }}</cbc:IssueDate>
@@ -169,7 +169,7 @@
     <cbc:TaxExclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_exclusive_amount }}</cbc:TaxExclusiveAmount>
     <cbc:TaxInclusiveAmount currencyID="{{ invoice.currency }}">{{ invoice.tax_inclusive_amount }}</cbc:TaxInclusiveAmount>
     {% if invoice.discount_amount.amount > 0 -%}
-      <cbc:AllowanceTotalAmount currencyID="EUR">{{ invoice.discount_amount }}</cbc:AllowanceTotalAmount>
+      <cbc:AllowanceTotalAmount currencyID="{{ invoice.currency }}">{{ invoice.discount_amount }}</cbc:AllowanceTotalAmount>
     {% endif -%}
     {% if invoice.charge_amount.amount > 0 -%}
       <cbc:ChargeTotalAmount currencyID="{{ invoice.currency }}">{{ invoice.charge_amount }}</cbc:ChargeTotalAmount>
@@ -192,7 +192,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">{{ line.price }}</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="{{ invoice.currency }}">{{ line.price }}</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine> 
   {% endfor -%}

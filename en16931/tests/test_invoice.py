@@ -188,6 +188,10 @@ class TestInvoiceXMLGeneration:
         out = invoice3.to_xml()
         assert len(out) > 0
 
+    def test_generates_xml_custom_invoice(self, custom_invoice):
+        out = custom_invoice.to_xml()
+        assert len(out) > 0
+
     def test_writes_xml_file_invoice1(self, invoice1):
         path = '/tmp/invoice1.xml'
         invoice1.save(path)
@@ -201,4 +205,9 @@ class TestInvoiceXMLGeneration:
     def test_writes_xml_file_invoice3_with_payment_means(self, invoice3):
         path = '/tmp/invoice3.xml'
         invoice3.save(path)
+        assert os.path.exists(path)
+
+    def test_writes_xml_file_custom_invoice(self, custom_invoice):
+        path = '/tmp/custom_invoice.xml'
+        custom_invoice.save(path)
         assert os.path.exists(path)
