@@ -96,6 +96,8 @@ class Invoice:
         invoice_id: string (optional, default '1')
             Arbitrary string to identify the invoice.
 
+        customization_id: string (optional, default 'urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0')
+
         currency: string (optional, default 'EUR')
             An ISO 4217 currency code.
 
