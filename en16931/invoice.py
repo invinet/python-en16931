@@ -85,7 +85,7 @@ class Invoice:
 
     """
 
-    def __init__(self, invoice_id=None, currency="EUR", from_xml=False):
+    def __init__(self, invoice_id=None, customization_id=None, currency="EUR", from_xml=False):
         """Initialize an Invoice.
 
         This is the main class and entry point for creating an Invoice.
@@ -133,7 +133,7 @@ class Invoice:
         self.invoice_id = invoice_id or '1'
         self.currency = currency
         self.ubl_version_id = "2.1"
-        self.customization_id = "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
+        self.customization_id = customization_id or "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0"
         self.profile_id = "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0"
         self.invoice_type_code = 380
         self._issue_date = None
@@ -180,8 +180,9 @@ class Invoice:
             xml = f.read()
         root = lxml.etree.fromstring(xml)
         invoice_id = get_from_xpath(root, "invoice_id")
+        customization_id = get_from_xpath(root, "customization_id")
         currency = get_from_xpath(root, "currency")
-        invoice = cls(invoice_id=invoice_id, currency=currency, from_xml=True)
+        invoice = cls(invoice_id=invoice_id, customization_id=customization_id, currency=currency, from_xml=True)
         invoice._original_xml = xml.decode('utf8')
         invoice.issue_date = get_from_xpath(root, "invoice_issue_date")
         invoice.due_date = get_from_xpath(root, "invoice_due_date")

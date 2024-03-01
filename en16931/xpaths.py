@@ -146,6 +146,7 @@ def en16931_xpaths():
     """
     xpaths = {}
     xpaths["invoice_id"] = "/xmlns:Invoice/cbc:ID"
+    xpaths["customization_id"] = "/xmlns:Invoice/cbc:CustomizationID"
     xpaths["invoice_date"] = "/xmlns:Invoice/cbc:IssueDate"
     xpaths["invoice_issue_date"] = "/xmlns:Invoice/cbc:IssueDate"
     xpaths["invoice_due_date"] = "/xmlns:Invoice/cbc:DueDate"
